@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>DM UBA</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,32 +32,70 @@
       }
       .row.content {height: auto;} 
     }
+    
+    // Classes
+	.show {
+	  display: block !important;
+	}
+	.hidden {
+	  display: none !important;
+	  visibility: hidden !important;
+	}
+	.invisible {
+	  visibility: hidden;
+	}
   </style>
 </head>
 <body>
 
 <div class="container-fluid">
   <div class="row content">
-    <div class="col-sm-3 sidenav">
+    <!-- div class="col-sm-3 sidenav" -->
+	<div class="col-xs-3 sidenav">
       <h4>DM UBA</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Teóricas</a></li>
-        <li><a href="#section3">Prácticos</a></li>
-        <li><a href="#section3">Cronograma</a></li>
+	    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+        <li><a data-toggle="pill" href="#teoricas">Teóricas</a></li>
+        <li><a data-toggle="pill" href="#practicas">Prácticos</a></li>
+        <li><a data-toggle="pill" href="#cronograma">Cronograma</a></li>
       </ul>
     </div>
+	
+	<!-- Home -->
+    <div id="home" class="col-sm-9">
+	  <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+		  <h4><small>Data Mining - UBA</small></h4>
+		  <hr>
+		  <h2>Curso de Minería de Datos</h2>
+		  <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
+		</div>
 
-    <div class="col-sm-9">
-      <h4><small>Data Mining - UBA</small></h4>
-      <hr>
-      <h2>Curso de Minería de Datos</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
-<p></p>
-      
-      
-      
-    </div>
+		<!-- Teoria -->
+		<div id="teoricas" class="tab-pane fade">
+		  <h4><small>Data Mining - UBA</small></h4>
+		  <hr>
+		  <h2>Teoría</h2>
+		  <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
+		</div>
+		
+		<!-- Practica -->
+		<div id="practicas" class="tab-pane fade">
+		  <h4><small>Data Mining - UBA</small></h4>
+		  <hr>
+		  <h2>Práctica</h2>
+		  <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
+		</div>
+		
+		<!-- Cronograma -->
+		<div id="cronograma" class="tab-pane fade">
+		  <h4><small>Data Mining - UBA</small></h4>
+		  <hr>
+		  <h2>Cronograma de clases</h2>
+		  <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
+		</div>
+        
+      </div> <!-- end tab-->
   </div>
 </div>
 
@@ -65,5 +103,12 @@
   <p></p>
 </footer>
 
+	<script>
+		var toggle_div_visibility = function(item){
+			
+			
+		}
+
+	</script>
 </body>
 </html>
