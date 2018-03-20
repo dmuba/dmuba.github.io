@@ -49,6 +49,8 @@
         <li><a data-toggle="pill" href="#practicas">Prácticos</a></li>
         <li><a data-toggle="pill" href="#cronograma">Cronograma</a></li>
         <li><a data-toggle="pill" href="#bibliografia">Bibliografía</a></li>
+        <li><a data-toggle="pill" href="#temas">Temas de interés</a></li>
+
       </ul>
     </div>
 	
@@ -66,8 +68,8 @@
           <div id="teoricas" class="tab-pane fade">
             <h4><small>Data Mining - UBA</small></h4>
             <hr>
-            <h2>Teoría</h2>
-            
+            <h2>Teóricas</h2>
+            <ul id="clases"></ul>
           </div>
           
           <!-- Practica -->
@@ -91,13 +93,22 @@
             <h4><small>Data Mining - UBA</small></h4>
             <hr>
             <h2>Bibliografía</h2>
-            <ul>
-            <li>Fayyad, U., Piatetsky-Shapiro, G., & Smyth, P. (1996). From data mining to knowledge discovery in databases. AI magazine, 17(3), 37. [ <a href="http://www.aaai.org/ojs/index.php/aimagazine/article/download/1230/1131/" target="_blank">pdf</a> ] </li> 
-            <li>Jiawei Han, Micheline Kamber, Jian Pei. 2012. Tercera edición. Data Mining: Concepts and Techniques.</li> 
-            <li>Daniel T. Larose. 2014. Segunda edición. Discovering Knowledge in Data: An Introduction to Data Mining.</li>
-            </ul>
+            <ul id="biblio"></ul>
           </div>
           
+          <!-- Temas -->
+          <div id="temas" class="tab-pane fade">
+            <h4><small>Data Mining - UBA</small></h4>
+            <hr>
+            <h2>Temas de interés</h2>
+            <p>En este apartado se presentan algunos temas que pueden servir como disparadores para la elección de trabajos finales de Especialización o Maestría.</p>
+<!--
+            <ul>
+                <li></li> 
+                <li></li>
+            </ul>
+-->
+           </div>
         </div> <!-- end tab-->
   </div>
 </div>
@@ -105,6 +116,6 @@
 <footer class="container-fluid">
   <p></p>
 </footer>
-
+<script src="js/dmuba.js"></script>
 </body>
 </html>
