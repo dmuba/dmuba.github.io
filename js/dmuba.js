@@ -1,4 +1,4 @@
-var get_biblio = function(id, file){
+var do_list = function(id, file){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -15,5 +15,5 @@ var get_biblio = function(id, file){
     xmlhttp.send();
  }
 
-get_biblio("biblio","js/biblio.json");
-get_biblio("clases","js/teoricas.json");
+do_list("biblio","js/biblio.json");
+do_list("clases","js/teoricas.json");

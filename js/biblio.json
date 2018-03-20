@@ -2,7 +2,7 @@
     "biblio" : [
         {"id": 1,
         "ref": "Fayyad, U., Piatetsky-Shapiro, G., & Smyth, P. (1996). From data mining to knowledge discovery in databases. AI magazine, 17(3), 37.",
-        "link": "http://www.aaai.org/ojs/index.php/aimagazine/article/download/1230/1131/"
+        "link": "http://www.aaai.org/ojs/index.php/aimagazine/article/download/1230/1131/",
         "caption": "pdf"
         },
         {"id": 2,
