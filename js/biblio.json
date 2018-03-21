@@ -14,6 +14,11 @@
         "ref": "Daniel T. Larose. 2014. Segunda edición. Discovering Knowledge in Data: An Introduction to Data Mining.",
         "link": "",
         "caption": "pdf"
+        },
+        {"id": 4,
+        "ref": "Leskovec, J., Rajaraman, A., & Ullman, J. D. (2014). Mining of massive datasets. Cambridge university press.",
+        "link": "http://infolab.stanford.edu/~ullman/mmds/book.pdf",
+        "caption": "pdf"
         }
         
     ]
