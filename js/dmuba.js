@@ -17,3 +17,4 @@ var do_list = function(id, file){
 
 do_list("biblio","js/biblio.json");
 do_list("clases","js/teoricas.json");
+do_list("practicos","js/practicos.json");
