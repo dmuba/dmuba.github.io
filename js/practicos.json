@@ -1,9 +1,15 @@
 {
     "biblio" : [
         {"id": 1,
-         "ref": "TP01: Exploración y Preprocesamiento",
+         "ref": "LAB01: Exploración y Preprocesamiento (V. I)",
          "link": "https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB01.zip",
          "caption": "Abrir"
-        }
+        },
+        {"id": 2,
+         "ref": "LAB02: Valores Faltantes & Reducción de dimensionalidad (Preprocesamiento V. II)",
+         "link": "https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB02.zip",
+         "caption": "Abrir"
+        },
+        
     ]
 }
