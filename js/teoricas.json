@@ -11,13 +11,18 @@
          "caption": "Abrir"
         },
         {"id": 3,
-         "ref": "Clase 3: Preprocesamiento",
+         "ref": "Clase 3: Preprocesamiento: Tratamiento de ruido, limpieza e integración",
          "link": "https://docs.google.com/presentation/d/1eIEBZ_QNThSFFS51xOrkEaYj_bKj4rcJiULbeJhPGoQ/edit?usp=sharing",
          "caption": "Abrir"
         },
         {"id": 4,
          "ref": "Clase 4: Preprocesamiento: Tratamiento de datos faltantes y reducción de dimensionalidad",
          "link": "https://docs.google.com/presentation/d/1nLQG1lRVJQO1vqtTL0R6H9j8qvbUldxeF-daMg2Brcg/edit?usp=sharing",
+         "caption": "Abrir"
+        },
+        {"id": 5,
+         "ref": "Clase 5: Bases de Datos NoSQL",
+         "link": "https://docs.google.com/presentation/d/1vm8e2oTAjsvkR2WBCiyVLBxrWo3Rc2SqcAxPjtn3FKg/edit?usp=sharing",
          "caption": "Abrir"
         }
     ]
