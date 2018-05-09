@@ -19,6 +19,21 @@
         "ref": "Leskovec, J., Rajaraman, A., & Ullman, J. D. (2014). Mining of massive datasets. Cambridge university press.",
         "link": "http://infolab.stanford.edu/~ullman/mmds/book.pdf",
         "caption": "pdf"
+        },
+        {"id": 5,
+        "ref": "McCreary, D., & Kelly, A. (2013). Making Sense of NoSQL: A guide for managers and the rest of us.",
+        "link": "",
+        "caption": "pdf"
+        },
+        {"id": 6,
+        "ref": "McCreary, D., & Kelly, A. (2014). Making sense of NoSQL. Shelter Island: Manning, 19-20",
+        "link": "http://macc.foxia.com/files/macc/files/macc_mccreary.pdf",
+        "caption": "pdf"
+        },
+        {"id": 7,
+        "ref": "Which NoSQL Database? A Performance Overview",
+        "link": "https://www.ronpub.com/OJDB-v1i2n02_Abramova.pdf",
+        "caption": "pdf"
         }
         
     ]
