@@ -9,6 +9,11 @@
          "ref": "LAB02: Valores Faltantes & Reducción de dimensionalidad (Preprocesamiento V. II)",
          "link": "https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB02.zip",
          "caption": "Abrir"
+        },
+        {"id": 3,
+         "ref": "LAB03: Introducción a Bases de Datos NOSQL",
+         "link": "https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB03.zip",
+         "caption": "Abrir"
         }
     ]
 }
