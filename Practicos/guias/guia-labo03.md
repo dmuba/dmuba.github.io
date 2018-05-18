@@ -8,6 +8,7 @@ Con botón derecho sobre la conexión, *crear base de datos*
 
 ## Crear una colección
 Botón derecho sobre *collections* __Create Collection__
+
 ![crear col](./img/crearcol.png)
 
 
@@ -38,14 +39,16 @@ b) Buscar todos los documentos cargados en la colección.
 
     db.documentos.find({})
 
-c)Actualizar un atributo con __update__
+c) Actualizar un atributo con __update__
 
     db.documentos.update(
         {"_id": 1},
         {$set: {"titulo": "NOTICIA MODIFICADA EN DMUBA"}}
     )
 
+d) Eliminar un documento de la colección
 
+    db.documentos.deleteOne({"_id": 3})
 
     
 
