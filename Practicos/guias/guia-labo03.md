@@ -17,40 +17,45 @@ Botón derecho sobre *collections* __Create Collection__
 
 Ejemplo: cómo armar un documento JSON para importar a la base.
 
-
+```javascript
     { 
         "_id": 1,
         "titulo": "Se estrelló un avión en Cuba",
         "cuerpo": "La aeronave cayó a poco de despegar del aeropuerto de La Habana. Era un Boeing 737 de una compañía aérea subsidiaria de Cubana de Aviación. El presidente cubano Miguel Díaz-Canel se dirigió de inmediato al lugar del accidente.",
         "fecha-hora": "2018-05-18 16:00:00"
     }
-
+```
 
 a) Incorporar un documento desde el shell
 
+```javascript
     db.documentos.insertOne({ 
         "_id": 1,
         "titulo": "Se estrelló un avión en Cuba",
         "cuerpo": "La aeronave cayó a poco de despegar del aeropuerto de La Habana. Era un Boeing 737 de una compañía aérea subsidiaria de Cubana de Aviación. El presidente cubano Miguel Díaz-Canel se dirigió de inmediato al lugar del accidente.",
         "fecha-hora": "2018-05-18 16:00:00"
     })
-    
+```    
 
 b) Buscar todos los documentos cargados en la colección.
-
+```javascript
     db.documentos.find({})
+```
 
 c) Actualizar un atributo con __update__
 
+```javascript
     db.documentos.update(
         {"_id": 1},
         {$set: {"titulo": "NOTICIA MODIFICADA EN DMUBA"}}
     )
+```
 
 d) Eliminar un documento de la colección
 
+```javascript
     db.documentos.deleteOne({"_id": 3})
-
+```
     
 e) Incorporar varios documentos a través del shell
 
@@ -74,5 +79,23 @@ Ejemplo:
         "reply_to_screen_name" : "perroscalle",
         "is_quote" : false,
         "is_retweet" : false,
-``
+```
+
+d) Utilizar operadores de comparación
+
+¿Cuantos tweets tienen más de un retweet?
+
+```javascript
+
+db.getCollection('tweets').find({retweet_count: {$gt: 1} })
+
+```
+Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
+
+
+
+
+
+
+
 
