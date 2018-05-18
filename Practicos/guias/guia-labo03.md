@@ -1,7 +1,8 @@
 # Guía LABORATORIO III: Introducción a Bases de Datos NOSQL
 
 ## Crear una db. 
-Con botón derecho sobre la conexión, *crear base de datos*
+Con botón derecho sobre la conexión, __Create Database__
+
 
 ![crear db](./img/creardb.png)
 
@@ -51,6 +52,26 @@ d) Eliminar un documento de la colección
     db.documentos.deleteOne({"_id": 3})
 
     
+e) Incorporar varios documentos a través del shell
 
+Con la instrucción db.<mi colección>.insert([{doc1}, {doc2}, ...,])
+
+Ejemplo:
+
+    db.documentos.insert(
+    [
+        
+    {
+        "_id" : ObjectId("5af98a285987f909b4005ff3"),
+        "status_id" : "996013967498776577",
+        "created_at" : ISODate("2018-05-14T13:06:49.000Z"),
+        "user_id" : "213888080",
+        "screen_name" : "Florsube",
+        "text" : "@perroscalle  piel de gallina imaginando la situación de Alejandro!cada uno con sus montruos, jajaja, y nosotros preocupados por el dólar y la inflación! tiburón, qué buscas en la orilla?",
+        "source" : "Twitter Web Client",
+        "reply_to_user_id" : "76727519",
+        "reply_to_screen_name" : "perroscalle",
+        "is_quote" : false,
+        "is_retweet" : false,
 
 
