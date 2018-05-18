@@ -58,6 +58,7 @@ Con la instrucción db.<mi colección>.insert([{doc1}, {doc2}, ...,])
 
 Ejemplo:
 
+```javascript
     db.documentos.insert(
     [
         
@@ -73,5 +74,5 @@ Ejemplo:
         "reply_to_screen_name" : "perroscalle",
         "is_quote" : false,
         "is_retweet" : false,
-
+``
 
