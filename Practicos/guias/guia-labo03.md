@@ -94,7 +94,9 @@ Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/
 
 e) Utilizar búsquedas por cadenas
 
+¿Cuáles usuarios comienzan con P?
 
+    db.getCollection('tweets').find({screen_name: {$regex: "^P.*"} })
 
 
 
