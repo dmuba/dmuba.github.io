@@ -81,6 +81,8 @@ Ejemplo:
         "is_retweet" : false,
 ```
 
+El dataset de Tweets está disponible [acá]().
+
 d) Utilizar operadores de comparación
 
 ¿Cuantos tweets tienen más de un retweet?
