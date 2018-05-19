@@ -92,6 +92,8 @@ db.getCollection('tweets').find({retweet_count: {$gt: 1} })
 ```
 Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
 
+e) Utilizar búsquedas por cadenas
+
 
 
 
