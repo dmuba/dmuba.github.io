@@ -81,7 +81,7 @@ Ejemplo:
         "is_retweet" : false,
 ```
 
-El dataset de Tweets está disponible [acá]().
+El dataset de Tweets está disponible [acá](https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/guias/tweets-dolar.json).
 
 d) Utilizar operadores de comparación
 
