@@ -1,9 +1,10 @@
 # Guía LABORATORIO IV: Bases de datos textuales
 
 Vamos a trabajar con R y los paquetes: 
-    - [tm](https://cran.r-project.org/web/packages/tm/index.html)
-    - [mongolite](https://cran.r-project.org/web/packages/mongolite/index.html). Manual de usuario [[Abrir]](https://jeroen.github.io/mongolite/)
-    - Parte de los ejemplos fueron extraídos desde [www.springboard.com](https://www.springboard.com/blog/text-mining-in-r/)
+
+ - [tm](https://cran.r-project.org/web/packages/tm/index.html)
+ - [mongolite](https://cran.r-project.org/web/packages/mongolite/index.html). Manual de usuario [[Abrir]](https://jeroen.github.io/mongolite/)
+ - Parte de los ejemplos fueron extraídos desde [www.springboard.com](https://www.springboard.com/blog/text-mining-in-r/)
 
 ## Parte I: Acceder a los documentos
 
