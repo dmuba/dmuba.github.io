@@ -50,7 +50,7 @@ Calcular la confianza para el siguiente conjunto de reglas:
  1. {Class=Crew} => {Survived=Yes}
  2. {Class=1st} => {Survived=Yes}
  3. Para 1 y 2 calcule para los __no__ sobrevivientes e interprete los resultados.
- 4. Cuál de las siguientes reglas tiene minconf >= 0.3 
+ 4. ¿Cuál de las siguientes reglas tiene minconf >= 0.3?
     - {Age=Adult, Sex=Female} => {Survived=Yes}
     - {Age=Adult, Sex=Male} => {Survived=No}
   
