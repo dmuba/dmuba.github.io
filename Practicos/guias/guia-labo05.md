@@ -5,7 +5,7 @@ Vamos a trabajar con R y escribir algunas rutinas para calcular el __soporte__ y
 # Leer el dataset Titanic
 
 ```r
-data("titanic.raw.rdata")
+load("titanic.raw.rdata")
 ```
 
 # Soporte
