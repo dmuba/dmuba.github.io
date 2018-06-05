@@ -57,7 +57,7 @@ Calcular la confianza para el siguiente conjunto de reglas:
 
 ```R
 
-nrow(titanic.raw[Class=='Crew' & Survived=='Yes',])/nrow(titanic.raw[Survived=='Yes',])
+nrow(titanic.raw[Class=='Crew' & Survived=='Yes',])/nrow(titanic.raw[Class=='Crew',])
 
 ```
 
