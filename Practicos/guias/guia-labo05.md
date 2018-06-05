@@ -52,7 +52,7 @@ Calcular la confianza para el siguiente conjunto de reglas:
  3. Para 1 y 2 calcule para los __no__ sobrevivientes e interprete los resultados.
  4. Cuál de las siguientes reglas tiene minconf >= 0.3 
     - {Age=Adult, Sex=Female} => {Survived=Yes}
-    - {Age=Adult, Sex=Male} => {Survived=Yes}
+    - {Age=Adult, Sex=Male} => {Survived=No}
   
 
 ```R
