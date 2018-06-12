@@ -78,7 +78,7 @@ reglas_butter <- apriori(Groceries, parameter = list(support=0.01, confidence=0.
 inspect(reglas_butter)
 ```
 
-##Itemsets frequentes
+## Itemsets frequentes
 Además, podríamos querer generar solo los itemsets frequentes y no las reglas:
 
 ```R
