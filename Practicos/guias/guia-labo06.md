@@ -49,7 +49,7 @@ Como podemos observar, cada regla posee los siguientes atributos:
 - __rhs__: ( right-hand-sides ) es la parte derecha de la regla, o resultado.
 - __Support__:  es la frecuencia relativa de una regla sobre el total de transacciones.
 - __Confidence__: Mide cuantas veces sucede el rhs cuando se presenta el lhs, para cada regla.
-- __Lift__: es la confianza de la regla sobre  el  soporte  del  consecuente  dela  misma.
+- __Lift__: es la confianza de la regla sobre  el  soporte  del  consecuente  de la  misma.
 
 ## Análisis de las Reglas
 Podríamos ordenar las reglas por alguna de las métricas presentadas, por ejemplo:
