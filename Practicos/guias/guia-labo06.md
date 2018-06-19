@@ -86,6 +86,14 @@ itemsets <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, t
 inspect(itemsets)
 ```
 
+## Cargando un dataset como transactions en R
+Con la librería arules, debemos trabajar con el objeto transactions, que podemos cargarlo de la siguiente manera:
+
+```R
+transactions = read.transactions("iris.csv", sep = ",")
+rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
+```
+
 # Consignas propuestas:
 1. ¿Cuantas reglas se generan si definimos un support=0.01? ¿y con un support=0.1? Fundamente la respuesta.
 2. Comente cuales son los productos mas comprados por los clientes. ¿Y las asociaciones mas fuertes?
