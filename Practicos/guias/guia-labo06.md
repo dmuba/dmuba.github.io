@@ -88,9 +88,14 @@ inspect(itemsets)
 
 ## Cargando un dataset como transactions en R
 Con la librería arules, debemos trabajar con el objeto transactions, que podemos cargarlo de la siguiente manera:
-
 ```R
 transactions = read.transactions("iris.csv", sep = ",")
+rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
+```
+
+También podemos transformar un dataframe al objeto transactions:
+```R
+transactions <- as(as.data.frame(apply(data, 2, as.factor)), "transactions")
 rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
 ```
 
