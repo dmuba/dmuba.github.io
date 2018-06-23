@@ -99,6 +99,14 @@ transactions <- as(as.data.frame(apply(data, 2, as.factor)), "transactions")
 rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
 ```
 
+## Filtrar reglas con _subset_
+
+Filtramos reglas que contengan **waffles** en el antecedente.
+
+```R
+rules.sub <- subset(reglas, subset = lhs %pin% "waffles")
+```
+
 # Consignas propuestas:
 1. ¿Cuantas reglas se generan si definimos un support=0.01? ¿y con un support=0.1? Fundamente la respuesta.
 2. Comente cuales son los productos mas comprados por los clientes. ¿Y las asociaciones mas fuertes?
