@@ -1,110 +1,44 @@
-# Guía LABORATORIO VI: Reglas de asociación con arules
+# Guía LABORATORIO VII: Análisis de Secuencias
 
-Vamos a trabajar con la librería __arules__ de R, puntualmente con el dataset Groceries, que representa el típico problema de la cesta de compras.
+Hoy vamos a trabajar con la librería __arulesSecuences__ de R para explorar los algoritmos __SPADE__ y __GSP__ que fueron abordados en la clase.
 
-## Cargamos/Instalamos la librería arules
+## Cargamos/Instalamos la librería arulesSecuences
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
-if("arules" %in% librerias_instaladas == FALSE) {
-  install.packages("arules", dependencies = TRUE)
+if("arulesSecuences" %in% librerias_instaladas == FALSE) {
+  install.packages("arulesSecuences", dependencies = TRUE)
 }
 
-library(arules)
+library(arulesSecuences)
 ```
 
 ## Carga del dataset
-Cargamos el dataset Groceries con las transacciones de la cesta de compras
-
+Cargamos un dataset de ejemplo -que está en el repo, con el nombre de secuencias.txt- con algunas secuencias conformadas por caracteres alfanuméricos.
 ```r
-data("Groceries")
+setwd("path/to/file/")
+transactions <- read_baskets("secuencias.txt", info = c("sequenceID","eventID","SIZE"))
+```
+Como puede observarse, en análisis de secuencias también vamos a trabajar con transacciones. Para más información sobre el tipo de datos __transaction__ de R puede mirar el siguiente [enlace](https://www.rdocumentation.org/packages/arules/versions/1.6-1/topics/transactions-class).
+
+## Algoritmo SPADE
+
+Generamos las secuencias con la función __cspade__, estableciendo un soporte mínimo como parámetro.
+
+```R
+secuences <- cspade(data.transactions, parameter = list(support = 0.4), control = list(verbose = TRUE))
 ```
 
-Para más información sobre el tipo de datos __transaction__ de R puede mirar el siguiente [enlace](https://www.rdocumentation.org/packages/arules/versions/1.6-1/topics/transactions-class).
-
-## Reglas de asociación
-
-Generamos las reglas con arules, estableciendo soporte y confianza mínimos como parámetro.
+Podemos ver un resumen con información de las secuencias generadas:
 
 ```R
-reglas <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, target = "rules"))
- ```
-
-Podemos verificar la cantidad de reglas generadas:
-
-```R
-# Cantidad de reglas:
-print(reglas)
+summary(secuences)
 ```
 
-Es posible trabajar con las reglas generadas a partir de la instrucción __inspect__:
+Además, es posible observar las secuencias generadas a partir de la instrucción __inspect__:
 
 ```R
-# Reglas generadas:
-inspect(reglas)
-```
-
-Como podemos observar, cada regla posee los siguientes atributos:
-- __lhs__: (left-hand-sides) es la parte izquierda de la regla, o antecedente.
-- __rhs__: ( right-hand-sides ) es la parte derecha de la regla, o resultado.
-- __Support__:  es la frecuencia relativa de una regla sobre el total de transacciones.
-- __Confidence__: Mide cuantas veces sucede el rhs cuando se presenta el lhs, para cada regla.
-- __Lift__: es la confianza de la regla sobre  el  soporte  del  consecuente  de la  misma.
-
-## Análisis de las Reglas
-Podríamos ordenar las reglas por alguna de las métricas presentadas, por ejemplo:
-
-```R
-inspect(sort(reglas, by="lift", decreasing = TRUE))
-```
-
-O podríamos tomar solo las primeras N (en este caso 10) reglas con mayor lift:
-
-```R
-inspect(head(sort(reglas, by="lift", decreasing = TRUE),10))
-```
-
-Por otro lado, podemos analizar reglas que poseen determinado antecedente o consecuente:
-
-Las reglas que poseen como antecedente -lhs- a la cerveza en botella (bottled beer):
-```R
-reglas_beer <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, target = "rules"), appearance = list(lhs="bottled beer"))
-inspect(reglas_beer)
-```
-
-Las reglas que poseen como consecuente -rhs- a la mantequilla (butter):
-```R
-reglas_butter <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, target = "rules"), appearance = list(rhs="butter"))
-inspect(reglas_butter)
-```
-
-## Itemsets frequentes
-Además, podríamos querer generar solo los itemsets frequentes y no las reglas:
-
-```R
-itemsets <- apriori(Groceries, parameter = list(support=0.01, confidence=0.01, target="frequent itemsets"))
-inspect(itemsets)
-```
-
-## Cargando un dataset como transactions en R
-Con la librería arules, debemos trabajar con el objeto transactions, que podemos cargarlo de la siguiente manera:
-```R
-transactions = read.transactions("iris.csv", sep = ",")
-rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
-```
-
-También podemos transformar un dataframe al objeto transactions:
-```R
-transactions <- as(as.data.frame(apply(data, 2, as.factor)), "transactions")
-rules = apriori(transactions, parameter=list(target="rules", confidence=0.25, support=0.2))
-```
-
-## Filtrar reglas con _subset_
-
-Filtramos reglas que contengan **waffles** en el antecedente.
-
-```R
-rules.sub <- subset(reglas, subset = lhs %pin% "waffles")
+inspect(secuences)
 ```
 
 # Consignas propuestas:
