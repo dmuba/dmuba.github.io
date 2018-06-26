@@ -1,8 +1,8 @@
 # Guía LABORATORIO VII: Análisis de Secuencias
 
-Hoy vamos a trabajar con la librería __arulesSecuences__ de R para explorar el algoritmo __SPADE__ abordado en la clase teórica.
+Hoy vamos a trabajar con la librería __arulesSequences__ de R para explorar el algoritmo __SPADE__ abordado en la clase teórica.
 
-## Cargamos/Instalamos la librería arulesSecuences
+## Cargamos/Instalamos la librería arulesSequences
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
