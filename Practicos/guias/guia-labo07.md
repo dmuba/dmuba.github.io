@@ -6,11 +6,11 @@ Hoy vamos a trabajar con la librería __arulesSecuences__ de R para explorar el 
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
-if("arulesSecuences" %in% librerias_instaladas == FALSE) {
-  install.packages("arulesSecuences", dependencies = TRUE)
+if("arulesSequences" %in% librerias_instaladas == FALSE) {
+  install.packages("arulesSequences", dependencies = TRUE)
 }
 
-library(arulesSecuences)
+library(arulesSequences)
 ```
 
 ## Carga del dataset
@@ -26,19 +26,19 @@ Como puede observarse, en análisis de secuencias también vamos a trabajar con 
 Generamos las secuencias con la función __cspade__, estableciendo un soporte mínimo como parámetro.
 
 ```R
-secuences <- cspade(data.transactions, parameter = list(support = 0.4), control = list(verbose = TRUE))
+sequences <- cspade(data.transactions, parameter = list(support = 0.4), control = list(verbose = TRUE))
 ```
 
 Podemos ver un resumen con información de las secuencias generadas:
 
 ```R
-summary(secuences)
+summary(sequences)
 ```
 
 Además, es posible observar las secuencias generadas a partir de la instrucción __inspect__:
 
 ```R
-inspect(secuences)
+inspect(sequences)
 ```
 
 Otra forma de analizar las secuencias generadas por el algoritmo:
