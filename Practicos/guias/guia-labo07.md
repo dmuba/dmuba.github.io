@@ -41,7 +41,14 @@ Además, es posible observar las secuencias generadas a partir de la instrucció
 inspect(secuences)
 ```
 
+Otra forma de analizar las secuencias generadas por el algoritmo:
+
+```R
+as(s1, "data.frame")
+```
+
 # Consignas propuestas:
 1. ¿Cuantas secuencias se generan si definimos un support=0.03? ¿y con un support=0.2? Fundamente la respuesta y compare con el algoritmo de la clase anterior.
 2. Comente cuales son los items que aparecen en las secuencias con mayor soporte. ¿A qué principio obedece esto?
-4. ¿Que información nos proveen los métodos __inspect__ y __summary__ sobre las secuencias? Explique que elementos de __cspade__ se observan a través de ellos.
+3. ¿Que información nos proveen los métodos __inspect__ y __summary__ sobre las secuencias? 
+4. Explique que elementos de __cspade__ se observan a partir de los comandos del punto anterior.
