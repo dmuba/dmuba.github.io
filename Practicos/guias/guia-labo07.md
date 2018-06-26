@@ -42,9 +42,6 @@ inspect(secuences)
 ```
 
 # Consignas propuestas:
-1. ¿Cuantas reglas se generan si definimos un support=0.01? ¿y con un support=0.1? Fundamente la respuesta.
-2. Comente cuales son los productos mas comprados por los clientes. ¿Y las asociaciones mas fuertes?
-3. ¿Cuales son las 20 reglas con lift mas alto? ¿Que significa esto?
-4. ¿Cuales son los productos que hacen que los clientes compren "whole milk"?
-5. Cuando un cliente compra "waffles", que otros productos compra con mayor frecuencia?
-6. ¿Cuando es importante una confianza alta? 
+1. ¿Cuantas secuencias se generan si definimos un support=0.03? ¿y con un support=0.2? Fundamente la respuesta y compare con el algoritmo de la clase anterior.
+2. Comente cuales son los items que aparecen en las secuencias con mayor soporte. ¿A qué principio obedece esto?
+4. ¿Que información nos proveen los métodos __inspect__ y __summary__ sobre las secuencias? Explique que elementos de __cspade__ se observan a través de ellos.
