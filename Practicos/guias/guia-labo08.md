@@ -2,18 +2,20 @@
 
 Hoy vamos a trabajar con la librería el algortimo __FP-Growth__. En primera instancia vamos a calcular de forma manual el FP-Tree y luego vamos a trabajar con la librería __rCBA__ de R.
 
+Podemos obtener información adicional sobre la librería rCBA en el siguiente [enlace](https://cran.r-project.org/web/packages/rCBA/rCBA.pdf).
+
 ## Calculamos el FP-TREE 
 
 Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
 
 |  #  | i(t)  |
 | :-: | :---: |
-|  1  | ABDE  |
-|  2  | BCE   |
-|  3  | ABDE  |
-|  4  | ABCE  |
-|  5  | ABCDE |
-|  6  | BCD   |
+|  1  | ZMRE  |
+|  2  | MSE   |
+|  3  | ZMRE  |
+|  4  | ZMSE  |
+|  5  | ZMSRE |
+|  6  | MSR   |
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
@@ -27,17 +29,28 @@ library(rCBA)
 ## Carga del dataset
 Cargamos el dataset anterior, de la siguiente manera:
 ```r
-setwd("path/to/file/")
-transactions <- read_baskets("secuencias.txt", info = c("sequenceID","eventID","SIZE"))
+s1<-c(TRUE, TRUE, FALSE, TRUE,TRUE)
+s2<-c(FALSE, TRUE, TRUE, FALSE, TRUE)
+s3<-c(TRUE, TRUE, FALSE, TRUE, TRUE)
+s4<-c(TRUE, TRUE, TRUE, FALSE, TRUE)
+s5<-c(TRUE, TRUE, TRUE, TRUE, TRUE)
+
+df<-data.frame(s1, s2, s3, s4, s5)
+
+transactions <- as(df, "transactions")
+
 ```
-Como puede observarse, en análisis de secuencias también vamos a trabajar con transacciones. Para más información sobre el tipo de datos __transaction__ de R puede mirar el siguiente [enlace](https://www.rdocumentation.org/packages/arules/versions/1.6-1/topics/transactions-class).
+
+Podemos ejecutar la función __fpgrowth__ a partir de un data.frame o un objeto transaction.
+
+Para más información sobre el tipo de datos __transaction__ de R puede mirar el siguiente [enlace](https://www.rdocumentation.org/packages/arules/versions/1.6-1/topics/transactions-class).
 
 ## Algoritmo FP-Growth
 
 Generamos las secuencias frecuentes con la función __fpgrowth__, estableciendo los parámetros:
 
 ```R
-sequences<-fpgrowth(train, support = 0.01, confidence = 1, maxLength = 5, consequent = NULL, verbose = TRUE, parallel = TRUE)
+sequences<-fpgrowth(transactions, support = 0.01, confidence = 0.7, maxLength = 3, consequent = NULL, verbose = TRUE, parallel = TRUE)
 ```
 Como podemos observar, cada regla posee los siguientes atributos:
 - __support__ (soporte): Establecemos el soporte mínimo de las secuencias.
@@ -62,11 +75,11 @@ inspect(sequences)
 Otra forma de analizar las secuencias generadas por el algoritmo:
 
 ```R
-as(s1, "data.frame")
+as(sequences, "data.frame")
 ```
 
 # Consignas propuestas:
 1. Genere el FP-Tree de la tabla.
 2. Incorpore las secuencias en R y ejecute el algoritmo.
 3. Altere los valores de los parámetros e indique que sucede/observa en cada caso con la cantidad y calidad de las secuencias generadas.
-4. Explique que elementos de __cspade__ se observan a partir de los comandos del punto anterior.
+4. Compare esta técnica con __apriori__. Que sucede en términos de eficiencia?
