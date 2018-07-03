@@ -19,7 +19,7 @@ Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
 ```r
 librerias_instaladas<-rownames(installed.packages())
 if("rCBA" %in% librerias_instaladas == FALSE) {
-  install.packages("arulesSequences", dependencies = TRUE)
+  install.packages("rCBA", dependencies = TRUE)
 }
 
 library(rCBA)
