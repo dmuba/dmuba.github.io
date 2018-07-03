@@ -1,8 +1,14 @@
-# Guía LABORATORIO VII: Análisis de Secuencias
+# Guía LABORATORIO VIII: Algoritmo FP-Growth
 
-Hoy vamos a trabajar con la librería __arulesSequences__ de R para explorar el algoritmo __SPADE__ abordado en la clase teórica.
+Hoy vamos a trabajar con la librería el algortimo __FP-Growth__. En primera instancia vamos a calcular de forma manual el FP-Tree y luego vamos a trabajar con la librería __arulesSequences__ de R.
 
-## Cargamos/Instalamos la librería arulesSequences
+## Calculamos el FP-TREE 
+
+Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
+
+| Attempt | #1  | #2  |
+| :---:   | :-: | :-: |
+| Seconds | 301 | 283 |
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
