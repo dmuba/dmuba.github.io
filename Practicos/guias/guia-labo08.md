@@ -17,30 +17,37 @@ Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
-if("arulesSequences" %in% librerias_instaladas == FALSE) {
+if("rCBA" %in% librerias_instaladas == FALSE) {
   install.packages("arulesSequences", dependencies = TRUE)
 }
 
-library(arulesSequences)
+library(rCBA)
 ```
 
 ## Carga del dataset
-Cargamos un dataset de ejemplo -que está en el repo, con el nombre de secuencias.txt- con algunas secuencias conformadas por caracteres alfanuméricos.
+Cargamos el dataset anterior, de la siguiente manera:
 ```r
 setwd("path/to/file/")
 transactions <- read_baskets("secuencias.txt", info = c("sequenceID","eventID","SIZE"))
 ```
 Como puede observarse, en análisis de secuencias también vamos a trabajar con transacciones. Para más información sobre el tipo de datos __transaction__ de R puede mirar el siguiente [enlace](https://www.rdocumentation.org/packages/arules/versions/1.6-1/topics/transactions-class).
 
-## Algoritmo SPADE
+## Algoritmo FP-Growth
 
-Generamos las secuencias con la función __cspade__, estableciendo un soporte mínimo como parámetro.
+Generamos las secuencias frecuentes con la función __fpgrowth__, estableciendo los parámetros:
 
 ```R
-sequences <- cspade(data.transactions, parameter = list(support = 0.4), control = list(verbose = TRUE))
+sequences<-fpgrowth(train, support = 0.01, confidence = 1, maxLength = 5, consequent = NULL, verbose = TRUE, parallel = TRUE)
 ```
+Como podemos observar, cada regla posee los siguientes atributos:
+- __support__ (soporte): Establecemos el soporte mínimo de las secuencias.
+- __confidence__ (confianza): Confianza mínima.
+- __maxLength__ (largo máximo): Largo máximo de las candidatas.
+- __consecuent__ (consecuent): Se establece si se filtra de acuerdo a un consecuente.
+- __verbose__ (verborrágico): Establecemos si deseamos que el proceso de generación de secuencias genere información en pantalla.
+- __parallel__ (paralelo): Se define si se desean realizar los cálculos en paralelo.
 
-Podemos ver un resumen con información de las secuencias generadas:
+Luego, podemos ver un resumen con información de las secuencias generadas:
 
 ```R
 summary(sequences)
@@ -59,7 +66,7 @@ as(s1, "data.frame")
 ```
 
 # Consignas propuestas:
-1. ¿Cuantas secuencias se generan si definimos un support=0.03? ¿y con un support=0.2? Fundamente la respuesta y compare con el algoritmo de la clase anterior.
-2. Comente cuales son los items que aparecen en las secuencias con mayor soporte. ¿A qué principio obedece esto?
-3. ¿Que información nos proveen los métodos __inspect__ y __summary__ sobre las secuencias? 
+1. Genere el FP-Tree de la tabla.
+2. Incorpore las secuencias en R y ejecute el algoritmo.
+3. Altere los valores de los parámetros e indique que sucede/observa en cada caso con la cantidad y calidad de las secuencias generadas.
 4. Explique que elementos de __cspade__ se observan a partir de los comandos del punto anterior.
