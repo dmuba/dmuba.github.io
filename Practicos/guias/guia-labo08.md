@@ -6,7 +6,7 @@ Podemos obtener información adicional sobre la librería rCBA en el siguiente [
 
 ## Calculamos el FP-TREE 
 
-Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
+Se propone calcular el FP-TREE para la siguiente tabla de items:
 
 |  #  | i(t)  |
 | :-: | :---: |
@@ -26,18 +26,13 @@ library(rCBA)
 ```
 
 ## Carga del dataset
-Cargamos el dataset anterior, de la siguiente manera:
+Cargamos como ejemplo el dataset __iris__, de la siguiente manera:
 ```r
-s1<-c(TRUE, TRUE, FALSE, TRUE,TRUE)
-s2<-c(FALSE, TRUE, TRUE, FALSE, TRUE)
-s3<-c(TRUE, TRUE, FALSE, TRUE, TRUE)
-s4<-c(TRUE, TRUE, TRUE, FALSE, TRUE)
-s5<-c(TRUE, TRUE, TRUE, TRUE, TRUE)
+data("iris")
 
-df<-data.frame(s1, s2, s3, s4, s5)
-
-transactions <- as(df, "transactions")
-
+train <- sapply(iris,as.factor)
+train <- data.frame(train, check.names=FALSE)
+transactions <- as(train,"transactions")
 ```
 
 Podemos ejecutar la función __fpgrowth__ a partir de un data.frame o un objeto transaction.
@@ -49,36 +44,32 @@ Para más información sobre el tipo de datos __transaction__ de R puede mirar e
 Generamos las secuencias frecuentes con la función __fpgrowth__, estableciendo los parámetros:
 
 ```R
-sequences<-fpgrowth(transactions, support = 0.01, confidence = 0.7, maxLength = 3, consequent = NULL, verbose = TRUE, parallel = TRUE)
+reglas<-fpgrowth(transactions, support = 0.01, confidence = 0.7, maxLength = 3, consequent = NULL, verbose = TRUE, parallel = TRUE)
 ```
 Como podemos observar, cada regla posee los siguientes atributos:
-- __support__ (soporte): Establecemos el soporte mínimo de las secuencias.
+- __support__ (soporte): Establecemos el soporte mínimo de las reglas.
 - __confidence__ (confianza): Confianza mínima.
-- __maxLength__ (largo máximo): Largo máximo de las candidatas.
+- __maxLength__ (largo máximo): Largo máximo de las reglas.
 - __consecuent__ (consecuent): Se establece si se filtra de acuerdo a un consecuente.
-- __verbose__ (verborrágico): Establecemos si deseamos que el proceso de generación de secuencias genere información en pantalla.
+- __verbose__ (verborrágico): Establecemos si deseamos que el proceso de generación brinde información en pantalla.
 - __parallel__ (paralelo): Se define si se desean realizar los cálculos en paralelo.
 
-Luego, podemos ver un resumen con información de las secuencias generadas:
+Luego, podemos ver un resumen con información de las reglas generadas:
 
 ```R
-summary(sequences)
+summary(reglas)
 ```
 
-Además, es posible observar las secuencias generadas a partir de la instrucción __inspect__:
+Además, es posible observar las reglas generadas a partir de la instrucción __inspect__:
 
 ```R
-inspect(sequences)
+inspect(reglas)
 ```
 
-Otra forma de analizar las secuencias generadas por el algoritmo:
-
-```R
-as(sequences, "data.frame")
-```
+A su vez, podemos realizar con las reglas generadas todas las operaciones que hacíamos en [arules en la Guía de Laboratorio 6] (https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo06.md)
 
 # Consignas propuestas:
 1. Genere el FP-Tree de la tabla.
-2. Incorpore las secuencias en R y ejecute el algoritmo.
+2. Incorpore los items en R y ejecute el algoritmo.
 3. Altere los valores de los parámetros e indique que sucede/observa en cada caso con la cantidad y calidad de las secuencias generadas.
 4. Compare esta técnica con __apriori__. Que sucede en términos de eficiencia?
