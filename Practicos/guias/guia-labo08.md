@@ -15,7 +15,6 @@ Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
 |  3  | ZMRE  |
 |  4  | ZMSE  |
 |  5  | ZMSRE |
-|  6  | MSR   |
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
