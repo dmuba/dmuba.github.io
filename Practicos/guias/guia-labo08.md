@@ -1,14 +1,19 @@
 # Guía LABORATORIO VIII: Algoritmo FP-Growth
 
-Hoy vamos a trabajar con la librería el algortimo __FP-Growth__. En primera instancia vamos a calcular de forma manual el FP-Tree y luego vamos a trabajar con la librería __arulesSequences__ de R.
+Hoy vamos a trabajar con la librería el algortimo __FP-Growth__. En primera instancia vamos a calcular de forma manual el FP-Tree y luego vamos a trabajar con la librería __rCBA__ de R.
 
 ## Calculamos el FP-TREE 
 
 Se propone calcular el FP-TREE para la siguiente tabla de secuencias:
 
-| Attempt | #1  | #2  |
-| :---:   | :-: | :-: |
-| Seconds | 301 | 283 |
+|  #  | i(t)  |
+| :-: | :---: |
+|  1  | ABDE  |
+|  2  | BCE   |
+|  3  | ABDE  |
+|  4  | ABCE  |
+|  5  | ABCDE |
+|  6  | BCD   |
 
 ```r
 librerias_instaladas<-rownames(installed.packages())
