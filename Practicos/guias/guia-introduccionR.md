@@ -8,20 +8,20 @@ La guía está pensada para aquellos que están empezando a utilizar el lenguaje
 Una buena forma de utilizar esta guía, es tener una primera lectura más general, y a medida que te familiarises con el lenguaje utilizarla como referencia. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
 
 ### Tabla de contenidos 
-[Variables](#variables)
-[Workspace](#workspace)
-[R scripts](r-scripts)
-[Tipos de datos](#tipos-de-datos)
-[logical](#logical)
-[numeric](#numeric)
-[character](#character)
-[NA](#na)
-[coercion](#coercion)
-[vector](#vector)
-[matrix](#matrix)
-[factors](#factors)
-[list](#list)
-[data.frame](#data.frame)
+- [Variables](#variables)
+- [Workspace](#workspace)
+- [R scripts](r-scripts)
+- [Tipos de datos](#tipos-de-datos)
+- [logical](#logical)
+- [numeric](#numeric)
+- [character](#character)
+- [NA](#na)
+- [coercion](#coercion)
+- [vector](#vector)
+- [matrix](#matrix)
+- [factors](#factors)
+- [list](#list)
+- [data.frame](#dataframe)
 
 
 ---
@@ -107,7 +107,7 @@ print(area) # imprime resultado
 
 ## Tipos de datos
 
-Como ya dijimos, las variables almacenan valores. Ahora estos valores pueden ser de distintos tipos. Existen tipos de datos simples, como números o textos. O compuestos como vectores o listas.
+Como ya dijimos, las variables almacenan valores. Ahora, estos valores pueden ser de distintos tipos. Existen tipos de datos simples, como números o textos. O compuestos como vectores o listas.
 
 Para consultar el tipo de datos que tiene la variable (o mejor dicho el valor almacenado) se usa la función **class()**. A continuación veremos diferentes ejemplos de uso. Para tipos de datos más complejos esta función nos proporciona información muy general, para conocer más detalles se utilizan otras funciones adicionales, como por ejemplo **is.numeric()** o **is.vector()** (siguiendo el patrón is.*algo*), para consultar por un determinado tipo o subtipo de datos.
 
