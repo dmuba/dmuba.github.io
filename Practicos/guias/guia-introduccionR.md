@@ -7,6 +7,23 @@ La guía está pensada para aquellos que están empezando a utilizar el lenguaje
 
 Una buena forma de utilizar esta guía, es tener una primera lectura más general, y a medida que te familiarises con el lenguaje utilizarla como referencia. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
 
+### Tabla de contenidos 
+[Variables](#variables)
+[Workspace](#workspace)
+[R scripts](r-scripts)
+[Tipos de datos](#tipos-de-datos)
+[logical](#logical)
+[numeric](#numeric)
+[character](#character)
+[NA](#na)
+[coercion](#coercion)
+[vector](#vector)
+[matrix](#matrix)
+[factors](#factors)
+[list](#list)
+[data.frame](#data.frame)
+
+
 ---
 
 ## Variables
@@ -69,7 +86,7 @@ ls()
     [1] "base"
 
 
-## R script
+## R scripts
 Un script de R es una lista de operaciones que se ejecuta de principio a fin siguiendo su flujo de ejecución (normalmente orden secuencial).
 
 Los script en R llevan la extensión **.r**. Y nos permiten guardar tareas que pueden ser ejecutadas más de una vez.
@@ -139,10 +156,10 @@ Son el resultados de las operaciones de comparación:
 - Menor <
 - Mayor o igual >=
 - Menor o igual <=
-- Igual == [\*]
+- Igual == \[\*\]
 - Distinto !=
 
-[\*] *Ojo no confundirse con = que es asignación, este es un error muy normal de programación, a veces difícl de detectar, ya que puede afectar a los resultados pero no arroja error*
+\[\*\] *Ojo no confundirse con = que es asignación, este es un error muy normal de programación, a veces difícl de detectar, ya que puede afectar a los resultados pero no arroja error*
 
 
 ```R
@@ -1517,7 +1534,7 @@ class(estudios)
 	[1] "ordered" "factor" 
 
 
-## List
+## list
 
 Hasta ahora los tipos de datos compuestos vistos hasta ahora contienen elementos del mismo tipo. Si se quieren representar datos compuestos de distintos tipos se utiliza el tipo de dato *list*.
 
@@ -1618,7 +1635,7 @@ empleado[["casado"]]
 	[1] TRUE
 
 
-## Data.Frame
+## data.frame
 
 Cuando se utiliza R como herramienta de análisis de datos, se trabaja con variables de tipo *data.frame*. Un *data.frame* representa un conjunto de datos. Este es nuestro objeto de estudio.
 
