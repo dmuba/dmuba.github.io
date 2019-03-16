@@ -1179,7 +1179,7 @@ m
 ### Subset
 
 De la misma manera que en vector se utiliza el operador *\[\]* para acceder a sus elementos y seleccionar sub-matrices o sub-vectores.
-En este se debe especificar la selección de filas, y columnas.
+En este se debe especificar la selección de filas y columnas.
 
 
 ```R
@@ -1220,7 +1220,7 @@ Selección de segunda fila:
 
 
 ```R
-print(m[2, ])
+m[2, ]
 ```
 
     col1 col2 col3 
@@ -1229,7 +1229,7 @@ print(m[2, ])
 
 
 ```R
-print(m["fila2", ])
+m["fila2", ]
 ```
 
     col1 col2 col3 
@@ -1240,7 +1240,7 @@ Selección de tercera columna:
 
 
 ```R
-print(m[, 3])
+m[, 3]
 ```
 
     fila1 fila2 
@@ -1249,7 +1249,7 @@ print(m[, 3])
 
 
 ```R
-print(m[, "col3"])
+m[, "col3"]
 ```
 
     fila1 fila2 
@@ -1260,7 +1260,7 @@ También se pueden seleccionar filas y columnas a la vez.
 
 
 ```R
-print(m[c(1, 2), c(2, 3)])
+m[c(1, 2), c(2, 3)]
 ```
 
           col2 col3
@@ -1270,7 +1270,7 @@ print(m[c(1, 2), c(2, 3)])
 
 
 ```R
-print(m["fila1", c("col1", "col2")])
+m["fila1", c("col1", "col2")]
 ```
 
     col1 col2 
@@ -1281,7 +1281,7 @@ Se pueden excluir filas o columnas
 
 
 ```R
-print(m["fila2", -3])
+m["fila2", -3]
 ```
 
     col1 col2 
@@ -1292,7 +1292,7 @@ Se pueden usar máscaras de selección
 
 
 ```R
-print(m[c(F,T), c(T,F,T)])
+m[c(F,T), c(T,F,T)]
 ```
 
     col1 col3 
@@ -1303,15 +1303,15 @@ También se pueden seleccionar elementos (en formato de vector)
 
 
 ```R
-print(m[m>15])
+m[m>15]
 ```
 
     [1] 20 33 30
 
 
-### Operaciones de matrices
+### Operaciones
 
-De la misma manera que en vectores las operaciones son por pares de elementos.
+De la misma manera que en vectores, las operaciones son por pares de elementos.
 
 
 ```R
@@ -1321,7 +1321,7 @@ m2 <- matrix(c(1:6), nrow=2, ncol=3, byrow=T)
 
 
 ```R
-print(m1 + m2)
+m1 + m2
 ```
 
          [,1] [,2] [,3]
@@ -1331,7 +1331,7 @@ print(m1 + m2)
 
 
 ```R
-print(m1 * 10)
+m1 * 10
 ```
 
          [,1] [,2] [,3]
@@ -1341,7 +1341,7 @@ print(m1 * 10)
 
 
 ```R
-print(m1 - 20 < m2)
+m1 - 20 < m2
 ```
 
           [,1]  [,2]  [,3]
@@ -1349,11 +1349,11 @@ print(m1 - 20 < m2)
     [2,] FALSE FALSE FALSE
 
 
-Se pueden hacer opereraciones por fila, columnas o con todos sus elementos:
+Se pueden aplicar funciones de operaciones a nivel fila, columnas o todos sus elementos:
 
 
 ```R
-print(colSums(m1))
+colSums(m1)
 ```
 
     [1] 50 70 90
@@ -1361,7 +1361,7 @@ print(colSums(m1))
 
 
 ```R
-print(rowSums(m1))
+rowSums(m1)
 ```
 
     [1]  60 150
@@ -1373,51 +1373,41 @@ sum(m)
 ```
 
 
-113
+    [1] 113
 
 
-## Factors
+## factors
 
 Este tipo de datos se utiliza para representar datos categóricos en R.
 
-Al igual que los vectores una variable de tipo *factor* contienen una secuencias de elementos, pero en este caso los elementos codifican a un número de categorías finitas.
+Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican a un número de categorías finitas.
 
 Por ejemplo partimos de un vector con marcas de gaseosas
 
 
 ```R
 vector_gaseosas <- c("coca-cola", "manaos", "fanta", "manaos", "coca-cola", "pepsi")
-```
-
-
-```R
-print(vector_gaseosas)
+vector_gaseosas
 ```
 
     [1] "coca-cola" "manaos"    "fanta"     "manaos"    "coca-cola" "pepsi"    
 
 
-
 ```R
 class(vector_gaseosas)
-```
 
 
-'character'
+    [1] 'character'
 
 
-A partir de este vector se puede generar una variable de tipo *factor*. Las categorías don llamadas *levels*.
 
-Cuando se crea una variable de tipo factor, R automáticamente genera los las categorías o *levels* asociados.
+A partir de este vector se puede generar una variable de tipo *factor*. Las categorías son llamadas *levels*.
 
+Cuando se crea una variable de tipo factor, R automáticamente genera los las categorías o *levels*.
 
 ```R
 gaseosas <- factor(vector_gaseosas)
-```
-
-
-```R
-print(gaseosas)
+gaseosas
 ```
 
     [1] coca-cola manaos    fanta     manaos    coca-cola pepsi    
@@ -1430,7 +1420,7 @@ class(gaseosas)
 ```
 
 
-'factor'
+    [1] 'factor'
 
 
 R genera a los *levels* a partir de los valores del vector y los ordenas en orden alfabético.
@@ -1439,7 +1429,7 @@ Si se necesita especificar todos las categorías posibles, o si se quiere dar un
 
 
 ```R
-provincias <- factor(c("Formosa", "Corrientes", "Neuquén", "Buenos Aires", "Mendoza", "Santa Fe", "Mendoza"),
+provincias <- factor(c("Corrientes", "Neuquén", "Buenos Aires", "Formosa", "Mendoza", "Santa Fe", "Mendoza"),
                      levels = c("Buenos Aires", "Catamarca", 
                                 "Chaco", "Chubut", "Córdoba", "Corrientes", 
                                 "Entre Ríos", "Formosa", "Jujuy", 
@@ -1448,16 +1438,11 @@ provincias <- factor(c("Formosa", "Corrientes", "Neuquén", "Buenos Aires", "Men
                                 "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", 
                                 "Santiago del Estero", "Tierra del Fuego",
                                 "Tucumán"))
+provincias
 ```
 
-
-```R
-print(provincias)
-```
-
-    [1] Formosa      Corrientes   Neuquén      Buenos Aires Mendoza     
-    [6] Santa Fe     Mendoza     
-    23 Levels: Buenos Aires Catamarca Chaco Chubut Córdoba ... Tucumán
+	[1] Corrientes   Neuquén      Buenos Aires Formosa      Mendoza      Santa Fe     Mendoza     
+	23 Levels: Buenos Aires Catamarca Chaco Chubut Córdoba Corrientes Entre Ríos Formosa Jujuy ... Tucumán
 
 
 Con *levels()* se obtiene el listado de categorías
@@ -1466,15 +1451,7 @@ Con *levels()* se obtiene el listado de categorías
 ```R
 levels(gaseosas)
 ```
-
-
-<ol class=list-inline>
-	<li>'coca-cola'</li>
-	<li>'fanta'</li>
-	<li>'manaos'</li>
-	<li>'pepsi'</li>
-</ol>
-
+	[1] "coca-cola" "fanta"     "manaos"    "pepsi"   cumán"            
 
 
 En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.*
@@ -1483,17 +1460,7 @@ En *factor* cada elemento se representa en un valor numérico según su *level* 
 ```R
 as.numeric(gaseosas)
 ```
-
-
-<ol class=list-inline>
-	<li>1</li>
-	<li>3</li>
-	<li>2</li>
-	<li>3</li>
-	<li>1</li>
-	<li>4</li>
-</ol>
-
+	[1] 1 3 2 3 1 4
 
 
 Es posible renombrar a las categorías usando la función *levels()*
@@ -1502,11 +1469,7 @@ Es posible renombrar a las categorías usando la función *levels()*
 ```R
 # rename factors
 levels(gaseosas) <- c('marca_coca', 'marca_fanta', 'marca_manaos', 'marca_pepsi')
-```
-
-
-```R
-print(gaseosas)
+gaseosas
 ```
 
     [1] marca_coca   marca_manaos marca_fanta  marca_manaos marca_coca  
@@ -1523,23 +1486,17 @@ gaseosas[1] < gaseosas[2]
 
     Warning message in Ops.factor(gaseosas[1], gaseosas[2]):
     “‘<’ not meaningful for factors”
+    [1] NA
 
 
-&lt;NA&gt;
-
-
-*Factor* también permite representar **categóricos ordinales**. En este caso debe pasarse en la función *factor()* como parámetro a ordered en TRUE (por defecto este es FALSE). Además en *levels* deben pasarse las categorías en orden creciente.
+*Factor* también permite representar **categóricos ordinales**. En este caso debe pasarse en la función *factor()* como parámetro *ordered* en TRUE (por defecto es FALSE). Además en *levels* deben pasarse las categorías en orden creciente.
 
 
 ```R
 estudios <- factor(c('universitario', 'secundario', 'universitario', 'primario'),
                    ordered = TRUE,
                    levels = c("primario", "secundario", "universitario")) 
-```
-
-
-```R
-print(estudios)
+estudios
 ```
 
     [1] universitario secundario    universitario primario     
@@ -1550,44 +1507,29 @@ print(estudios)
 ```R
 estudios[1] > estudios[2]
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 class(estudios)
 ```
-
-
-<ol class=list-inline>
-	<li>'ordered'</li>
-	<li>'factor'</li>
-</ol>
-
+	[1] "ordered" "factor" 
 
 
 ## List
 
-Hasta ahora los tipos de datos compuestos permiten representar elementos del mismo tipo. Si se quieren representar datos de distintos tipos en una misma variable se utiliza el tipo de dato *list*.
+Hasta ahora los tipos de datos compuestos vistos hasta ahora contienen elementos del mismo tipo. Si se quieren representar datos compuestos de distintos tipos se utiliza el tipo de dato *list*.
 
 Este tipo de datos permite representar estructuras de datos más complejas, pero como contra es que se pierde funcionalidaddes que podemos hacer con otros tipos de datos (Por ejemplo realizar operaciones aritméticas, o comparaciones)
 
-Por ejemplo si quremos representar los siguientes elementos en un *vector*, se convierten todos en *character* por *coercion*
+Por ejemplo si queremos representar los siguientes elementos en un *vector*, se convierten todos en *character* por *coercion*.
 
 
 ```R
 c("Homero Simpson", "7-G", 1956, T)
 ```
-
-
-<ol class=list-inline>
-	<li>'Homero Simpson'</li>
-	<li>'7-G'</li>
-	<li>'1956'</li>
-	<li>'TRUE'</li>
-</ol>
+	[1] "Homero Simpson" "7-G"            "1956"           "TRUE"     
 
 
 
@@ -1596,10 +1538,6 @@ Con *list* se pueden mantener los tipos originales.
 
 ```R
 empleado <- list("Homero Simpson", "7-G", 1956, T)
-```
-
-
-```R
 str(empleado)
 ```
 
@@ -1615,17 +1553,14 @@ str(empleado)
 class(empleado)
 ```
 
-
-'list'
+	[1] 'list'
 
 
 
 ```R
 is.list(empleado)
 ```
-
-
-TRUE
+	[1] TRUE
 
 
 De la siguiente manera podemos acceder a sus elementos (operador *\[\]*):
@@ -1635,17 +1570,14 @@ De la siguiente manera podemos acceder a sus elementos (operador *\[\]*):
 empleado[[1]]
 ```
 
-
-'Homero Simpson'
+	[1] Homero Simpson'
 
 
 
 ```R
 empleado[[3]]
 ```
-
-
-1956
+	[1] 1956
 
 
 Los elementos de la lista se pueden nombrar.
@@ -1653,10 +1585,6 @@ Los elementos de la lista se pueden nombrar.
 
 ```R
 names(empleado) <- c("nombre", "sector", "anio_nacimiento", "casado")
-```
-
-
-```R
 str(empleado)
 ```
 
@@ -1673,34 +1601,28 @@ Ahora podemos acceder a sus elementos usando el operador $:
 ```R
 empleado$nombre
 ```
-
-
-'Homero Simpson'
+	[1] 'Homero Simpson'
 
 
 
 ```R
 empleado$sector
 ```
-
-
-'7-G'
+	[1] '7-G'
 
 
 
 ```R
 empleado[["casado"]]
 ```
+	[1] TRUE
 
 
-TRUE
+## Data Frame
 
+Cuando se utiliza R como herramienta de análisis de datos, se trabaja con variables de tipo *data.frame*. Un *data.frame* representa un conjunto de datos. Este es nuestro objeto de estudio.
 
-# Data Frame
-
-Cuando utilicemos R normalmente vamos a trabajar con variables de tipo *data.frame*. Un *data.frame* representa un conjunto de datos. Este es nuestro objeto de estudio.
-
-*data.frame* es un tipo de datos más complejo de los que vimos hasta ahora. Y comprende las características de todos los tipos de datos anteriores.
+*data.frame* es un tipo de datos más complejo de los que vimos hasta ahora. Y comprende las características de todos los anteriores.
 
 Un *data.frame* es un tipo de datos de **dos dimensiones** (como matrix)
 
@@ -1708,13 +1630,13 @@ Contiene **observaciones** o **casos**: **filas**
 
 Y **variables** o **propiedades** asociadas a las observaciones: **columnas**
 
-Pero a diferencia de la matrices, las columnas pueden ser de distintos tipos.
+Pero a diferencia de matrix, las columnas pueden ser de distintos tipos.
 
-Cada columna a su vez es un *vector* de un único tipo de datos, o de tipo *factor* para representar variables categóricas.
+Cada columna a su vez es un *vector* de un único tipo de datos, o de tipo *factor* para representar variables categóricas. Estor vectors o factors tienen la misma cantidad de elementos (cantidad de filas).
 
 Un *data.frame* puede ser importado desde una fuentes de datos (ej archivo csv o desde una DB a traves de una consulta SQL).
 
-Para crear un data.frame desde cero, es decir desde códifo. Primero creamos las variables de tipo *vector* o *factor* que luego serán sus columnas. Todos tienen que tener la misma cantidad de elementos.
+Para crear un *data.frame* desde cero, es decir desde código. Primero creamos las variables de tipo *vector* o *factor* que luego serán sus columnas.
 
 
 ```R
@@ -1724,16 +1646,9 @@ edad <- c(22, 19, 44, 32, 23, 55, 33)
 hijos <- c(F, F, T, F, T, T, F)
 educacion <- factor(c('sec', 'sec', 'uni', 'sec', 'uni', 'uni', 'pri'), levels= c('pri', 'sec', 'uni'), ordered=TRUE)
 ingreso <- c(15000, 7450, 83300, NA, 22000, 65340, 9405)
-```
 
-
-```R
 df <- data.frame(nombre, genero, edad, hijos, educacion, ingreso)
-```
-
-
-```R
-print(df)
+df
 ```
 
          nombre genero edad hijos educacion ingreso
@@ -1746,7 +1661,7 @@ print(df)
     7 Alejandra      F   33 FALSE       pri    9405
 
 
-El dataset contiene 7 observaciones y 6 variables. Las columnas se nombran a partir de las variables originales.
+El dataset contiene 7 observaciones (filas) y 6 variables (columnas). Las columnas se nombran a partir de las variables originales.
 
 
 ```R
@@ -1770,8 +1685,7 @@ class(df)
 ```
 
 
-'data.frame'
-
+	[1] 'data.frame'
 
 
 ```R
@@ -1779,20 +1693,16 @@ is.list(df)
 ```
 
 
-TRUE
+	[1] TRUE
 
 
-También observe que la columna *nombre* es de tipo factor. Mientras que la variable original era un vector de *character*. Cuando se crea un *data.frame* autumáticamente transforma los vectores de *character* a *factor*.
+También observe que las columnas *nombre* y *genero* es de tipo factor. Mientras que las variables originales eran  de *character*. Cuando se crea un *data.frame* autumáticamente transforma los vectores de *character* a *factor*.
 
-De todas formas si queremos realizar un cambio en los tipos de datos podemos hacer casting sobre algunas de las variables, accediendo con el operador $.
+Si queremos realizar un cambio en los tipos de datos podemos hacer transformaciones de tipos sobre algunas de las columnas, accediendo a la columna con el operador $.
 
 
 ```R
 df$nombre <- as.character(df$nombre)
-```
-
-
-```R
 str(df)
 ```
 
@@ -1805,7 +1715,7 @@ str(df)
      $ ingreso  : num  15000 7450 83300 NA 22000 ...
 
 
-Otra forma es especificar en la creación del *data.frame* que no queremos convertir a factor las cadenas de caracteres. En este caso además mantiene genero como *character*:
+Otra forma es especificar en la creación del *data.frame* que no se debe convertir a factor los vectores de caracteres (*nombre* y *genero* se mantienen *character*):
 
 
 ```R
@@ -1828,86 +1738,50 @@ Para consultar por la cantidad de filas, columnas, y dimensiones usamos:
 ```R
 nrow(df)
 ```
-
-
-7
+	[1] 7
 
 
 
 ```R
 ncol(df)
 ```
-
-
-6
+	[1] 6
 
 
 
 ```R
 dim(df)
 ```
+	[1] 7 6
 
 
-<ol class=list-inline>
-	<li>7</li>
-	<li>6</li>
-</ol>
+También podemos obtener los nombres de las columnas y renombrarlas usando *names()*. 
 
-
-
-También podemos obtener los nombres de las columnas y renombrarlas usando *names()*. Por ejemplo si queremos renombrar la columna 'hijos'. Podemos usar un vector con los nombres de todas las columnas, o cambiar únicamente a la columna en cuestión usando el índice de columna.
+Por ejemplo si queremos renombrar la columna 'hijos'. Podemos usar un vector con los nombres de todas las columnas, o cambiar únicamente a la columna en cuestión usando el índice de columna.
 
 
 ```R
 names(df)
 ```
-
-
-<ol class=list-inline>
-	<li>'nombre'</li>
-	<li>'genero'</li>
-	<li>'edad'</li>
-	<li>'hijos'</li>
-	<li>'educacion'</li>
-	<li>'ingreso'</li>
-</ol>
-
-
+	[1] "nombre"    "genero"    "edad"      "hijos"     "educacion" "ingreso"  
 
 
 ```R
+# Opción 1: modificación de todos los nombres
 names(df) <- c('nombre', 'genero', 'edad', 'tiene.hijos', 'educacion', 'ingreso')
-```
 
-
-```R
+# Opción 2 modificación del nombre de una columna
 names(df)[4] <- 'tiene.hijos'
-```
 
-
-```R
 names(df)
 ```
+	[1] "nombre"      "genero"      "edad"        "tiene.hijos" "educacion"   "ingreso"    
 
-
-<ol class=list-inline>
-	<li>'nombre'</li>
-	<li>'genero'</li>
-	<li>'edad'</li>
-	<li>'tiene.hijos'</li>
-	<li>'educacion'</li>
-	<li>'ingreso'</li>
-</ol>
-
-
-
-La función *summary()* nos da información de cada una de las columnas. En valores numéricos muestra las 5 valores de resumen de los boxplot. En caso de varialbes categóricas muestra frecuencias. Además indica si existen NA.
-
+La función *summary()* nos da información de cada una de las columnas. En columnas numéricas muestra las 5 valores de resumen de los boxplot. En caso de variables categóricas muestra frecuencias. Además indica si existen NA.
 
 ```R
 summary(df)
 ```
-
 
         nombre          genero      edad       tiene.hijos     educacion
      Length:7           F:4    Min.   :19.00   Mode :logical   pri:1    
@@ -1933,148 +1807,114 @@ Podemos utilizar el operador *\[\]* para seleccionar **filas** y **columnas** co
 
 - Primero se selecciona a las filas y luego a las comunas (si se daja en blanco, se selecciona todo).
 - Podemos usar los nombres de columnas.
-- Se solo se utiliza un solo tipo de índice se considera selección de columnas.
 - Se pueden excluir columnas o filas.
-- Se puede usar selección por máscara
+- Se puede usar selección por máscara.
 
+Selección de columnas:
 
 ```R
 df[, c("edad", "ingreso")]
 ```
-
-
-<table>
-<thead><tr><th scope=col>edad</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><td>22   </td><td>15000</td></tr>
-	<tr><td>19   </td><td> 7450</td></tr>
-	<tr><td>44   </td><td>83300</td></tr>
-	<tr><td>32   </td><td>   NA</td></tr>
-	<tr><td>23   </td><td>22000</td></tr>
-	<tr><td>55   </td><td>65340</td></tr>
-	<tr><td>33   </td><td> 9405</td></tr>
-</tbody>
-</table>
-
-
+	  edad ingreso
+	1   22   15000
+	2   19    7450
+	3   44   83300
+	4   32      NA
+	5   23   22000
+	6   55   65340
+	7   33    9405
 
 
 ```R
+# Si solo se epecifica a un tipo de índice (sin separador ,), se toma como selección de columnas
 df[c("edad", "ingreso")]
 ```
-
-
-<table>
-<thead><tr><th scope=col>edad</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><td>22   </td><td>15000</td></tr>
-	<tr><td>19   </td><td> 7450</td></tr>
-	<tr><td>44   </td><td>83300</td></tr>
-	<tr><td>32   </td><td>   NA</td></tr>
-	<tr><td>23   </td><td>22000</td></tr>
-	<tr><td>55   </td><td>65340</td></tr>
-	<tr><td>33   </td><td> 9405</td></tr>
-</tbody>
-</table>
-
-
+	  edad ingreso
+	1   22   15000
+	2   19    7450
+	3   44   83300
+	4   32      NA
+	5   23   22000
+	6   55   65340
+	7   33    9405
 
 
 ```R
 df[, -c(1, 6)]
 ```
+	  genero edad tiene.hijos educacion
+	1      M   22       FALSE       sec
+	2      F   19       FALSE       sec
+	3      F   44        TRUE       uni
+	4      M   32       FALSE       sec
+	5      F   23        TRUE       uni
+	6      M   55        TRUE       uni
+	7      F   33       FALSE       pri
 
-
-<table>
-<thead><tr><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th></tr></thead>
-<tbody>
-	<tr><td>M    </td><td>22   </td><td>FALSE</td><td>sec  </td></tr>
-	<tr><td>F    </td><td>19   </td><td>FALSE</td><td>sec  </td></tr>
-	<tr><td>F    </td><td>44   </td><td> TRUE</td><td>uni  </td></tr>
-	<tr><td>M    </td><td>32   </td><td>FALSE</td><td>sec  </td></tr>
-	<tr><td>F    </td><td>23   </td><td> TRUE</td><td>uni  </td></tr>
-	<tr><td>M    </td><td>55   </td><td> TRUE</td><td>uni  </td></tr>
-	<tr><td>F    </td><td>33   </td><td>FALSE</td><td>pri  </td></tr>
-</tbody>
-</table>
-
-
-
+Selección de filas:
 
 ```R
 df[c(1,2,5), ]
 ```
-
-
-<table>
-<thead><tr><th></th><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>Damián</td><td>M     </td><td>22    </td><td>FALSE </td><td>sec   </td><td>15000 </td></tr>
-	<tr><th scope=row>2</th><td>Lucía </td><td>F     </td><td>19    </td><td>FALSE </td><td>sec   </td><td> 7450 </td></tr>
-	<tr><th scope=row>5</th><td>Paola </td><td>F     </td><td>23    </td><td> TRUE </td><td>uni   </td><td>22000 </td></tr>
-</tbody>
-</table>
-
-
+	  nombre genero edad tiene.hijos educacion ingreso
+	1 Damián      M   22       FALSE       sec   15000
+	2  Lucía      F   19       FALSE       sec    7450
+	5  Paola      F   23        TRUE       uni   22000
 
 
 ```R
 df[c(T,T,F,F,T,F,F), ]
 ```
+	  nombre genero edad tiene.hijos educacion ingreso
+	1 Damián      M   22       FALSE       sec   15000
+	2  Lucía      F   19       FALSE       sec    7450
+	5  Paola      F   23        TRUE       uni   22000
 
+Selección de filas y columnas:
 
-<table>
-<thead><tr><th></th><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>Damián</td><td>M     </td><td>22    </td><td>FALSE </td><td>sec   </td><td>15000 </td></tr>
-	<tr><th scope=row>2</th><td>Lucía </td><td>F     </td><td>19    </td><td>FALSE </td><td>sec   </td><td> 7450 </td></tr>
-	<tr><th scope=row>5</th><td>Paola </td><td>F     </td><td>23    </td><td> TRUE </td><td>uni   </td><td>22000 </td></tr>
-</tbody>
-</table>
+```R
+df[c(1,2,5), 1:3]
+```
+	  nombre genero edad
+	1 Damián      M   22
+	2  Lucía      F   19
+	5  Paola      F   23
 
-
-
-Si queremos seleccionar a una **columna** para obtener la variable de tipo *vector* o *factor*, usamos selección como en **list**
+Si queremos seleccionar a una **columna** para acceder a la variable de tipo *vector* o *factor*, se usa selección como en **list**
 
 
 ```R
-print(df$ingreso)
+df$ingreso
 ```
 
     [1] 15000  7450 83300    NA 22000 65340  9405
-
 
 
 ```R
 class(df$ingreso)
 ```
-
-
-'numeric'
-
+    [1] 'numeric'
 
 
 ```R
-print(df[["ingreso"]])
+df[["ingreso"]]
 ```
 
     [1] 15000  7450 83300    NA 22000 65340  9405
-
 
 
 ```R
 class(df[["ingreso"]])
 ```
 
+    [1] 'numeric'
 
-'numeric'
 
-
-En cambio con corchetes simples es selección tipo *matrix* devolviendo un *data.frame* con una única columna.
+En cambio con corchetes simples es selección tipo *matrix*, devolviendo un *data.frame* con una única columna.
 
 
 ```R
-print(df["ingreso"])
+df["ingreso"]
 ```
 
       ingreso
@@ -2086,14 +1926,10 @@ print(df["ingreso"])
     6   65340
     7    9405
 
-
-
 ```R
 class(df["ingreso"])
 ```
-
-
-'data.frame'
+    [1] 'data.frame'
 
 
 Es bastante útil generar máscaras a partir de las variables, y así seleccionar casos según sus valores: 
@@ -2102,63 +1938,35 @@ Es bastante útil generar máscaras a partir de las variables, y así selecciona
 ```R
 df[df$genero == 'M', c("educacion", "ingreso")]
 ```
-
-
-<table>
-<thead><tr><th></th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>1</th><td>sec  </td><td>15000</td></tr>
-	<tr><th scope=row>4</th><td>sec  </td><td>   NA</td></tr>
-	<tr><th scope=row>6</th><td>uni  </td><td>65340</td></tr>
-</tbody>
-</table>
-
-
+	  educacion ingreso
+	1       sec   15000
+	4       sec      NA
+	6       uni   65340
 
 
 ```R
 df[df$tiene.hijos == T & df$educacion == 'uni',]
 ```
+	     nombre genero edad tiene.hijos educacion ingreso
+	3 Francisca      F   44        TRUE       uni   83300
+	5     Paola      F   23        TRUE       uni   22000
+	6   Agustín      M   55        TRUE       uni   65340
 
 
-<table>
-<thead><tr><th></th><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>3</th><td>Francisca</td><td>F        </td><td>44       </td><td>TRUE     </td><td>uni      </td><td>83300    </td></tr>
-	<tr><th scope=row>5</th><td>Paola    </td><td>F        </td><td>23       </td><td>TRUE     </td><td>uni      </td><td>22000    </td></tr>
-	<tr><th scope=row>6</th><td>Agustín  </td><td>M        </td><td>55       </td><td>TRUE     </td><td>uni      </td><td>65340    </td></tr>
-</tbody>
-</table>
-
-
-
-También podemos seleccionar columnas a partir de las máscaras. Las siguientes tres formas son equivalentes:
+También podemos seleccionar elementos de columnas a partir de las máscaras. Las siguientes tres formas son equivalentes:
 
 
 ```R
 df[df$tiene.hijos == T,]$edad
 ```
-
-
-<ol class=list-inline>
-	<li>44</li>
-	<li>23</li>
-	<li>55</li>
-</ol>
-
+	[1] 44 23 55
 
 
 
 ```R
 df$edad[df$tiene.hijos == T]
 ```
-
-
-<ol class=list-inline>
-	<li>44</li>
-	<li>23</li>
-	<li>55</li>
-</ol>
+	[1] 44 23 55
 
 
 
@@ -2167,12 +1975,7 @@ df$edad[df$tiene.hijos == T]
 df[df$tiene.hijos == T, "edad"]
 ```
 
-
-<ol class=list-inline>
-	<li>44</li>
-	<li>23</li>
-	<li>55</li>
-</ol>
+	[1] 44 23 55
 
 
 
@@ -2183,11 +1986,10 @@ Ejemplo, ingreso promedio de personas con título universitario:
 mean(df$ingreso[df$educacion=='uni'], rm.na=TRUE)
 ```
 
+	[1] 56880
 
-56880
 
-
-## Ordenamiento de filas
+## Ordenamiento
 
 Para ordenar vectores en orden creciente usamos sort()
 
@@ -2195,55 +1997,22 @@ Para ordenar vectores en orden creciente usamos sort()
 ```R
 df$edad
 ```
-
-
-<ol class=list-inline>
-	<li>22</li>
-	<li>19</li>
-	<li>44</li>
-	<li>32</li>
-	<li>23</li>
-	<li>55</li>
-	<li>33</li>
-</ol>
-
-
-
+	[1] 22 19 44 32 23 55 33
 
 ```R
-sort(df$edad)
+	sort(df$edad)
 ```
-
-
-<ol class=list-inline>
-	<li>19</li>
-	<li>22</li>
-	<li>23</li>
-	<li>32</li>
-	<li>33</li>
-	<li>44</li>
-	<li>55</li>
-</ol>
+	[1] 19 22 23 32 33 44 55
 
 
 
-Con order obtenemos los índices o posiciones del vector del ordenamiento:
+Con order() obtenemos los índices o posiciones del vector ordenado:
 
 
 ```R
 order(df$edad)
 ```
-
-
-<ol class=list-inline>
-	<li>2</li>
-	<li>1</li>
-	<li>5</li>
-	<li>4</li>
-	<li>7</li>
-	<li>3</li>
-	<li>6</li>
-</ol>
+	[1] 2 1 5 4 7 3 6
 
 
 
@@ -2253,42 +2022,14 @@ Si se quiere ordenar las filas usamos los índices ordenados en la selección de
 ```R
 df[order(df$edad), ]
 ```
-
-
-<table>
-<thead><tr><th></th><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>2</th><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td></tr>
-	<tr><th scope=row>1</th><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td></tr>
-	<tr><th scope=row>5</th><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td></tr>
-	<tr><th scope=row>4</th><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td></tr>
-	<tr><th scope=row>7</th><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td></tr>
-	<tr><th scope=row>3</th><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td></tr>
-	<tr><th scope=row>6</th><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td></tr>
-</tbody>
-</table>
-
-
-
-
-```R
-df
-```
-
-
-<table>
-<thead><tr><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td></tr>
-	<tr><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td></tr>
-	<tr><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td></tr>
-	<tr><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td></tr>
-	<tr><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td></tr>
-	<tr><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td></tr>
-	<tr><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td></tr>
-</tbody>
-</table>
-
+	     nombre genero edad tiene.hijos educacion ingreso
+	2     Lucía      F   19       FALSE       sec    7450
+	1    Damián      M   22       FALSE       sec   15000
+	5     Paola      F   23        TRUE       uni   22000
+	4    Javier      M   32       FALSE       sec      NA
+	7 Alejandra      F   33       FALSE       pri    9405
+	3 Francisca      F   44        TRUE       uni   83300
+	6   Agustín      M   55        TRUE       uni   65340
 
 
 Para order decreciente usamos el parámetro decreasing = TRUE:
@@ -2297,18 +2038,7 @@ Para order decreciente usamos el parámetro decreasing = TRUE:
 ```R
 sort(df$edad,  decreasing = TRUE)
 ```
-
-
-<ol class=list-inline>
-	<li>55</li>
-	<li>44</li>
-	<li>33</li>
-	<li>32</li>
-	<li>23</li>
-	<li>22</li>
-	<li>19</li>
-</ol>
-
+	[1] 55 44 33 32 23 22 19
 
 
 
@@ -2316,24 +2046,19 @@ sort(df$edad,  decreasing = TRUE)
 df[order(df$edad, decreasing = TRUE), ]
 ```
 
-
-<table>
-<thead><tr><th></th><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th></tr></thead>
-<tbody>
-	<tr><th scope=row>6</th><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td></tr>
-	<tr><th scope=row>3</th><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td></tr>
-	<tr><th scope=row>7</th><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td></tr>
-	<tr><th scope=row>4</th><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td></tr>
-	<tr><th scope=row>5</th><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td></tr>
-	<tr><th scope=row>1</th><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td></tr>
-	<tr><th scope=row>2</th><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td></tr>
-</tbody>
-</table>
+	     nombre genero edad tiene.hijos educacion ingreso
+	6   Agustín      M   55        TRUE       uni   65340
+	3 Francisca      F   44        TRUE       uni   83300
+	7 Alejandra      F   33       FALSE       pri    9405
+	4    Javier      M   32       FALSE       sec      NA
+	5     Paola      F   23        TRUE       uni   22000
+	1    Damián      M   22       FALSE       sec   15000
+	2     Lucía      F   19       FALSE       sec    7450
 
 
 
 ## Agregar columnas
-Podemos agregar columnas al dataframa usando cbind():
+Podemos agregar columnas al data.frame usando cbind():
 
 
 ```R
@@ -2341,101 +2066,61 @@ altura <- c(1.7, 1.61, 1.57, 1.78, 1.72, 1.68, 1.66)
 df = cbind(df, altura)
 df
 ```
+	     nombre genero edad tiene.hijos educacion ingreso altura
+	1    Damián      M   22       FALSE       sec   15000   1.70
+	2     Lucía      F   19       FALSE       sec    7450   1.61
+	3 Francisca      F   44        TRUE       uni   83300   1.57
+	4    Javier      M   32       FALSE       sec      NA   1.78
+	5     Paola      F   23        TRUE       uni   22000   1.72
+	6   Agustín      M   55        TRUE       uni   65340   1.68
+	7 Alejandra      F   33       FALSE       pri    9405   1.66
 
 
-<table>
-<thead><tr><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th><th scope=col>altura</th></tr></thead>
-<tbody>
-	<tr><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td><td>1.70     </td></tr>
-	<tr><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td><td>1.61     </td></tr>
-	<tr><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td><td>1.57     </td></tr>
-	<tr><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td><td>1.78     </td></tr>
-	<tr><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td><td>1.72     </td></tr>
-	<tr><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td><td>1.68     </td></tr>
-	<tr><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td><td>1.66     </td></tr>
-</tbody>
-</table>
-
-
-
-También podemos usar el operador $ para agregar la nueva columna:
+También podemos usar el operador $ para agregar una nueva columna:
 
 
 ```R
 df$peso = c(77, 55, 77, 85, 98, 60, 58) 
-```
-
-
-```R
 df
 ```
 
-
-<table>
-<thead><tr><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th><th scope=col>altura</th><th scope=col>peso</th></tr></thead>
-<tbody>
-	<tr><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td><td>1.70     </td><td>77       </td></tr>
-	<tr><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td><td>1.61     </td><td>55       </td></tr>
-	<tr><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td><td>1.57     </td><td>77       </td></tr>
-	<tr><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td><td>1.78     </td><td>85       </td></tr>
-	<tr><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td><td>1.72     </td><td>98       </td></tr>
-	<tr><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td><td>1.68     </td><td>60       </td></tr>
-	<tr><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td><td>1.66     </td><td>58       </td></tr>
-</tbody>
-</table>
+	     nombre genero edad tiene.hijos educacion ingreso altura peso
+	1    Damián      M   22       FALSE       sec   15000   1.70   77
+	2     Lucía      F   19       FALSE       sec    7450   1.61   55
+	3 Francisca      F   44        TRUE       uni   83300   1.57   77
+	4    Javier      M   32       FALSE       sec      NA   1.78   85
+	5     Paola      F   23        TRUE       uni   22000   1.72   98
+	6   Agustín      M   55        TRUE       uni   65340   1.68   60
+	7 Alejandra      F   33       FALSE       pri    9405   1.66   58
 
 
-
-O generar nuevas columnas a partir de operaciones
+O generar nuevas columnas a partir de resultados de operaciones:
 
 
 ```R
 df$imc = df$peso / df$altura^2
-```
-
-
-```R
 df
 ```
-
-
-<table>
-<thead><tr><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th><th scope=col>altura</th><th scope=col>peso</th><th scope=col>imc</th></tr></thead>
-<tbody>
-	<tr><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td><td>1.70     </td><td>77       </td><td>26.64360 </td></tr>
-	<tr><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td><td>1.61     </td><td>55       </td><td>21.21832 </td></tr>
-	<tr><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td><td>1.57     </td><td>77       </td><td>31.23859 </td></tr>
-	<tr><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td><td>1.78     </td><td>85       </td><td>26.82742 </td></tr>
-	<tr><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td><td>1.72     </td><td>98       </td><td>33.12601 </td></tr>
-	<tr><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td><td>1.68     </td><td>60       </td><td>21.25850 </td></tr>
-	<tr><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td><td>1.66     </td><td>58       </td><td>21.04805 </td></tr>
-</tbody>
-</table>
-
-
-
+	     nombre genero edad tiene.hijos educacion ingreso altura peso      imc
+	1    Damián      M   22       FALSE       sec   15000   1.70   77 26.64360
+	2     Lucía      F   19       FALSE       sec    7450   1.61   55 21.21832
+	3 Francisca      F   44        TRUE       uni   83300   1.57   77 31.23859
+	4    Javier      M   32       FALSE       sec      NA   1.78   85 26.82742
+	5     Paola      F   23        TRUE       uni   22000   1.72   98 33.12601
+	6   Agustín      M   55        TRUE       uni   65340   1.68   60 21.25850
+	7 Alejandra      F   33       FALSE       pri    9405   1.66   58 21.04805
 
 ```R
 df$obesidad = df$imc > 30
-```
-
-
-```R
 df
 ```
-
-
-<table>
-<thead><tr><th scope=col>nombre</th><th scope=col>genero</th><th scope=col>edad</th><th scope=col>tiene.hijos</th><th scope=col>educacion</th><th scope=col>ingreso</th><th scope=col>altura</th><th scope=col>peso</th><th scope=col>imc</th><th scope=col>obesidad</th></tr></thead>
-<tbody>
-	<tr><td>Damián   </td><td>M        </td><td>22       </td><td>FALSE    </td><td>sec      </td><td>15000    </td><td>1.70     </td><td>77       </td><td>26.64360 </td><td>FALSE    </td></tr>
-	<tr><td>Lucía    </td><td>F        </td><td>19       </td><td>FALSE    </td><td>sec      </td><td> 7450    </td><td>1.61     </td><td>55       </td><td>21.21832 </td><td>FALSE    </td></tr>
-	<tr><td>Francisca</td><td>F        </td><td>44       </td><td> TRUE    </td><td>uni      </td><td>83300    </td><td>1.57     </td><td>77       </td><td>31.23859 </td><td> TRUE    </td></tr>
-	<tr><td>Javier   </td><td>M        </td><td>32       </td><td>FALSE    </td><td>sec      </td><td>   NA    </td><td>1.78     </td><td>85       </td><td>26.82742 </td><td>FALSE    </td></tr>
-	<tr><td>Paola    </td><td>F        </td><td>23       </td><td> TRUE    </td><td>uni      </td><td>22000    </td><td>1.72     </td><td>98       </td><td>33.12601 </td><td> TRUE    </td></tr>
-	<tr><td>Agustín  </td><td>M        </td><td>55       </td><td> TRUE    </td><td>uni      </td><td>65340    </td><td>1.68     </td><td>60       </td><td>21.25850 </td><td>FALSE    </td></tr>
-	<tr><td>Alejandra</td><td>F        </td><td>33       </td><td>FALSE    </td><td>pri      </td><td> 9405    </td><td>1.66     </td><td>58       </td><td>21.04805 </td><td>FALSE    </td></tr>
-</tbody>
-</table>
+	     nombre genero edad tiene.hijos educacion ingreso altura peso      imc obesidad
+	1    Damián      M   22       FALSE       sec   15000   1.70   77 26.64360    FALSE
+	2     Lucía      F   19       FALSE       sec    7450   1.61   55 21.21832    FALSE
+	3 Francisca      F   44        TRUE       uni   83300   1.57   77 31.23859     TRUE
+	4    Javier      M   32       FALSE       sec      NA   1.78   85 26.82742    FALSE
+	5     Paola      F   23        TRUE       uni   22000   1.72   98 33.12601     TRUE
+	6   Agustín      M   55        TRUE       uni   65340   1.68   60 21.25850    FALSE
+	7 Alejandra      F   33       FALSE       pri    9405   1.66   58 21.04805    FALSE
 
 
