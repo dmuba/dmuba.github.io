@@ -1,9 +1,13 @@
 
 # Guía: Introducción al lenguaje R
 
-Esta guía es una introducción para conocer los fundamentos del lenguaje R. Se detallan los tipos de datos básicos y operaciones.
+Esta guía es una introducción para conocer los fundamentos y conceptos del lenguaje R. Se detallan los tipos de datos básicos y operaciones.
 
-Esta guía está pensada para aquellos que están empezando a utilizar este lenguaje. Sin embargo se pueden hacer muchas cosas en R sin conocer a fondo sus tipos de datos. Por eso, una buena forma de utilizar esta guía es darle una primera mirada para tener las herramientas básicas para arrancar, y luego utilizarla de consulta a medida que uno se familiarise con el lenguaje.
+La guía está pensada para aquellos que están empezando a utilizar el lenguaje. Sin embargo, podemos arrancar a usar R sin conocerlo a fondo, ya que a diferencia de otros lenguajes, contiene funcionalidades de alto nivel para realizar fácilmente análisis estadísticos y visualizaciones. 
+
+Una buena forma de utilizar esta guía, es tener una primera lectura más general, y a medida que te familiarises con el lenguaje utilizarla como referencia. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
+
+---
 
 ## Variables
 
@@ -21,39 +25,22 @@ Se las crea con la asignación de un valor. La asingnación se las hace con los 
 
 ```R
 base <- 4
-```
-
-
-```R
-print(base)
+base
 ```
 
     [1] 4
 
-
-
 ```R
 3 -> altura
-```
-
-
-```R
-print(altura)
+altura
 ```
 
     [1] 3
 
-
-
 ```R
 altura = 3
+altura
 ```
-
-
-```R
-print(altura)
-```
-
     [1] 3
 
 
@@ -64,17 +51,7 @@ En el workspace se encuentran todas las variables que fuimos creando. Se puede c
 
 ```R
 ls()
-print(ls())
 ```
-
-
-<ol class=list-inline>
-	<li>'altura'</li>
-	<li>'base'</li>
-</ol>
-
-
-
     [1] "altura" "base"  
 
 
@@ -85,9 +62,8 @@ Si queremos eliminar una variable usamos la función **rm()**
 rm(altura)
 ```
 
-
 ```R
-print(ls())
+ls()
 ```
 
     [1] "base"
@@ -98,7 +74,7 @@ Un script de R es una lista de operaciones que se ejecuta de principio a fin sig
 
 Los script en R llevan la extensión **.r**. Y nos permiten guardar tareas que pueden ser ejecutadas más de una vez.
 
-Es muy útil agregar comentarios a los scripts. Para indicar que un texto es un comentario se utiliza el caracter **\#**. Todo lo que sigua a continuación de **\#** en la misma línea de código, es considerado comentario y no se ejecutará por el interprete de R. Son útiles para dejar documentado nuestro código.
+Es muy útil agregar comentarios a los scripts y así dejar documentado nuestro código. Para indicar que un texto es un comentario se utiliza el caracter **\#**. Todo lo que sigua a continuación de **\#** en la misma línea de código es considerado comentario y no se ejecutará por el interprete de R.
 
 #### triangulo.r
 ```R
@@ -109,27 +85,14 @@ altura <- 6
 area <- base * altura / 2
 print(area) # imprime resultado
 ```
-
-
-```R
-# crea las variables base y altura del triángulo
-base <- 3
-altura <- 6
-# Calcula el área
-area <- base * altura / 2
-print(area) # imprime resultado
-```
-
     [1] 9
 
 
-# Tipos de datos
+## Tipos de datos
 
 Como ya dijimos, las variables almacenan valores. Ahora estos valores pueden ser de distintos tipos. Existen tipos de datos simples, como números o textos. O compuestos como vectores o listas.
 
 Para consultar el tipo de datos que tiene la variable (o mejor dicho el valor almacenado) se usa la función **class()**. A continuación veremos diferentes ejemplos de uso. Para tipos de datos más complejos esta función nos proporciona información muy general, para conocer más detalles se utilizan otras funciones adicionales, como por ejemplo **is.numeric()** o **is.vector()** (siguiendo el patrón is.*algo*), para consultar por un determinado tipo o subtipo de datos.
-
-# Tipos de datos simples
 
 ## logical
 
@@ -139,18 +102,13 @@ Contienen los valores de verdad verdadero (TRUE o T) o falso (FALSE o F).
 ```R
 TRUE
 ```
-
-
-TRUE
-
+    [1] TRUE
 
 
 ```R
 FALSE
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 
@@ -158,8 +116,7 @@ FALSE
 T
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 
@@ -167,17 +124,14 @@ TRUE
 F
 ```
 
-
-FALSE
-
+    [1] FALSE
 
 
 ```R
 class(TRUE)
 ```
 
-
-'logical'
+    [1] 'logical'
 
 
 Son el resultados de las operaciones de comparación:
@@ -194,36 +148,28 @@ Son el resultados de las operaciones de comparación:
 ```R
 3 <= 5
 ```
-
-
-TRUE
-
+    [1] TRUE
 
 
 ```R
 7 != 7
 ```
 
-
-FALSE
+    [1] FALSE
 
 
 
 ```R
 TRUE > FALSE
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 class(8>4)
 ```
-
-
-'logical'
+    [1] 'logical'
 
 
 Operaciones booleanas (Operaciones entre valores lógicos que devuelven otro valor lógico):
@@ -236,48 +182,38 @@ Operaciones booleanas (Operaciones entre valores lógicos que devuelven otro val
 TRUE & FALSE
 ```
 
-
-FALSE
-
+    [1] FALSE
 
 
 ```R
 TRUE | FALSE
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 !TRUE
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 ## numeric
 
-Los valores numéricos contienen una jerarquía de tipos: Un numeric representa los valores reales, mientras un integer es un subconjunto del tipo numeric que representa a los enteros.
+Los valores numéricos contienen una jerarquía de tipos: Un numeric representa los valores reales, mientras un integer es un subconjunto que representa a los enteros.
 
 
 ```R
 class(2.5)
 ```
-
-
-'numeric'
+    [1] 'numeric'
 
 
 
 ```R
 class(2)
 ```
-
-
-'numeric'
+    [1] 'numeric'
 
 
 Para indicar que un número es de tipo *integer* debe especificarse explícitamente con una **L** como sufijo.
@@ -287,8 +223,7 @@ Para indicar que un número es de tipo *integer* debe especificarse explícitame
 class(2L)
 ```
 
-
-'integer'
+    [1] 'integer'
 
 
 Comprobar subtipos de numéricos:
@@ -298,8 +233,7 @@ Comprobar subtipos de numéricos:
 is.numeric(2)
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 
@@ -307,17 +241,13 @@ TRUE
 is.numeric(2L)
 ```
 
-
-TRUE
-
+    [1] TRUE
 
 
 ```R
 is.integer(2) 
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 
@@ -325,8 +255,7 @@ FALSE
 is.integer(2L) 
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 ## character
@@ -337,27 +266,24 @@ Una cadena de caracteres debe delimitarse entre comillas (simples o dobles).
 
 
 ```R
-print("DM uba 2019")
+"DM uba 2019"
 ```
 
     [1] "DM uba 2019"
-
 
 
 ```R
-print('DM uba 2019')
+'DM uba 2019'
 ```
 
     [1] "DM uba 2019"
-
 
 
 ```R
 class("DM uba 2019")
 ```
 
-
-'character'
+    [1] 'character'
 
 
 La función nchar nos devuelve el tamaño de cadena en cantidad de caracteres:
@@ -367,8 +293,7 @@ La función nchar nos devuelve el tamaño de cadena en cantidad de caracteres:
 nchar("DM uba 2019")
 ```
 
-
-11
+    [1] 11
 
 
 En el caso de que el texto contega comillas del mismo tipo que usamos para deliminar la cadena, se utiliza el caracter **\\** (caracter de escape) para idicar que la comilla de a continuación no indica clausura de la cadena.
@@ -377,9 +302,7 @@ En el caso de que el texto contega comillas del mismo tipo que usamos para delim
 ```R
 "DM uba \"2019\""
 ```
-
-
-'DM uba "2019"'
+    [1] 'DM uba "2019"'
 
 
 
@@ -387,15 +310,14 @@ En el caso de que el texto contega comillas del mismo tipo que usamos para delim
 'DM uba "2019"'
 ```
 
-
-'DM uba "2019"'
+    [1] 'DM uba "2019"'
 
 
 ## NA
 
 Para representar datos faltantes r utiliza *NA* (equivalente a NULL en SQL).
 
-Un NA puede ser introducido inicialmente para indicar un dato faltante o puede ser resultado de una operación en donde no se puede determinar un resultado válido.
+Un NA puede ser asignado inicialmente a una variable o puede ser resultado de una operación en donde no se puede determinar un resultado válido.
 
 Este valor especial no es un tipo de datos en sí. En R este valor es del tipo de datos *logical*. Sin embargo no representa un valor de verdad como TRUE y FALSE, y es compatible con otros tipos de datos, es decir que puede indicarse un NA para *numeric*, *character*, etc.
 
@@ -403,36 +325,28 @@ Este valor especial no es un tipo de datos en sí. En R este valor es del tipo d
 ```R
 NA
 ```
-
-
-&lt;NA&gt;
+    [1] NA
 
 
 
 ```R
 class(NA)
 ```
-
-
-'logical'
+    [1] 'logical'
 
 
 
 ```R
 is.na(NA)
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 is.na("NA")
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 Las operaciones con valores con *NA* dan como resultado *NA*.
@@ -442,8 +356,7 @@ Las operaciones con valores con *NA* dan como resultado *NA*.
 5 + NA + 6
 ```
 
-
-&lt;NA&gt;
+    [1] NA
 
 
 
@@ -451,8 +364,7 @@ Las operaciones con valores con *NA* dan como resultado *NA*.
 TRUE & NA
 ```
 
-
-&lt;NA&gt;
+    [1] NA
 
 
 
@@ -460,13 +372,12 @@ TRUE & NA
 "cadena" == NA
 ```
 
+    [1] NA
 
-&lt;NA&gt;
 
+## coercion (transformación de tipos de datos)
 
-## Coercion (transformación de tipos de datos)
-
-En ciertas ocaciones nos resultará útil convertir el tipo de datos para realizar alguna operación (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para llevar una operación se habla de **coercion**.
+En ciertas ocaciones nos resultará útil convertir el tipo de datos de una variable para poder realizar alguna operación (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para compatibilizar el tipo de datos para realizar una operación, se habla de **coercion**.
 
 Para llevar a cabo una transformación se utilizan funciones como *as.logical()*, *as.numeric()*, *as.character()*. Es decir *as.* seguido del tipo de datos a convertir.
 
@@ -477,18 +388,12 @@ R utiliza como tradución del valor TRUE al valor 1. Y de FALSE a 0.
 ```R
 as.numeric(TRUE) 
 ```
-
-
-1
-
-
+    [1] NA
 
 ```R
 as.numeric(FALSE) 
 ```
-
-
-0
+    [1] 0
 
 
 ### numeric a logical
@@ -498,27 +403,17 @@ De forma inversa traduce a 0 como FALSE, y al resto de los valores a TRUE.
 ```R
 as.logical(122.2)
 ```
-
-
-TRUE
-
-
+    [1] TRUE
 
 ```R
 as.logical(-1)
 ```
-
-
-TRUE
-
-
+    [1] TRUE
 
 ```R
 as.logical(0)
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 ### logical o numeric a character
@@ -527,31 +422,24 @@ FALSE
 ```R
 as.character(4)
 ```
-
-
-'4'
-
+    [1] '4'
 
 
 ```R
 as.character(F)
 ```
-
-
-'FALSE'
+    [1] 'FALSE'
 
 
 ### character a numeric o logical
 
-Permite pasar de character a valores numericos o lógicos, siempre que los valores encerrados entre las comillas sean compatibles con el tipo de dato a convertir.
+Permite pasar de character a valores numéricos o lógicos, siempre que los valores encerrados entre las comillas sean compatibles con el tipo de dato a convertir.
 
 
 ```R
 as.numeric("4.5")
 ```
-
-
-4.5
+    [1] 4.5
 
 
 
@@ -559,8 +447,7 @@ as.numeric("4.5")
 as.logical("T") 
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 
@@ -568,53 +455,42 @@ TRUE
 as.logical("FALSE") 
 ```
 
-
-FALSE
+    [1] FALSE
 
 
 
 ```R
 as.numeric("Hola")
 ```
-
     Warning message in eval(expr, envir, enclos):
     “NAs introduced by coercion”
 
-
-&lt;NA&gt;
+    [1] NA
 
 
 ### NA
-El valor NA no puede ser convertido, es decir un faltante sigue siendo faltante en caulquier tipo de datos.
+El valor NA no puede ser transformado, es decir un faltante sigue siendo faltante en cualquier tipo de datos.
 
 
 ```R
 as.numeric(NA)
 ```
-
-
-&lt;NA&gt;
+    [1] NA
 
 
 
 ```R
 as.logical(NA)
 ```
-
-
-&lt;NA&gt;
+    [1] NA
 
 
 
 ```R
 as.character(NA)
 ```
+    [1] NA
 
-
-NA
-
-
-# Tipos de datos compuestos
 
 ## vector
 
@@ -626,12 +502,6 @@ Para crear un vector usamos *c()* separando sus elementos por coma:
 ```R
 frutas <- c("bananas", "peras", "manzanas", "manzanas", "peras")
 ```
-
-
-```R
-print(frutas)
-```
-
     [1] "bananas"  "peras"    "manzanas" "manzanas" "peras"   
 
 
@@ -640,29 +510,20 @@ print(frutas)
 is.vector(frutas)
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 class(frutas)
 ```
-
-
-'character'
+    [1] 'character'
 
 
 
 ```R
 x <- c(1, 2, 3, 4)
 ```
-
-
-```R
-print(x)
-```
-
     [1] 1 2 3 4
 
 
@@ -670,30 +531,21 @@ print(x)
 ```R
 is.vector(x)
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 class(x)
 ```
+    [1] 'numeric'
 
 
-'numeric'
-
-
-Para crear un vector de numeros en secuencia puede usarse la siguiente nomenclatura: *valor_inicial:valor_final* (ambos valores son inclusivos)
+Para crear un vector de números en secuencia puede usarse la siguiente operación: *valor_inicial:valor_final* (ambos valores son inclusivos)
 
 
 ```R
 x <- 1:4
-```
-
-
-```R
-print(x)
 ```
 
     [1] 1 2 3 4
@@ -706,8 +558,7 @@ Para conocer la cantidad de elementos se usa la función *length()*
 length(frutas)
 ```
 
-
-5
+    [1] 5
 
 
 
@@ -715,8 +566,7 @@ length(frutas)
 length(x)
 ```
 
-
-4
+    [1] 4
 
 
 Cada elemento contiene un índice. El primer elemento contiene el índice **1** (0 no es un índice). Para acceder a un elemento en particular usamos el número de índice y el operador *\[\]*.
@@ -725,27 +575,17 @@ Cada elemento contiene un índice. El primer elemento contiene el índice **1** 
 ```R
 frutas[1]
 ```
-
-
-'bananas'
-
-
+    [1] 'bananas'
 
 ```R
 frutas[5]
 ```
-
-
-'peras'
-
-
+    [1] 'peras'
 
 ```R
 x[3]
 ```
-
-
-3
+    [1] 3
 
 
 Si consultamos por un elemento en un índice superior a *length()* devuelve *NA*.
@@ -754,12 +594,10 @@ Si consultamos por un elemento en un índice superior a *length()* devuelve *NA*
 ```R
 frutas[6]
 ```
+    [1] NA
 
 
-NA
-
-
-### vectores con nombres
+### Vectores con nombres
 
 Podemos agregar nombres a los elementos. Para esto usamos la función *name()* asignando un vector de tipo *character* con el mismo número de elementos que el vector original.
 
@@ -767,18 +605,10 @@ Podemos agregar nombres a los elementos. Para esto usamos la función *name()* a
 ```R
 edades <- c(24, 55, 26, 34, 26)
 nombres <- c('Javier', 'Marcela', 'Liliana', 'Claudia', 'Juan')
-```
 
-
-```R
 names(edades) <- nombres
+edades
 ```
-
-
-```R
-print(edades)
-```
-
      Javier Marcela Liliana Claudia    Juan 
          24      55      26      34      26 
 
@@ -787,7 +617,7 @@ print(edades)
 
 
 ```R
-print(names(edades))
+edades
 ```
 
     [1] "Javier"  "Marcela" "Liliana" "Claudia" "Juan"   
@@ -797,16 +627,15 @@ Ahora se puede acceder a los elementos por su nombre:
 
 
 ```R
-print(edades["Marcela"])
+edades["Marcela"]
 ```
 
     Marcela 
          55 
 
 
-
 ```R
-print(edades[2])
+edades[2]
 ```
 
     Marcela 
@@ -835,63 +664,43 @@ mi_nombre = 'Homero'
 mi_altura = 34
 ```
 
-
 ```R
 is.vector(mi_nombre)
 ```
 
-
-TRUE
-
-
+    [1] TRUE
 
 ```R
 is.vector(mi_altura)
 ```
-
-
-TRUE
-
-
+    [1] TRUE
 
 ```R
 length(mi_altura)
 ```
-
-
-1
+    [1] 1
 
 
 
 ```R
 length(mi_nombre)
 ```
-
-
-1
-
-
+    [1] 1
 
 ```R
 nchar(mi_nombre)
 ```
+    [1] 6
 
 
-6
+### Coercion
 
-
-### Coercion en vectores
-
-Los vectores tienen que ser del mismo tipo, por lo tanto realiza las transformaciones necesarias para lograr que todos los elementos sean del mismo tipo.
+Los vectores tienen que ser del mismo tipo, por lo tanto realiza coercion para lograr que todos los elementos sean del mismo tipo.
 
 
 ```R
 vec <- c(5, 3, "T", "10", 1, 2, NA, "Q")
-```
-
-
-```R
-print(vec)
+vec
 ```
 
     [1] "5"  "3"  "T"  "10" "1"  "2"  NA   "Q" 
@@ -901,21 +710,15 @@ print(vec)
 ```R
 class(vec)
 ```
-
-
-'character'
-
-
+    [1] 'character'
 
 ```R
 length(vec)
 ```
+    [1] 8
 
 
-8
-
-
-### Operaciones de vectores
+### Operaciones
 
 Las operaciones entre dos vectores se hacen por pares de elementos según su índice.
 
@@ -923,56 +726,42 @@ Las operaciones entre dos vectores se hacen por pares de elementos según su ín
 ```R
 x <- c(3, 5, 10)
 y <- c(2, 6, 6)
-print(x + y)
+x + y
 ```
-
     [1]  5 11 16
 
-
-
 ```R
-print(x >= y)
+x >= y
 ```
-
     [1]  TRUE FALSE  TRUE
 
 
-Cuando se realiza una operación entre un vector y un escalar (es decir un unico elemento). Este se aplica sobre cada uno de los elementos del vecto.
+Cuando se realiza una operación entre un vector y un escalar (es decir un único elemento). Este se aplica sobre cada uno de los elementos del vecto.
 
 
 ```R
 x <- c(3, 5, 10)
 ```
-
-
 ```R
-print(x + 1)
+x + 1
 ```
 
     [1]  4  6 11
 
-
-
 ```R
-print(x/2)
+x/2
 ```
-
     [1] 1.5 2.5 5.0
 
-
-
 ```R
-print(x * 2)
+x * 2
 ```
-
     [1]  6 10 20
 
 
-
 ```R
-print(x^2)
+x^2
 ```
-
     [1]   9  25 100
 
 
@@ -982,34 +771,26 @@ Cuando los vectores no tienen el mismo tamaño, se extiende el vector de menor t
 ```R
 x <- c(3, 5, 2, 10)
 y <- c(4, 9)
-print(x+y)
+x+y
 ```
-
     [1]  7 14  6 19
-
 
 
 ```R
 x <- c(3, 5, 2, 10)
 y <- c(4, 9, 4, 9)
-print(x+y)
+x+y
 ```
-
     [1]  7 14  6 19
 
 
 Concatenación entre vectores:
 
-
 ```R
 x <- c(3, 5, 2, 10)
 y <- c(4, 9)
 xy = c(x, y)
-```
-
-
-```R
-print(xy)
+xy
 ```
 
     [1]  3  5  2 10  4  9
@@ -1021,9 +802,8 @@ Si queremos agregar un único elemento, usamos concatenación:
 ```R
 x <- c(3, 5, 2, 10)
 x = c(x, 44)
-print(x)
+x
 ```
-
     [1]  3  5  2 10 44
 
 
@@ -1034,40 +814,26 @@ Funciones útiles sobre vectores:
 x <- c(3, 5, 2, 10)
 ```
 
-
 ```R
 sum(x) 
 ```
-
-
-20
-
-
+    [1] 20
 
 ```R
 mean(x)
 ```
-
-
-5
-
+    [1] 5
 
 
 ```R
 median(x)
 ```
-
-
-4
-
-
+    [1] 4
 
 ```R
 sd(x)
 ```
-
-
-3.55902608401044
+    [1] 3.55902608401044
 
 
 Cuidado con los missings:
@@ -1076,35 +842,29 @@ Cuidado con los missings:
 ```R
 mean(c(7, 8, 6, NA, 10))
 ```
-
-
-&lt;NA&gt;
-
-
+    [1] NA
 
 ```R
 mean(c(7, 8, 6, NA, 10), na.rm = TRUE)
 ```
+    [1] 7.75
 
 
-7.75
+### Subset
 
-
-### Sub-vectores
-
-Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en si mismo. Por este motivo usando \[\] podemos formar nuevos vectores a partir de los elementos de un vector.
+Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en si mismo. Así que usando \[\] podemos seleccionar elementos y formar otro vector.
 
 
 ```R
 edades <- c(Javier=24, Marcela=55, Liliana=26, Claudia=34, Juan=26)
-print(edades)
+edades
 ```
 
      Javier Marcela Liliana Claudia    Juan 
          24      55      26      34      26 
 
 
-Usamos un vector de éndices para seleccionar los elementos.
+Usamos un vector de índices para seleccionar los elementos.
 
 
 ```R
@@ -1115,11 +875,10 @@ print(edades[c(1,3)])
          24      26 
 
 
-El órden sí importa:
-
+El orden sí importa:
 
 ```R
-print(edades[c(3, 1)])
+edades[c(3, 1)]
 ```
 
     Liliana  Javier 
@@ -1130,7 +889,7 @@ También podemos usar nombres:
 
 
 ```R
-print(edades[c("Javier", "Liliana")])
+edades[c("Javier", "Liliana")]
 ```
 
      Javier Liliana 
@@ -1141,29 +900,25 @@ Se usan índices negativos para excluir elementos
 
 
 ```R
-print(edades[-c(1,3)])
+edades[-c(1,3)]
 ```
-
     Marcela Claudia    Juan 
          55      34      26 
 
-
-
 ```R
-print(edades[-1])
+edades[-1]
 ```
 
     Marcela Liliana Claudia    Juan 
          55      26      34      26 
 
 
-No se puede excluir usando nombres:
+No se pueden excluir usando nombres:
 
 
 ```R
 edades[-c("Javier", "Liliana")]
 ```
-
 
     Error in -c("Javier", "Liliana"): invalid argument to unary operator
     Traceback:
@@ -1172,11 +927,11 @@ edades[-c("Javier", "Liliana")]
 
 Otra forma de selección es usar vectores lógicos. Al operador \[\] debe pasarse un vector de tipo *logical* con la misma cantidad de elementos que el vector original. El valor TRUE indica que selecciona el elemento, y FALSE indica que se excluye.
 
-A este tipo de vector de selección también se lo conoce como máscara.
+A este tipo de vector de selección también se lo conoce como **máscara**.
 
 
 ```R
-print(edades[c(FALSE, TRUE, FALSE, TRUE)])
+edades[c(FALSE, TRUE, FALSE, TRUE)]
 ```
 
     Marcela Claudia 
@@ -1185,7 +940,7 @@ print(edades[c(FALSE, TRUE, FALSE, TRUE)])
 
 
 ```R
-print(edades[edades > 30])
+edades[edades > 30]
 ```
 
     Marcela Claudia 
@@ -1196,39 +951,34 @@ En el caso de pasarse menor número de elementos en la máscara, realiza extensi
 
 
 ```R
-print(edades[c(T,F)]) # selecciona impares
+edades[c(T,F)] # selecciona impares
 ```
-
      Javier Liliana    Juan 
          24      26      26 
-
-
 
 ```R
-print(edades[c(T,F,T,F,T)])
+edades[c(T,F,T,F,T)]
 ```
 
      Javier Liliana    Juan 
          24      26      26 
 
 
-## Matrix
-Las matrices son arreglos de elementos de 2 dimensiones. De la misma forma que un vector es un arreglo de elementos de 1 dimensión. Es decir que podría verse como un vector de vectores de misma cantidad de elementos.
+## matrix
+Un vector es un arreglo de 1 dimensión., mientras que matrix es un arreglo de elementos de 2 dimensiones. Es decir que podría verse como un vector con elementos del tipo vector de igual cantidad de elementos.
 
 Las matrices se dividen en filas (primera dimensión) y columnas (segunda dimensión)
 
-De la misma forma que los vectores sólo admiten elementos del **mismo tipo** y NA.
+De la misma forma que los vectores, sólo admiten elementos del **mismo tipo** o NA.
 
-### Creación de matrices
+### Creación
 
-Se especifica los elementos como un vector, y las cantidad de filas y columnas en que se van a distribuir.
-
+Se especifica los elementos con un vector, y las cantidad de filas y columnas en que se van a distribuir.
 
 ```R
 m <- matrix(1:6, nrow = 3)
-print(m)
+m
 ```
-
          [,1] [,2]
     [1,]    1    4
     [2,]    2    5
@@ -1238,7 +988,7 @@ print(m)
 
 ```R
 m <- matrix(1:6, ncol = 3)
-print(m)
+m
 ```
 
          [,1] [,2] [,3]
@@ -1249,7 +999,7 @@ print(m)
 
 ```R
 m <- matrix(1:6, nrow = 2, byrow = TRUE) 
-print(m)
+m
 ```
 
          [,1] [,2] [,3]
@@ -1260,7 +1010,7 @@ print(m)
 
 ```R
 m <- matrix(0, nrow=2, ncol=3)
-print(m)
+m
 ```
 
          [,1] [,2] [,3]
@@ -1272,9 +1022,7 @@ print(m)
 ```R
 class(m)
 ```
-
-
-'matrix'
+    [1] 'matrix'
 
 
 
@@ -1282,8 +1030,7 @@ class(m)
 is.numeric(m)
 ```
 
-
-TRUE
+    [1] TRUE
 
 
 *nrow()* devuelve la cantidad de filas
@@ -1292,9 +1039,7 @@ TRUE
 ```R
 nrow(m)
 ```
-
-
-2
+    [1] 2
 
 
 *ncol()* devuelve la cantidad de columnas
@@ -1303,9 +1048,7 @@ nrow(m)
 ```R
 ncol(m)
 ```
-
-
-3
+    [1] 3
 
 
 *ndim()* devuelve un vector de dos elementos con cantidad de filas y cantidad de columnas
@@ -1314,12 +1057,7 @@ ncol(m)
 ```R
 dim(m)
 ```
-
-
-<ol class=list-inline>
-	<li>2</li>
-	<li>3</li>
-</ol>
+    [1] 2 3
 
 
 
@@ -1329,9 +1067,7 @@ dim(m)
 ```R
 length(m)
 ```
-
-
-6
+    [1]6
 
 
 ### Concatenación de filas o columnas
@@ -1341,7 +1077,7 @@ Con las funciones *rbind()*/*cbind* podemos concatenar filas/columnas.
 
 ```R
 m = matrix(1:6, nrow=3)
-print(m)
+m
 ```
 
          [,1] [,2]
@@ -1352,7 +1088,7 @@ print(m)
 
 
 ```R
-print(cbind(m, 7:9))
+cbind(m, 7:9)
 ```
 
          [,1] [,2] [,3]
@@ -1363,7 +1099,7 @@ print(cbind(m, 7:9))
 
 
 ```R
-print(rbind(m, matrix(c(7, 7, 8, 8), nrow=2, byrow=TRUE)))
+rbind(m, matrix(c(7, 7, 8, 8), nrow=2, byrow=TRUE))
 ```
 
          [,1] [,2]
@@ -1374,14 +1110,13 @@ print(rbind(m, matrix(c(7, 7, 8, 8), nrow=2, byrow=TRUE)))
     [5,]    8    8
 
 
-### Coercion en matrices
+### Coercion
 
 
 ```R
 m <- matrix(c(1,2,3, "A", "B", NA), nrow=2, byrow=TRUE)
-print(m)
+m
 ```
-
          [,1] [,2] [,3]
     [1,] "1"  "2"  "3" 
     [2,] "A"  "B"  NA  
@@ -1391,29 +1126,25 @@ print(m)
 ```R
 is.character(m)
 ```
-
-
-TRUE
+    [1] TRUE
 
 
 
 ```R
 is.numeric(m)
 ```
-
-
-FALSE
+    [1] FALSE
 
 
 ### columnas o filas con nombres
 
-En matrices se pueden nombrar a sus filas y columnas.
+Se pueden nombrar las filas y/o columnas.
 
 
 ```R
 m <- matrix(c(10, 20, 33, 5, 15, 30), nrow=2, ncol=3, byrow=T)
 rownames(m) <- c("fila1", "fila2")
-print(m)
+m
 ```
 
           [,1] [,2] [,3]
@@ -1425,7 +1156,7 @@ print(m)
 ```R
 m <- matrix(c(10, 20, 33, 5, 15, 30), nrow=2, ncol=3, byrow=T)
 colnames(m) <- c("col1", "col2", "col3")
-print(m)
+m
 ```
 
          col1 col2 col3
@@ -1433,12 +1164,11 @@ print(m)
     [2,]    5   15   30
 
 
-
 ```R
 m <- matrix(c(10, 20, 33, 5, 15, 30), nrow=2, ncol=3, byrow=T)
 rownames(m) <- c("fila1", "fila2")
 colnames(m) <- c("col1", "col2", "col3")
-print(m)
+m
 ```
 
           col1 col2 col3
@@ -1446,7 +1176,7 @@ print(m)
     fila2    5   15   30
 
 
-### Subselección en matrices
+### Subset
 
 De la misma manera que en vector se utiliza el operador *\[\]* para acceder a sus elementos y seleccionar sub-matrices o sub-vectores.
 En este se debe especificar la selección de filas, y columnas.
@@ -1456,7 +1186,7 @@ En este se debe especificar la selección de filas, y columnas.
 m <- matrix(c(10, 20, 33, 5, 15, 30), nrow=2, ncol=3, byrow=T)
 rownames(m) <- c("fila1", "fila2")
 colnames(m) <- c("col1", "col2", "col3")
-print(m)
+m
 ```
 
           col1 col2 col3
@@ -1472,7 +1202,7 @@ m[1,2]
 ```
 
 
-20
+    [1] 20
 
 
 O utilizando nombres:
@@ -1483,7 +1213,7 @@ m["fila1","col2"]
 ```
 
 
-20
+    [1] 20
 
 
 Selección de segunda fila:
