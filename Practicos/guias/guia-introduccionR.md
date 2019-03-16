@@ -1395,7 +1395,7 @@ vector_gaseosas
 
 ```R
 class(vector_gaseosas)
-
+```
 
     [1] 'character'
 
@@ -1451,7 +1451,7 @@ Con *levels()* se obtiene el listado de categorías
 ```R
 levels(gaseosas)
 ```
-	[1] "coca-cola" "fanta"     "manaos"    "pepsi"   cumán"            
+	[1] "coca-cola" "fanta"     "manaos"    "pepsi"      
 
 
 En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.*
@@ -1618,7 +1618,7 @@ empleado[["casado"]]
 	[1] TRUE
 
 
-## Data Frame
+## Data.Frame
 
 Cuando se utiliza R como herramienta de análisis de datos, se trabaja con variables de tipo *data.frame*. Un *data.frame* representa un conjunto de datos. Este es nuestro objeto de estudio.
 
@@ -1801,7 +1801,7 @@ summary(df)
      NA's   :1      
 
 
-## Selección de filas y columnas
+### Selección de filas y columnas
 
 Podemos utilizar el operador *\[\]* para seleccionar **filas** y **columnas** como en **matrix**. 
 
@@ -1969,8 +1969,6 @@ df$edad[df$tiene.hijos == T]
 	[1] 44 23 55
 
 
-
-
 ```R
 df[df$tiene.hijos == T, "edad"]
 ```
@@ -1989,7 +1987,7 @@ mean(df$ingreso[df$educacion=='uni'], rm.na=TRUE)
 	[1] 56880
 
 
-## Ordenamiento
+### Ordenamiento
 
 Para ordenar vectores en orden creciente usamos sort()
 
@@ -2057,7 +2055,7 @@ df[order(df$edad, decreasing = TRUE), ]
 
 
 
-## Agregar columnas
+### Agregar columnas
 Podemos agregar columnas al data.frame usando cbind():
 
 
