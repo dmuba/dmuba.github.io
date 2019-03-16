@@ -5,7 +5,7 @@ Esta guía es una introducción para conocer los fundamentos y conceptos del len
 
 La guía está pensada para aquellos que están empezando a utilizar el lenguaje. Sin embargo, podemos arrancar a usar R sin conocerlo a fondo, ya que a diferencia de otros lenguajes, contiene funcionalidades de alto nivel para realizar fácilmente análisis estadísticos y visualizaciones. 
 
-Una buena forma de utilizar esta guía, es tener una primera lectura más general, y a medida que te familiarises con el lenguaje utilizarla como referencia. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
+Una buena forma de utilizar esta guía es tener una primera lectura más general y a medida que vayas teniendo práctica con el lenguaje, utilizarla para profundizar los conocimientos. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
 
 ### Tabla de contenidos 
 - [Variables](#variables)
