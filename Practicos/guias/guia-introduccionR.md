@@ -5,7 +5,7 @@ Esta guía es una introducción para conocer los fundamentos y conceptos del len
 
 La guía está pensada para aquellos que están empezando a utilizar el lenguaje. Sin embargo, podemos arrancar a usar R sin conocerlo a fondo, ya que a diferencia de otros lenguajes, contiene funcionalidades de alto nivel para realizar fácilmente análisis estadísticos y visualizaciones. 
 
-Una buena forma de utilizar esta guía es tener una primera lectura más general y a medida que vayas teniendo práctica con el lenguaje, utilizarla para profundizar los conocimientos. Tener buenos fundamentos de R nos permitán hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
+Una buena forma de utilizar esta guía es tener una primera lectura más general y a medida que vayas teniendo práctica con el lenguaje, utilizarla para profundizar los conocimientos. Tener buenos fundamentos de R te permitirá hacer análisis más complejos en menor tiempo, disminuir errores de programación, y generar código más eficiente. 
 
 ### Tabla de contenidos 
 - [Variables](#variables)
@@ -34,10 +34,10 @@ Los nombres de variables deben seguir con las siguientes reglas:
 - Deben empezar con una letra.
 - Pueden contener números y letras (sin acentos ni ñ)
 - Se distingue mayúsculas y minúsculas (ej la variable *resultado* es distinta a *Resultado*)
-- Pueden contener el caracter guíon bajo: **_**
-- ¡Puede conterner el caracter punto! **.** (a diferencia de muchos otros lenguajes)
+- Pueden contener el caracter guión bajo: **_**
+- ¡Puede contener el caracter punto! **.** (a diferencia de muchos otros lenguajes)
 
-Se las crea con la asignación de un valor. La asingnación se las hace con los operadores: **<-**, **->**, o **=**
+Se las crea con la asignación de un valor. La asignación se las hace con los operadores: **<-**, **->**, o **=**
 
 
 ```R
@@ -91,7 +91,7 @@ Un script de R es una lista de operaciones que se ejecuta de principio a fin sig
 
 Los script en R llevan la extensión **.r**. Y nos permiten guardar tareas que pueden ser ejecutadas más de una vez.
 
-Es muy útil agregar comentarios a los scripts y así dejar documentado nuestro código. Para indicar que un texto es un comentario se utiliza el caracter **\#**. Todo lo que sigua a continuación de **\#** en la misma línea de código es considerado comentario y no se ejecutará por el interprete de R.
+Es muy útil agregar comentarios a los scripts y así dejar documentado nuestro código. Para indicar que un texto es un comentario se utiliza el caracter **\#**. Todo lo que siga a continuación de **\#** en la misma línea de código es considerado comentario y no se ejecutará por el intérprete de R.
 
 #### triangulo.r
 ```R
@@ -159,7 +159,7 @@ Son el resultados de las operaciones de comparación:
 - Igual == \[\*\]
 - Distinto !=
 
-\[\*\] *Ojo no confundirse con = que es asignación, este es un error muy normal de programación, a veces difícl de detectar, ya que puede afectar a los resultados pero no arroja error*
+\[\*\] *Ojo no confundirse con = que es asignación, este es un error muy normal de programación, a veces difícil de detectar, ya que puede afectar a los resultados pero no arroja error*
 
 
 ```R
@@ -313,7 +313,7 @@ nchar("DM uba 2019")
     [1] 11
 
 
-En el caso de que el texto contega comillas del mismo tipo que usamos para deliminar la cadena, se utiliza el caracter **\\** (caracter de escape) para idicar que la comilla de a continuación no indica clausura de la cadena.
+En el caso de que el texto contenga comillas del mismo tipo que usamos para delimitar la cadena, se utiliza el caracter **\\** (caracter de escape) para idicar que la comilla de a continuación no indica clausura de la cadena.
 
 
 ```R
@@ -394,12 +394,12 @@ TRUE & NA
 
 ## coercion (transformación de tipos de datos)
 
-En ciertas ocaciones nos resultará útil convertir el tipo de datos de una variable para poder realizar alguna operación (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para compatibilizar el tipo de datos para realizar una operación, se habla de **coercion**.
+En ciertas ocasiones nos resultará útil convertir el tipo de datos de una variable para poder realizar alguna operación (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para compatibilizar el tipo de datos para realizar una operación, se habla de **coercion**.
 
 Para llevar a cabo una transformación se utilizan funciones como *as.logical()*, *as.numeric()*, *as.character()*. Es decir *as.* seguido del tipo de datos a convertir.
 
 ### logical a numeric
-R utiliza como tradución del valor TRUE al valor 1. Y de FALSE a 0.
+R utiliza como traducción del valor TRUE al valor 1. Y de FALSE a 0.
 
 
 ```R
@@ -753,7 +753,7 @@ x >= y
     [1]  TRUE FALSE  TRUE
 
 
-Cuando se realiza una operación entre un vector y un escalar (es decir un único elemento). Este se aplica sobre cada uno de los elementos del vecto.
+Cuando se realiza una operación entre un vector y un escalar (es decir un único elemento). Este se aplica sobre cada uno de los elementos del vector.
 
 
 ```R
@@ -869,7 +869,7 @@ mean(c(7, 8, 6, NA, 10), na.rm = TRUE)
 
 ### Subset
 
-Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en si mismo. Así que usando \[\] podemos seleccionar elementos y formar otro vector.
+Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en sí mismo. Así que usando \[\] podemos seleccionar elementos y formar otro vector.
 
 
 ```R
@@ -1440,7 +1440,7 @@ class(gaseosas)
     [1] 'factor'
 
 
-R genera a los *levels* a partir de los valores del vector y los ordenas en orden alfabético.
+R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
 
 Si se necesita especificar todos las categorías posibles, o si se quiere dar un orden diferentes a las categorías se usa el parámetro *levels* en la creación del *factor*.
 
@@ -1538,7 +1538,7 @@ class(estudios)
 
 Hasta ahora los tipos de datos compuestos vistos hasta ahora contienen elementos del mismo tipo. Si se quieren representar datos compuestos de distintos tipos se utiliza el tipo de dato *list*.
 
-Este tipo de datos permite representar estructuras de datos más complejas, pero como contra es que se pierde funcionalidaddes que podemos hacer con otros tipos de datos (Por ejemplo realizar operaciones aritméticas, o comparaciones)
+Este tipo de datos permite representar estructuras de datos más complejas, pero como contra es que se pierde funcionalidades que podemos hacer con otros tipos de datos (Por ejemplo realizar operaciones aritméticas, o comparaciones)
 
 Por ejemplo si queremos representar los siguientes elementos en un *vector*, se convierten todos en *character* por *coercion*.
 
@@ -1651,7 +1651,7 @@ Pero a diferencia de matrix, las columnas pueden ser de distintos tipos.
 
 Cada columna a su vez es un *vector* de un único tipo de datos, o de tipo *factor* para representar variables categóricas. Estor vectors o factors tienen la misma cantidad de elementos (cantidad de filas).
 
-Un *data.frame* puede ser importado desde una fuentes de datos (ej archivo csv o desde una DB a traves de una consulta SQL).
+Un *data.frame* puede ser importado desde una fuentes de datos (ej archivo csv o desde una DB a través de una consulta SQL).
 
 Para crear un *data.frame* desde cero, es decir desde código. Primero creamos las variables de tipo *vector* o *factor* que luego serán sus columnas.
 
@@ -1694,7 +1694,7 @@ str(df)
      $ ingreso  : num  15000 7450 83300 NA 22000 ...
 
 
-Observe que se utiliza $ para indicar a las columnas, además se indica los tipos de datos. Esto nos recuerda al tipo de datos *list*, de hecho un *data.frame* es un caso particular de *list*, con filas y columnas.
+Observe que se utiliza $ para indicar a las columnas, además se muestra los tipos de datos. Esto nos recuerda al tipo de datos *list*, de hecho un *data.frame* es un caso particular de *list*, con filas y columnas.
 
 
 ```R
@@ -1713,7 +1713,7 @@ is.list(df)
 	[1] TRUE
 
 
-También observe que las columnas *nombre* y *genero* es de tipo factor. Mientras que las variables originales eran  de *character*. Cuando se crea un *data.frame* autumáticamente transforma los vectores de *character* a *factor*.
+También observe que las columnas *nombre* y *genero* es de tipo factor. Mientras que las variables originales eran  de *character*. Cuando se crea un *data.frame* automáticamente transforma los vectores de *character* a *factor*.
 
 Si queremos realizar un cambio en los tipos de datos podemos hacer transformaciones de tipos sobre algunas de las columnas, accediendo a la columna con el operador $.
 
@@ -1843,7 +1843,7 @@ df[, c("edad", "ingreso")]
 
 
 ```R
-# Si solo se epecifica a un tipo de índice (sin separador ,), se toma como selección de columnas
+# Si solo se especifica a un tipo de índice (sin separador ,), se toma como selección de columnas
 df[c("edad", "ingreso")]
 ```
 	  edad ingreso
@@ -2047,7 +2047,7 @@ df[order(df$edad), ]
 	6   Agustín      M   55        TRUE       uni   65340
 
 
-Para order decreciente usamos el parámetro decreasing = TRUE:
+Para orden decreciente usamos el parámetro decreasing = TRUE:
 
 
 ```R
