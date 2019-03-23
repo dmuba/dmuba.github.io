@@ -1,0 +1,545 @@
+
+
+Conociendo R 
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Análisis Exploratorio & Preprocesamiento -Volumen 1-
+<br />
+<br />
+Santiago Banchero
+<br />
+Leo Lucianna
+<br />
+Juan Manuel Fernandez
+
+<br />
+Minería de Datos - UBA
+
+
+Sobre la Herramienta
+========================================================
+R es un lenguaje de programación con un enfoque al análisis estadístico.
+
+R es software libre y es uno de los lenguajes mas utilizados en investigación por la comunidad estadística y minería de datos.
+
+<center>
+```{r, echo=FALSE}
+   knitr::include_graphics('./images/R-logo.jpg')
+```
+</center>
+
+Se distribuye bajo la licencia GNU GPL. Está disponible para los sistemas operativos Unix y GNU/Linux, Windows & Macintosh.
+<br />
+<br />
+[1] https://www.r-project.org/
+<br />
+[2] https://www.rstudio.com/
+
+Sobre los datos
+========================================================
+Un dataset consiste en una representación de un conjunto de hechos/individuos a través de un conjunto de características.
+
+Para describir un dataset se analizan esas características (variables) y sus relaciones.
+
+Las variables, a grandes rasgos pueden ser:
+- Cualitativas/Discretas. 
+- Cuantitativas/Continuas.
+
+Es importante conocer los tipos de datos, dado que ello nos permite decidir que tipo de análisis utilizar.
+
+Sobre el enfoque
+========================================================
+El análisis de datos exploratorio (EDA) tiene por objetivo identificar las principales características de un conjunto de datos mediante un número reducido de gráficos y/o valores.
+
+Consiste en:
+- Medidas cuantitativas de resumen: Métricas que explican propiedades del dataset.
+- Visualización de datos: transformaciones a un formato visual que permita identificar las características y relaciones entre los elementos del dataset.
+
+Sobre el dataset para la demostración
+========================================================
+<small>
+Iris: 150 instancias de flores de la planta iris en sus variedades:
+- Setosa,
+- Versicolor,
+- Virginica.
+
+Las caracteristicas son:
+```{r}
+data(iris)
+names(iris)
+```
+</small>
+
+***
+<center>
+```{r}
+pie(table(iris$Species))
+```
+</center>
+***
+
+Empezamos: Cargando el dataset
+========================================================
+autosize: true
+<small>
+Podemos cargar el dataset de, al menos, dos maneras:
+- Gráfica
+
+<center>
+```{r echo=FALSE}
+   knitr::include_graphics('./images/load.png')
+```
+</center>
+
+***
+- Por Código
+```{r}
+library(readr)
+getwd()
+#iris <- read_csv("C:/Users/Usuario/Google Drive/PC-Juan/Docencia  & Investigacion/Docencia/Mineria de Datos-UBA/iris.csv")
+```
+</small>
+***
+Los datasets serán contenidos en un dato de tipo Data.Frame...
+
+Nuestro Tipo de dato estrella: el Data.Frame
+========================================================
+autosize: true
+<small>
+El dataframe es una estructura de datos similar a la matriz, a diferencia que puede tener columnas con diferentes tipos de datos:
+```{r}
+str(iris)
+```
+Es la estructura de datos mas utilizada por su versatilidad y potencia. Podemos cargar datasets a partir de distintos tipos de archivos o podemos crearlas a partir de la conjunción de listas/arrays con la función data.frame().
+</small>
+
+el Data.Frame - Accediendo a los datos
+========================================================
+autosize:true
+<small>
+Accedemos por Atributo/Columna:
+```{r}
+iris$Sepal.Length[1:5]
+iris[1:5,1]
+```
+Accedemos por Instancia/Fila:
+```{r}
+iris[3,1:3]
+iris[2,-c(4,5)]
+```
+***
+Seleccionamos Instancias que cumplen una condición:
+```{r, echo=FALSE}
+data(iris)
+```
+```{r}
+iris[iris$Species=="setosa" & iris$Sepal.Length>5.2,3:4]
+```
+</small>
+
+Actualizando el Data.Frame (ABM)
+========================================================
+autosize:true
+<small>
+Podemos AGREGAR una instancia o un conjunto de instancias:
+```{r}
+nuevas.filas<-data.frame(Sepal.Length=5, Sepal.Width=5, Petal.Length=5, Petal.Width=5, Species="Data Mining")
+iris<-rbind(iris, nuevas.filas)
+```
+Podemos MODIFICAR una instancia o un conjunto de instancias:
+```{r, echo=FALSE}
+data(iris)
+```
+```{r}
+iris[1,1:4]=c(4.4,4.4,4.4,4.4)
+```
+```{r}
+iris[iris$Species=="setosa",1:4]=iris[iris$Species=="setosa",1:4]*5
+```
+Podemos ELIMINAR una instancia o un conjunto de instancias:
+```{r}
+iris<-iris[-c(1:5),]
+```
+</small>
+
+Conociendo el dataset... y los datos!
+========================================================
+autosize: true
+<small>
+Deciamos que para describir un dataset se analizan sus variables y las relaciones entre ellas.
+<br />
+<br />
+<strong>
+Nos interesa la distribución de la variable, que está determinada por los valores que toma esa variable y la frecuencia con la que los toma.
+A tener en cuenta: 
+- Posición, 
+- Dispersión,
+- Forma.
+</strong>
+<br />
+<br />
+Vemos los tipos de variables y un resumen de los valores:
+```{r, echo=FALSE}
+data(iris)
+```
+```{r}
+str(iris)
+```
+</small>
+
+Conociendo el dataset (++)
+========================================================
+
+Vemos el objeto y sus instancias:
+```{r eval=FALSE}
+View(iris) # Instancias del dataset
+```
+
+Mas datos:
+```{r}
+summary(iris)
+```
+
+Ahora vamos a estudiar el dataset...
+========================================================
+
+Decimos que nos interesa la distribución de la variable, que está determinada por los valores que toma esa variable y la frecuencia con la que los toma. Las herramientas son:
+- Posición: medidas de tendencia central y gráficos (torta, barras & histogramas),
+- Dispersión: medidas de dispersión (rangos, percentiles & desvío estandar) y gráficos (boxplot, scatterplot),
+- y en consecuencia su forma.
+
+También nos interesa la relación entre las variables:
+- Asociación: medidas de asociación (correlación & covarianza) y gráficos (scatterplot & coordenadas paralelas)
+
+Medidas de Posición
+========================================================
+
+Entre las medidas de posición mas conocidas se encuentran:
+- Media aritmética: Valor promedio entre los valores observados.
+- Moda: Valor que mas se repite entre las observaciones.
+- Mediana: Valor que divide al medio a las observaciones.
+
+<center>
+```{r echo=FALSE}
+   knitr::include_graphics('./images/posicion.png')
+```
+</center>
+
+Medidas de Posición -Medidas Cuantitativas-
+========================================================
+
+Media aritmética:
+```{r}
+mean(iris$Sepal.Length)
+```
+
+Media truncada: (Elimina outliers)
+```{r}
+mean(iris$Sepal.Length, 0.05)
+```
+
+Medidas de Posición -Medidas Cuantitativas- (++)
+========================================================
+
+Mediana y Moda:
+```{r}
+median(iris$Sepal.Length)
+library(modeest)       #Cargar la libreria
+mfv(iris$Sepal.Length)  #Calcular la moda de un atributo
+```
+
+Medidas de Posición -Medidas Cuantitativas- (+++)
+========================================================
+
+Aplicando las medidas por especie:
+```{r}
+aggregate(Petal.Length ~ Species, data=iris, FUN=median)
+```
+
+Medidas de Posición -Análisis Gráfico-
+========================================================
+
+Para variables discretas: 
+- Gráfico de Torta
+```{r}
+pie(table(iris$Species))
+```
+***
+- Gráfico de Barras
+```{r}
+barplot(table(iris$Species)) 
+```
+
+Medidas de Posición -Analisis Gráfico-
+========================================================
+<br>
+Para variables continuas: Histogramas
+<center>
+```{r}
+hist(iris$Sepal.Length)
+```
+</center>
+
+Medidas de Dispersión -Medidas Cuantitativas-
+========================================================
+Estas medidas nos dicen que tan distintas o similares tienden a ser las observaciones respecto a un valor particular (medida de tendencia central).
+
+Rango:
+```{r}
+max(iris$Sepal.Length)-min(iris$Sepal.Length)
+range(iris$Sepal.Length)
+```
+***
+Varianza (sumatoria de las diferencias cuadraticas con respecto a la media) y Desvio estandar (raiz cuadrada):
+```{r}
+var(iris$Sepal.Length)
+sd(iris$Sepal.Length)
+```
+
+Medidas de Dispersión -Medidas Cuantitativas- (++)
+========================================================
+Percentiles
+<br />
+El percentil k es un valor tal que el p% de las observaciones se encuentran debajo de este y el (100-k))% por encima del mismo.
+
+Cuantil
+Caso particular del concepto anterior donde:
+- Q1: k=25,
+- Q2: k=50,
+- Q3: k=75,
+- Q4: k=100.
+
+***
+
+<small>
+```{r eval=FALSE}
+quantile(iris$Sepal.Length,seq(0,1,0.01))
+```
+```{r}
+quantile(iris$Sepal.Length,seq(0,1,0.25))
+```
+</small>
+
+Medidas de Dispersión -Análisis Gráfico-
+========================================================
+<small>
+Diagramas de Cajas: Brindan informacion sobre
+- Posición y dispersión,
+- Simetría de la distribución,
+- Valores atípicos.
+<center>
+<br />
+```{r echo=FALSE}
+   knitr::include_graphics('./images/boxplot.png')
+```
+</center>
+
+***
+<center>
+```{r}
+boxplot(iris$Sepal.Length ~ iris$Species)
+```
+</center>
+</small>
+
+Medidas de Dispersión -Análisis Gráfico- (++)
+========================================================
+<left>
+Diagramas de dispersión: Muestran la dispersión de valores observados de acuerdo 
+a dos variables.
+</left>
+<center>
+```{r}
+plot(iris$Petal.Length, iris$Petal.Width,col=iris$Species)
+```
+</center>
+***
+<center>
+```{r}
+pairs(iris[,1:4],col=iris$Species)
+```
+</center>
+
+Medidas de Asociación -Medidas Cuantitativas-
+========================================================
+Estas medidas son utilizadas para verificar como varía una variable con respecto a otra.<br /><br />
+Podemos calcular la covarianza (dependiente de la escala de las variables)
+```{r}
+cov(iris$Petal.Length,iris$Petal.Width)
+```
+O el coeficiente de correlación de Pearson (normalizado)
+```{r}
+cor(iris$Petal.Length,iris$Petal.Width)
+```
+
+Medidas de Asociación -Análisis Gráfico-
+========================================================
+Para estudiar las relaciones entre variables, podemos utilizar:
+- Scatter Plot 2d y 3d (libreria scatterplot3d),
+- Gráfico de coordenadas paralelas,
+- Tablas de contingencia (variables discretas).
+
+Scatter 3D:
+```{r eval=FALSE}
+library(scatterplot3d)
+scatterplot3d(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length)
+```
+***
+```{r echo=FALSE}
+library(scatterplot3d)
+scatterplot3d(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length)
+```
+
+Medidas de Asociación -Análisis Gráfico- (++)
+========================================================
+Gráfico de coordenadas paralelas:
+<center>
+```{r echo=TRUE}
+library(MASS)
+parcoord(iris[1:4], col=iris$Species,var.label=T)
+```
+</center>
+
+Preprocessing... (Volumen I)
+========================================================
+<br />
+En esta clase, vamos a abordar las siguientes técnicas a través del lenguaje R:
+- Integración de datos de múltiples fuentes
+- Limpieza de datos: Manejo de Ruido
+- Selección de variables: Detección de Atributos Redundantes
+
+Integración de datos de múltiples fuentes
+========================================================
+<small>
+Existen, varias operaciones para integrar datos, por ejemplo merge:
+```{r}
+productos<-data.frame(Codigo=c(45, 46), Denominacion=c("Licuadora", "TV 4k"), Precio=c(1245.10, 14742))
+head(productos)
+stock<-data.frame(Cod=c(45, 46), stock=c(8650, 145))
+dataset<-merge(productos, stock, by.x = "Codigo",  by.y = "Cod")
+head(dataset)
+```
+<br/>
+Bonus Track: Librerías sqldf y dplyr.
+
+Bonus Track para Integración/Manipulación de datos: sqldf y dplyr
+========================================================
+
+Con sqldf vamos a manipular los dataframes como si fueran tablas sql:
+```{r}
+library(sqldf)
+join_string = "SELECT Codigo, Denominacion, Precio, stock as Stock FROM productos p INNER JOIN stock s ON p.Codigo=s.Cod"
+sql_query = sqldf(join_string,stringsAsFactors = FALSE)
+head(sql_query)
+```
+Otra librería muy conocida de R para la manipulación de dataframes es dplyr:
+```{r}
+library(dplyr)
+data.dplyr = inner_join(productos, stock, by = c("Codigo" = "Cod"))
+head(data.dplyr)
+```
+</small>
+
+Integración de datos de múltiples fuentes (++)
+========================================================
+Además, como vimos antes, debemos tener en cuenta:
++ Diferentes nombres de atributos,
+```{r}
+names(stock)
+names(stock)[1]="Codigo"
+names(stock)
+```
+***
++ Diferente representación de los mismos datos,
+```{r}
+celsius=c(26,32)
+fahrenheit=(celsius*1.8)+32
+print(fahrenheit)
+```
++ Diferente granularidad.
+```{r}
+library(lubridate)
+fechas <- c(as.Date("2011-06-26"), as.Date("2013-07-15"))
+meses <- c(5, 8)
+todos <- cbind(meses, month(fechas))
+```
+
+Limpieza de datos: Manejo de Ruido
+========================================================
+autosize:true
+Manejo de Ruido por Binning: Equal Freq // Equal Width
+<center>
+```{r}
+library(infotheo)
+
+# Discretize recibe el atributo, el método de binning y la cantidad de bins
+bin_eq_freq <- discretize(iris$Sepal.Width,"equalfreq", 5)
+
+# Nos copiamos el atributo original
+bin_eq_freq$Sepal.Width = iris$Sepal.Width
+
+# Por cada bin calculamos la media y reemplazamos en el atributo suavizado
+for(bin in 1:5){
+  bin_eq_freq$suavizado[ bin_eq_freq$X==bin] = mean(bin_eq_freq$Sepal.Width[ bin_eq_freq$X==bin])
+}
+```
+</center>
+
+Limpieza de datos: Manejo de Ruido (++)
+========================================================
+<center>
+```{r}
+# grafico Sepal.Width ordenado de menor a mayor
+plot(sort(iris$Sepal.Width,decreasing = FALSE) , type = "l", col="red", ylab = "Sepal.Width")
+# Agrego la serie de la variable media 
+lines(sort(bin_eq_freq$suavizado),type = "l", col="blue")
+```
+</center>
+
+
+Reducción de datos: Atributos Redundantes
+========================================================
+autosize:true
+<small>
+En datos de tipo cualitativos/nominales: Test de Chi-Cuadrado
+<br />
+<br />
+Hacemos la tabla de contingencia:
+```{r}
+library(MASS)
+tbl_cont = table(survey$Smoke, survey$Exer)
+print(tbl_cont)
+```
+***
+<br />
+<br />
+<br />
+Luego aplicamos el Test de Chi-cuadrado:
+```{r}
+chisq.test(tbl_cont)
+```
+</small>
+
+Reducción de datos: Atributos Redundantes (++)
+========================================================
+<small>
+En datos de tipo cuantitativos/numéricos: Coeficiente de Correlación & Covarianza
+```{r}
+llamadas=read.csv('llamadas.csv')
+```
+```{r}
+cor(llamadas$minutos,llamadas$unidades)  # Coeficiente de Pearson
+```
+<br />
+<br />
+Debemos recordar validar los supuestos para una regresión -a menudo, esto no aparece en la Bibliografía-
+***
+<center>
+```{r}
+plot(llamadas$minutos,llamadas$unidades) # Gráficamente
+```
+</center>
+</small>
