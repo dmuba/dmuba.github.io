@@ -1,0 +1,224 @@
+Preprocesamiento (Volumen III)
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Missing Values
+<br />
+(Tips de Programación)
+<br />
+<br />
+Santiago Banchero
+<br />
+Leo Lucianna
+<br />
+Juan Manuel Fernandez
+
+Minería de Datos - UBA
+
+
+Contenidos
+========================================================
+
+Vamos a ver algunos tips para implementar las siguientes técnicas en R:
+- Missing Values (Valores Faltantes)
+  + Análisis de Faltantes
+  + Registros completos
+  + Imputaciones (Media, Regresiones, Hot deck)
+  + Multiple Imputation by Chained Equations (MICE)
+  + Análisis gráfico de los métodos de imputación
+
+Análisis de Faltantes
+========================================================
+Cargamos iris y generamos datos faltantes aleatoriamente:
+```{r}
+for(i in 1:4) {
+  for(j in 1:5) {
+    inst.aleat<-sample(1:nrow(iris), 1, replace=F)
+    iris[inst.aleat, i]<-NA
+  }
+}
+```
+Podemos ver, por ejemplo, las instancias con que poseen faltante en una variable: 
+```{r}
+iris[is.na(iris$Sepal.Length),]
+```
+
+Análisis de Faltantes (++)
+========================================================
+<br />
+Podríamos contar la cantidad de faltantes para una variable:
+```{r}
+sum(is.na(iris$Sepal.Length))
+```
+<br />
+También podemos analizar la proporción de faltantes sobre el total de instancias:
+```{r}
+round(sum(is.na(iris$Sepal.Length))/nrow(iris)*100,2)
+```
+
+Valores Faltantes: Registros Completos
+========================================================
+Si quisieramos trabajar únicamente con las instancias del dataset con registros completos:
+```{r}
+iris.reg_completos<-na.omit(iris)
+nrow(iris.reg_completos)
+```
+Simplemente podemos realizar los cálculos removiendo los faltantes:
+```{r}
+print(mean(iris$Petal.Length))
+print(mean(iris$Petal.Length, na.rm = TRUE))
+```
+
+Valores Faltantes: Imputación por la Media
+========================================================
+<br />
+Seleccionamos las instancias con valor faltante y las reemplazamos por la media de ese atributo:
+```{r}
+# Sustitución por la media
+iris.imp<-iris
+iris.imp$media<-iris$Sepal.Length
+
+iris.imp$media[is.na(iris.imp$media)]<-mean(iris.imp$media, na.rm = TRUE)
+
+# Verificamos que no quedan faltantes
+sum(is.na(iris.imp$media))
+```
+
+Valores Faltantes: Imputación por Regresión
+========================================================
+Primero ajustamos el modelo de Regresión:
+```{r}
+#Armamos el modelo
+rl_model<-lm(iris.imp$Sepal.Length ~ iris.imp$Sepal.Width+iris.imp$Petal.Length, data = iris.imp)
+
+# Imprimimos los coeficientes del modelo
+print(rl_model$coefficients)
+```
+Luego, con la instrucción summary tenemos un resumen con los coeficientes y la eficiencia del modelo ajustado, entre otras cosas
+```{r eval=FALSE}
+summary(rl_model)
+```
+
+Valores Faltantes: Imputación por Regresión (++)
+========================================================
+Analizamos el modelo:
+<small>
+```{r echo=FALSE}
+#Armamos el modelo
+rl_model<-lm(iris.imp$Sepal.Length ~ iris.imp$Sepal.Width+iris.imp$Petal.Length, data = iris.imp)
+summary(rl_model)
+```
+</small>
+
+Valores Faltantes: Imputación por Regresión (+++)
+========================================================
+
+Ahora, solo queda imputar los valores faltantes en función del modelo generado:
+```{r}
+# Imputamos en base al modelo
+iris.imp$regresion<-iris.imp$Sepal.Length
+
+SW<-iris.imp$Sepal.Width[is.na(iris.imp$Sepal.Length)]
+PL<-iris.imp$Petal.Length[is.na(iris.imp$Sepal.Length)]
+coef<-rl_model$coefficients
+
+# Hacemos la imputación
+iris.imp$regresion[is.na(iris.imp$regresion)]<-coef[1]+SW*coef[2]+PL*coef[3]
+
+# Verificamos que no existen faltantes
+sum(is.na(iris.imp$regresion))
+```
+
+Valores Faltantes: Imputación Hot Deck
+========================================================
+Para hot deck, vamos a utilizar la librería VIM.
+La función hotdeck imputará los datos directamente sobre el atributo del parámetro y generará un nuevo atributo -boolean- que indica las instancias imputadas:
+```{r}
+
+# Cargamos la librería
+library(VIM)
+
+# Definimos un dataframe auxiliar para no perder la variable original
+df_aux<-hotdeck(iris, variable="Sepal.Length")
+iris.imp$hotdeck<-df_aux$Sepal.Length
+iris.imp$hotdeckbool<-df_aux$Sepal.Length_imp
+
+# Verificamos que no existen faltantes
+sum(is.na(iris.imp$hotdeck))
+```
+
+Multiple Imputation by Chained Equations (MICE)
+========================================================
+Vamos a trabajar con MICE, esta librería provee un gráfico que detalla la cantidad de atributos con missing por cada atributo:
+<center>
+```{r}
+# Cargamos la librería
+library(mice)
+# Gráfico con el resumen de los missing para el dataset iris
+md.pattern(iris)
+```
+</center>
+
+MICE (++)
+========================================================
+Ahora avanzamos sobre la imputación:
+<center>
+```{r}
+# Imputamos los datos con pmm (media, para valores numéricos)
+imputed_Data <- mice(iris, m=5, maxit = 3, method = 'pmm', seed = 500)
+```
+
+MICE (++)
+========================================================
+Ahora, con la función complete recuperamos los datos completos:
+```{r}
+#Tomamos los datos completos
+completeData <- complete(imputed_Data)
+
+# Los asignamos a una nueva variable
+iris.imp$mice <- completeData$Sepal.Length
+
+# Verificamos que no existen faltantes
+sum(is.na(iris.imp$mice))
+```
+
+Análisis Gráfico de los métodos de imputación
+========================================================
+Ahora, analizamos gráficamente la distribución original y su variación luego de realizar las imputaciones:
+
+```{r eval=FALSE}
+# Quitamos los atributos que no vamos a usar y renombramos Sepal.Length
+iris.imp<-iris.imp[,-c(2:5)]
+names(iris.imp)[1]<-"original"
+
+# Analisis grafico de los resultados
+plot(density(iris.imp$original, na.rm=TRUE), type = "l", col="red", ylab = "Original", ylim=c(0,0.5))
+lines(density(iris.imp$media, na.rm=TRUE), type = "l", col="blue")
+lines(density(iris.imp$regresion, na.rm=TRUE), type = "l", col="green")
+lines(density(iris.imp$hotdeck, na.rm=TRUE), type = "l", col="yellow")
+lines(density(iris.imp$mice, na.rm=TRUE), type = "l", col="black")
+legend(7, 0.5, legend=c("Original", "Media", 'Regresión', 'Hotdeck', 'MICE'), col=c("red", "blue", 'green','yellow', "black"), lty=1, cex=0.8)
+```
+
+Análisis Gráfico de los métodos de imputación (++)
+========================================================
+Obtenemos los siguientes gráficos de densidad:
+<center>
+```{r echo=FALSE}
+# Quitamos los atributos que no vamos a usar y renombramos Sepal.Length
+iris.imp<-iris.imp[,-c(2:5)]
+names(iris.imp)[1]<-"original"
+
+# Analisis grafico de los resultados
+plot(density(iris.imp$original, na.rm=TRUE), type = "l", col="red", ylab = "Original", ylim=c(0,0.5))
+lines(density(iris.imp$media, na.rm=TRUE), type = "l", col="blue")
+lines(density(iris.imp$regresion, na.rm=TRUE), type = "l", col="green")
+lines(density(iris.imp$hotdeck, na.rm=TRUE), type = "l", col="yellow")
+lines(density(iris.imp$mice, na.rm=TRUE), type = "l", col="black")
+legend(7, 0.5, legend=c("Original", "Media", 'Regresión', 'Hotdeck', 'MICE'), col=c("red", "blue", 'green','yellow', "black"), lty=1, cex=0.8)
+```
+
+</center>
+
