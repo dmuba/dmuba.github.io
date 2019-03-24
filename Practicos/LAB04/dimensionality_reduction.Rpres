@@ -1,0 +1,143 @@
+Preprocesamiento (Volumen IV)
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Reducción de Dimensionalidad (Dimensionality Reduction)
+<br />
+(Tips de Programación)
+<br />
+<br />
+Santiago Banchero
+<br />
+Leo Lucianna
+<br />
+Juan Manuel Fernandez
+<br />
+<br />
+
+Minería de Datos - UBA
+
+
+Contenidos
+========================================================
+
+Vamos a ver algunos tips para implementar las siguientes técnicas en R:
+- Reducción de dimensionalidad
+  + Low Variance Factor
+  + Reducing Highly Correlated Columns
+  + Variables Importantes (Random Forest)
+
+Reducción de dimensionalidad: Low Variance Factor
+========================================================
+
+Se eliminan los datos con escasa varianza, para ello se realiza el análisis LVF:
+```{r}
+# Tomamos los atributos numéricos del dataframe
+lvf<-na.omit(iris[,-c(5)])
+
+# Primero normalizamos los datos (Min-Max) a un rango 0-1
+for(i in 1:ncol(lvf)) {
+  lvf[,i] <- (lvf[,i]-min(lvf[,i]))/(max(lvf[,i])-min(lvf[,i]))
+}
+
+# Calculamos la varianza para cada atributo y redondeamos a 4 decimales
+varianzas<-round(apply(lvf, 2, var),4)
+
+print(varianzas)
+```
+
+Reducción dimensionalidad: Atrib. Correlacionados
+========================================================
+Primero debemos analizar si hay candidatos, podemos hacerlo gráficamente con un heatmap:
+```{r eval=FALSE}
+library(gplots)
+library(RColorBrewer)
+# Reducing Highly Correlated Columns
+dev.off()
+ds.cor=cor(iris[,-c(5)], use="complete.obs")
+heatmap.2(ds.cor,
+          cellnote = round(ds.cor,1), 
+          main = "Correlación",
+          notecol="black",     
+          density.info="none", 
+          trace="none",        
+          margins =c(12,12),    
+          col=brewer.pal('RdYlBu', n=5),  
+          dendrogram="none",     
+          Colv="NA")            
+```
+
+Reducción dimensionalidad: Atrib. Correlacionados
+========================================================
+El gráfico de heatmap presenta información sobre la correlación entre las variables, con colores de referencia:
+<center>
+<small>
+```{r echo=FALSE}
+library(gplots)
+library(RColorBrewer)
+# Reducing Highly Correlated Columns
+ds.cor=cor(iris[,-c(5)], use="complete.obs")
+heatmap.2(ds.cor,
+          cellnote = round(ds.cor,1), 
+          main = "Correlación",
+          notecol="black",     
+          density.info="none", 
+          trace="none",        
+          margins =c(12,12),    
+          col=brewer.pal('RdYlBu', n=5),  
+          dendrogram="none",     
+          Colv="NA")            
+```
+</small>
+</center>
+
+Atributos Correlacionados (++)
+========================================================
+Vamos a hacer el análisis "a mano" y con la librería "caret":
+```{r}
+data.numeric<-na.omit(iris[,-c(5)])
+
+# Calculo matriz de correlacion
+matriz.correlacion<-cor(data.numeric)
+
+# Verifico la Correlación con la matríz
+print(matriz.correlacion)
+```
+
+Atributos Correlacionados (+++)
+========================================================
+Ahora lo hacemos con la librería Caret:
+```{r}
+library(caret)
+
+# Buscamos atributos con correlaciones superiores a 0.75
+highlyCorrelated <- findCorrelation(matriz.correlacion, cutoff=0.75)
+
+# Imprimimos los nombres de los atributos que cumplen con la condición anterior
+print(names(data.numeric[,highlyCorrelated]))
+
+```
+Luego deberíamos analizar eliminar esos atributos.
+
+
+Reducción de dimensionalidad: Random Forests
+========================================================
+Utilizamos la técnica de Random Forest para ponderar los atributos en función de la importancia en la clasificación.
+Primero corremos el modelo:
+```{r}
+library(randomForest)
+
+model_rf<-randomForest(Species ~ ., data=iris, na.action = na.omit)
+importance(model_rf)
+```
+
+Reducción de dimensionalidad: Random Forests (++)
+========================================================
+También podemos realizar una gráfica con la importacia de cada variable:
+<center>
+```{r}
+varImpPlot(model_rf)
+```
+</center>
