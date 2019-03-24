@@ -1,0 +1,194 @@
+
+Preprocesamiento (Volumen II)
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Detección de outliers (valores anómalos)
+<br />
+(Tips de Programación)
+<br />
+<br />
+Santiago Banchero
+<br />
+Leo Lucianna
+<br />
+Juan Manuel Fernandez
+<br />
+<br />
+
+Minería de Datos - UBA
+
+Contenidos
+========================================================
+- Análisis gráfico de outliers
+- Técnicas de detección y tratamiento de outliers
+  + Detección de outliers mediante Rango intercuartil
+  + Detección de outliers mediante desvíos de la media
+  + Detección de outliers mediante Local Outlier Factor (LOF) -Multivariado-
+
+Limpieza de datos: Detección de Outliers
+========================================================
+Busquemos outliers en el atributo Sepal.Width del dataset iris:
+<center>
+```{r echo=FALSE}
+setwd("C:/Users/unlu/Google Drive/PC-Juan/Docencia  & Investigacion/Docencia/Mineria de Datos-UBA/LAB02/Presentacion")
+```
+
+```{r}
+ruidoso=read.csv('ruidoso.txt')
+data = ruidoso$Road_55dB
+plot(sort(data, decreasing = FALSE))
+```
+</center>
+Hay outliers? Cuales?
+
+Análisis del atributo ruidoso$Road_55dB
+========================================================
+Observemos analíticamente la distribución de la variable:
+<br />
+Media:
+```{r}
+mean(data)
+```
+Mínimo:
+```{r}
+min(data)
+```
+Máximo:
+```{r}
+max(data)
+```
+
+Detección de outliers: Análisis gráfico (++)
+========================================================
+Mediante boxplot podemos observar gráficamente la distribución de la variable:
+<br />
+<center>
+```{r echo=FALSE} 
+knitr::include_graphics("images/boxplot.png")
+```
+</center>
+
+Un criterio de detección de outliers podría ser eliminar los datos que se encuentran por fuera (abajo/arriba) de los "bigotes".
+
+Análisis del atributo ruidoso$Road_55dB (++)
+========================================================
+Observemos gráficamente la distribución de la variable mediante boxplot:
+<br />
+<center>
+```{r}
+boxplot(data)
+```
+</center>
+
+Claramente, la distribución de la variable no es "normal", o si? Muchas veces los outliers "esconden" la distribución real de un feature.
+
+Detección de Outliers mediante IRQ
+========================================================
+- Detección de outliers mediante el IRQ*1,5 (Rango intercuartil)
+```{r}
+data.riq<-IQR(data)
+print(data.riq)
+```
+```{r}
+cuantiles<-quantile(data, c(0.25, 0.5, 0.75), type = 7)
+print(cuantiles)
+```
+
+Detección de Outliers mediante IRQ (++)
+========================================================
+Multiplicamos el cuantil 1 por 1.5 para determinar la barrera MENOR para la detección de outliers:
+<center>
+```{r}
+outliers_min<-as.numeric(cuantiles[1])-1.5*data.riq
+print(outliers_min)
+```
+</center>
+Y multiplicamos el cuantil 1 por 1.5 para determinar la barrera MAYOR para la detección de outliers:
+<center>
+```{r}
+outliers_max<-as.numeric(cuantiles[3])+1.5*data.riq
+print(outliers_max)
+```
+</center>
+
+Observemos el atributo ruidoso$Road_55dB "sin" outliers
+========================================================
+```{r}
+plot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+***
+```{r}
+boxplot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+
+Detección de Outliers mediante Desvíos de la Media
+========================================================
+Otra alternativa es realizar detección de outliers utilizando alguna medida de tendencia central.
+<br />
+<br />
+Detección por N desvíos de la media (En el ejemplo N=3):
+```{r}
+N=3
+data<-ruidoso$Road_55dB
+desvio<-sd(data)
+print(desvio)
+```
+```{r}
+outliers_max<-mean(data)+N*desvio
+print(outliers_max)
+```
+```{r}
+outliers_min<-mean(data)-N*desvio
+print(outliers_min)
+```
+
+Observemos el atributo ruidoso$Road_55dB "sin" outliers
+========================================================
+```{r}
+plot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+***
+```{r}
+boxplot(sort(data[data>outliers_min & data<outliers_max], decreasing = FALSE))
+```
+
+
+Detección de Outliers: Local Outlier Factor
+========================================================
+<br />
+Ahora abordamos, Local Outlier Factor [1] que es una técnica multivariada, dado que tiene en cuenta varios atributos para la detección del outlier. La idea es calcular un score para cada instancia, el cual representa un "índice" de densidad con respecto a los K vecinos mas cercanos.
+```{r}
+# Cargamos la librería
+library(Rlof)
+data <- ruidoso
+# Calculamos LOF para k=3 vecinos por instancia
+data$score<-lof(data, k=3)
+```
+<br />
+[1] https://cran.r-project.org/web/packages/Rlof/Rlof.pdf 
+
+
+Detección de Outliers: LOF (++)
+========================================================
+Ahora analizamos el umbral a partir del cual consideramos que el score nos indica que es un outlier:
+<center>
+```{r}
+# Ploteamos los scores
+plot(sort(data$score, decreasing = FALSE))
+```
+</center>
+
+Análisis del umbral para determinar outlier
+========================================================
+A partir del plot anterior, podriamos determinar que N=2 es un umbral de score "aceptable" para determinar si una observación es un outlier o no:
+<center>
+```{r}
+# Reemplazamos suponiendo un umbral de 1.8
+umbral <-1.8
+data.lof = data[data$score<umbral,]
+plot(sort(data.lof$score, decreasing = FALSE))
+```
+</center>
