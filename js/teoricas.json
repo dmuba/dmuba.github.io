@@ -14,7 +14,12 @@
          "ref": "Clase 3: Detección de Outliers",
          "link": "https://docs.google.com/presentation/d/1r5fpVZeBuAiiMVY2tji-XnPHP9Pv5u9sH6E306K1-F8/edit?usp=sharing",
          "caption": "Abrir"
-        },
+        }        
+    ]
+}
+
+/*
+,
         {"id": 4,
          "ref": "Clase 4: Preprocesamiento: Tratamiento de datos faltantes y reducción de dimensionalidad",
          "link": "https://docs.google.com/presentation/d/1nLQG1lRVJQO1vqtTL0R6H9j8qvbUldxeF-daMg2Brcg/edit?usp=sharing",
@@ -56,7 +61,4 @@
          "caption": "Abrir"
         }
       
-        
-        
-    ]
-}
+*/
