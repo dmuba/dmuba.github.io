@@ -1,24 +1,43 @@
+# Guía TP01: Comenzando a explorar los datos
 
-# Cómo levantar los datos en R.
+En esta guía se dan algunos tips y herramientas iniciales para poder cargar y manipular a los datos para el TP01.
+
+# Cómo cargar los datos en R.
+
+A diferencia de los datasets utilizados en los TP de laboratorios, los archivos con los conjuntos de datos no están en formato CSV. En este caso se utilizan archivos en formato JSON lines. Este formato tiene como ventaja de poder almacenarlos en una base de datos NoSql orientada a documentos. En este caso vamos a utilizar MongoDB.
+
+Existen al menos dos formas de cargar los datos en R. Una buena forma es instalar MongoDB e importar los archivos. Posteriormente generar un dataframe en R a partir de consultas sobre esta base de datos. Si bien esta opción es recomendable, recién se explorará el tema de bases de datos NoSQL en la semana 7. En esta guía se muestra los pasos a seguir para poder cargar los datos de esta manera para quienes quieran ir avanzando con la instalación del entorno necesario para instalar MongoDB.
+
+La segunda opción permite cargar los dataframes en R directamente de los archivos. Esta opción les permitirá poder ir arrancando con los análisis para el TP.
 
 ## Usando MongoDB
 
 ### 1 - Instalación MongoDB
 
+A continuación se muestran los links para descargar e instalar MongoDB. 
+
+MongoDB es un motor de bases de datos. Este motor es un programa servidor. Así que si se instala e inicializa queda corriendo en segundo plano. Para poder acceder y consultar a las bases de datos se necesita un programa cliente. Este cliente puede ser Robo3T. Para conectarse desde este cliente al server MongoDB deberán usarse los parámetros de configuración por defecto (Address=localhost:27017). Otro cliente, como veremos después, es R cargando las correspondientes librerías.
+
 - [Instalador para Windows (64-bit)](https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.4-signed.msi)
 - [Mac/Linux](https://www.mongodb.com/download-center?#community)
-- Opcional:  Cliente para MongoDB [Robo3T](https://robomongo.org/download")
+- Cliente para MongoDB [Robo3T](https://robomongo.org/download")
 
 ### 2 - Importar los datos
 
-```
-> mongoimport --db precios_caba --collection sucursales --file sucursales.json
-2019-04-30T11:24:17.100-0300	connected to: localhost
-2019-04-30T11:24:17.150-0300	imported 837 documents
-```
+MongoDB provee un comando que puede ser ejecutado en la consola del sistema operativo para importar los archivos json line a colecciones de documentos. Para adelantar un poco el vocabulario, una colección en MongoDB es equivalente a una tabla en SQL, y un documento a una fila.
+
+Este comando es [mongoimport](https://docs.mongodb.com/manual/reference/program/mongoimport/), con el parámetro --db se especifica la base de datos a usar (no es necesario crearla, si no existe una base de datos con ese nombre, la crea) luego con --collection se especifica el nombre de la colección que queremos crear para volcar los documentos, y finalmente con el parámetro --file se indica el archivo que contiene a los datos.
+
+La forma de llamar al comando es el siguiente:
 
 ```
-> mongoimport --db precios_caba --collection sucursales --file sucursales.json
+mongoimport --db <db_name> --collection <collection_name> --file <file path>
+```
+
+A continuación se muestra el resultado de ejecución en consola de las importaciones de los archivos del TP.
+
+```
+mongoimport --db precios_caba --collection sucursales --file sucursales.json
 2019-04-30T11:24:17.100-0300	connected to: localhost
 2019-04-30T11:24:17.150-0300	imported 837 documents
 ```
@@ -49,6 +68,8 @@
 
 ### 3 - Instalación paquete de R
 
+Para conectarse a MongoDB desde R puede utilizarse alguna de estas dos librerías: mongolite o Rmongo. 
+
 #### Opción mongolite:
 
 ```R
@@ -64,6 +85,8 @@ install.packages("RMongo")
 ```
 
 ### 4 - Carga del dataset a partir de consulta en MongoDB
+
+Ahora sí, desde R se puede generar una conexión a MongoDB, y generar queries para consultar todos los documentos de una colección y cargarlos en un dataframe.
 
 ```R
 library(mongolite)
@@ -84,6 +107,8 @@ precios <- dbGetQuery(db, 'precios', "")
 
 
 ## Carga de datos desde R
+
+Para cargar los archivos de datos de TP en dataframes de R sin tener que instalar MongoDB, puede usarse el paquete jsonlite.
 
 ## 1 - Instalación de package
 
