@@ -4,10 +4,9 @@
 ## Usando MongoDB
 
 ### 1 - Instalación MongoDB
-Links
 
 - [Instalador para Windows (64-bit)](https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.4-signed.msi)
-- [Mac/Linux]: (https://www.mongodb.com/download-center?#community)
+- [Mac/Linux](https://www.mongodb.com/download-center?#community)
 - Opcional:  Cliente para MongoDB [Robo3T](https://robomongo.org/download")
 
 ### 2 - Importar los datos
