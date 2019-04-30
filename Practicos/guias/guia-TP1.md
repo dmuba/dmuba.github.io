@@ -8,7 +8,6 @@ Links
 
 - [Instalador para Windows (64-bit)](https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.4-signed.msi)
 - [Mac/Linux]: (https://www.mongodb.com/download-center?#community)
-
 - Opcional:  Cliente para MongoDB [Robo3T](https://robomongo.org/download")
 
 ### 2 - Importar los datos
@@ -52,14 +51,18 @@ Links
 ### 3 - Instalación paquete de R
 
 #### Opción mongolite:
-install.package("mongolite")
 
-* [Dependencias para Linux/Mac](https://jeroen.github.io/mongolite/)
-** En Windows no es necesario instalar dependencias
+```R
+install.package("mongolite")
+```
+- [Dependencias para Linux/Mac](https://jeroen.github.io/mongolite/)
+- En Windows no es necesario instalar dependencias
 
 #### Opción Rmongo:
 
+```R
 install.packages("RMongo")
+```
 
 ### 4 - Carga del dataset a partir de consulta en MongoDB
 
@@ -81,7 +84,7 @@ precios <- dbGetQuery(db, 'precios', "")
 ```
 
 
-## Desde R
+## Carga de datos desde R
 
 ## 1 - Instalación de package
 
@@ -97,5 +100,3 @@ sucursales = stream_in(file("sucursales.json",open="r"))
 productos = stream_in(file("productos.json",open="r"))
 precios = stream_in(file("precios.json",open="r"))
 ```
-
-
