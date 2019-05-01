@@ -139,7 +139,7 @@ Como funcionalidad de integración de datos, la libraría perimte hacer joins de
 
 # Transformación de filas a columnas y viceversa
 
-La función reshape de R puede ser de mucha utilidad para este TP. Se utiliza en dataframes que contiene varias filas que representan una misma entidad, pero en distintos estados o distintas mediciones. Este comando permite crear una única fila que agrupa a la entidad y en las columnas se representan los distintos estados o mediciones. Además admite el caso inverso, es decir pasar de múltiples columnas a múltiples filas. Estas operaciones pueden ser útiles para manipular las mediciones de precios.
+La función reshape de R puede ser de mucha utilidad para este TP. Se utiliza en dataframes que contienen varias filas que representan una misma entidad, pero en distintos estados o distintas mediciones. Este comando permite crear una única fila que agrupa a la entidad y en las columnas se representan los distintos estados o mediciones. Además admite el caso inverso, es decir pasar de múltiples columnas a múltiples filas. Estas operaciones pueden ser útiles para manipular las mediciones de precios.
 
 La siguiente refrerencia explica y muestra ejemplos de la función:
 - https://stats.idre.ucla.edu/r/faq/how-can-i-reshape-my-data-in-r/
