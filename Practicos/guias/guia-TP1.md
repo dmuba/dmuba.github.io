@@ -124,3 +124,24 @@ sucursales = stream_in(file("sucursales.json",open="r"))
 productos = stream_in(file("productos.json",open="r"))
 precios = stream_in(file("precios.json",open="r"))
 ```
+
+
+# Transformación de datos con dplyr
+
+El paquete dplyr es una alternativa interesante a las funciones por defecto de R (merge, aggregate, apply, etc) para integrar, transformar y manipular datos.
+
+Los siguientes tutoriales dan un pantallazo de las funcionalidades de selección de columnas, filtrado de casos, creación de nuevas variables, agrupación y aplicación de funciones de agrupación.
+https://rpubs.com/justmarkham/dplyr-tutorial
+https://rpubs.com/Jo_/dplyr_pipe (en español)
+
+Como funcionalidad de integración de datos, la libraría perimte hacer joins de dataframes al estilo SQL.
+https://dplyr.tidyverse.org/reference/join.html (documentación)
+
+# Transformación de filas a columnas y viceversa
+
+La función reshape de R puede ser de mucha utilidad para el TP. Se utiliza en dataframes que contiene varias filas que contienen la misma entidad, pero en distintos estados o distintas mediciones. Este comando permite crear una única fila que agrupa a la entidad y en las columnas se representan los distintos estados o mediciones. Además admite el caso inverso, es decir pasar de múltiples columnas a múltiples filas. Estas operaciones pueden ser útiles para manipular las mediciones de precios.
+
+La siguiente refrerencia explica el uso de esta función:
+https://stats.idre.ucla.edu/r/faq/how-can-i-reshape-my-data-in-r/
+
+
