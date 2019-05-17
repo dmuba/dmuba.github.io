@@ -34,6 +34,11 @@
          "ref": "Clase 7: Bases de datos NoSQL",
          "link": "https://docs.google.com/presentation/d/1vm8e2oTAjsvkR2WBCiyVLBxrWo3Rc2SqcAxPjtn3FKg/edit?usp=sharing",
          "caption": "Abrir"
+        } ,       
+        {"id": 8,
+         "ref": "Clase 8: Datos No Estructurados. De bases de datos textuales a features",
+         "link": "https://docs.google.com/presentation/d/1BCNNOGaiTb3mpqtRaA2yTmtJyGdXxzGy0am_BPJGUrE/edit?usp=sharing",
+         "caption": "Abrir"
         }        
     ]
 }
