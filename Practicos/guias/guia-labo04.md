@@ -170,7 +170,7 @@ text(x, y, labels = rownames(fit$points), cex=.7, col = c("#e41a1c","#377eb8","#
 
 ```
 
-##Consignas propuestas:
+## Consignas propuestas:
 A partir del dataset con los tweets con el tag **dólar**, trabaje en las siguientes consignas:
 1. Genere la matriz documento-término a partir del texto de los tweets. Explore la matriz generada.
 2. A simple vista, ¿cuales son los términos con mayor frecuencia?
