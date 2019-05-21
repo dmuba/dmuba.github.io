@@ -15,19 +15,21 @@ Leer una colección de tweets desde la base MongoDB que utilizamos en la guía a
 Levantar el paquete R que quieran usar para acceder a MongoDB
 
 ```R
-# Se puede utilizar RMongo o mongolite
+# Se puede utilizar mongolite
 
-install.packages("RMongo")
+install.packages("mongolite")
 
-library(RMongo)
+library(mongolite)
 ```
 
 Leemos los datos
 
 ```R
-# Mi base se llama Tweets
-tweets <- mongoDbConnect('Tweets')
-print(dbShowCollections(tweets))
+# Mi base se llama __tweets__ y mi colección se llama __dolar__
+
+tweets = mongo(collection = "dolar", db = "tweets" )
+
+print(tweets$count())
 
 ```
 
@@ -35,10 +37,10 @@ Traemos todos los tweets
 
 ```R
 # No filtro ningún dato, me traigo todo
-query <- dbGetQuery(tweets, 'txt_tweets', "")
+query <- tweets$find('{}')
 
 # Ahora solo me quedo con las columnas del usuario y el texto del tweet
-tweets_corpus_df <- query[c('screen_name', 'text')]
+tweets_corpus_df <- tweets$find(query='{}', fields='{"screen_name": "TRUE", "text": "TRUE"}')
 
 ```
 
