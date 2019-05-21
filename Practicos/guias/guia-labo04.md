@@ -172,5 +172,10 @@ text(x, y, labels = rownames(fit$points), cex=.7, col = c("#e41a1c","#377eb8","#
 
 ```
 
-
-
+## Consignas propuestas:
+A partir del dataset con los tweets con el tag **dólar**, trabaje en las siguientes consignas:
+1. Genere la matriz documento-término a partir del texto de los tweets. Explore la matriz generada.
+2. A simple vista, ¿cuales son los términos con mayor frecuencia?
+3. Aplique las técnicas de preprocesamiento que aparecen en esta guía para los términos. ¿Qué sucede con respecto a la matriz anterior?
+4. Explore las funciones para realizar **stemming** del paquete **tm**. Compare los resultados en cada caso.
+5. Genere la nube de palabras a partir de las matrices anteriores. Analice los resultados obtenidos.
