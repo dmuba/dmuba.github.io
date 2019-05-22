@@ -47,7 +47,7 @@ tweets_corpus_df <- tweets$find(query='{}', fields='{"screen_name": "TRUE", "tex
 
 ## Algunas consultas de ejemplo 
 
-Tutorial [[Ir]](https://jeroen.github.io/mongolite/query-data.html)
+Tutorial con ejemplos de mongolite [[Ir]](https://jeroen.github.io/mongolite/query-data.html).
 
 ```R
 # Queries con mongolite
@@ -63,6 +63,20 @@ q2 = tweets$find(query = '{"country_code": "AR"}', limit = 100)
 
 # Recuperar los tweets que dicen inflaci.n 
 q3 = tweets$find(query = '{"text": {"$regex": "inflaci.n", "$options" : "i"}}', limit = 100)
+
+# Agregaciones con $aggregate y $project
+# Contamos para cada usuario la cantidad de tweets N y el promedio de favoritos de sus publicaciones 
+
+q4 = tweets$aggregate(
+  '[{"$group":{"_id": "$screen_name", 
+               "N": {"$sum":1}, 
+                "PROM": {"$avg": "$favorite_count"}}}, 
+    {"$project": {"screen_name": 1, "N": 1, "PROM":1}}]',
+  options = '{"allowDiskUse":true}'
+)
+
+
+
 
 ```
 
