@@ -47,7 +47,7 @@ tweets_corpus_df <- tweets$find(query='{}', fields='{"screen_name": "TRUE", "tex
 
 ## Algunas consultas de ejemplo 
 
-Tutorial: [](https://jeroen.github.io/mongolite/query-data.html)
+Tutorial ([Ir])[https://jeroen.github.io/mongolite/query-data.html]
 
 ```R
 # Queries con mongolite
