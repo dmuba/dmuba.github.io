@@ -39,10 +39,33 @@ Traemos todos los tweets
 # No filtro ningún dato, me traigo todo
 query <- tweets$find('{}')
 
+
 # Ahora solo me quedo con las columnas del usuario y el texto del tweet
 tweets_corpus_df <- tweets$find(query='{}', fields='{"screen_name": "TRUE", "text": "TRUE"}')
 
 ```
+
+## Algunas consultas de ejemplo 
+
+Tutorial: [](https://jeroen.github.io/mongolite/query-data.html)
+
+```R
+# Queries con mongolite
+
+# Recuperar los tweets que tienen más de 10 favoritos
+
+q1 = tweets$find(query = '{"favorite_count":{"$gte": 10}}', 
+                 limit = 10, 
+                 fields='{"screen_name": "TRUE", "text": "TRUE", "favorite_count": "TRUE"}')
+
+# Recuperar los tweets donde el código de pais es AR
+q2 = tweets$find(query = '{"country_code": "AR"}', limit = 100)
+
+# Recuperar los tweets que dicen inflaci.n 
+q3 = tweets$find(query = '{"text": {"$regex": "inflaci.n", "$options" : "i"}}', limit = 100)
+
+```
+
 
 Exploremos un poco qué es lo que recuperamos
 
