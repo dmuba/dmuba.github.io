@@ -101,7 +101,7 @@ e) Utilizar búsquedas por cadenas
     db.getCollection('tweets').find({screen_name: {$regex: "^P.*"} })
 
 
-## Algunas consultas de ejemplo 
+## Algunas consultas más de ejemplo 
 
 Tutorial con ejemplos de mongolite [[Ir]](https://jeroen.github.io/mongolite/query-data.html).
 
