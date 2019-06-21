@@ -39,11 +39,16 @@
          "ref": "Clase 8: Datos No Estructurados. De bases de datos textuales a features",
          "link": "https://docs.google.com/presentation/d/1BCNNOGaiTb3mpqtRaA2yTmtJyGdXxzGy0am_BPJGUrE/edit?usp=sharing",
          "caption": "Abrir"
-        } ,       
+        } ,
         {"id": 9,
          "ref": "Clase 9: Reglas de asociación",
          "link": "https://docs.google.com/presentation/d/15kN69OL3Qv2ed-zusG4u5q6qxCBeDG19CKtfe65I0hY/edit?usp=sharing",
          "caption": "Abrir"
-        }        
+        },
+        {"id": 10,
+         "ref": "Clase 10: Frequent Pattern Growth (FP-Growth) Algorithm",
+         "link": "https://docs.google.com/presentation/d/1YMMMzzHx3lw0K-rWQclWJ6fcuHUOiBOTMm_V51yCTT8/edit?usp=sharing",
+         "caption": "Abrir"
+        }
     ]
 }
