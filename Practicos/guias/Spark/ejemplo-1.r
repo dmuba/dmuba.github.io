@@ -3,13 +3,14 @@ library(dplyr)
 library(arules)
 library(SparkR)
 
-spc = sparkR.session(master = "spark://192.168.1.149:7077", sparkEnvir = list(spark.driver.memory="3g"))
+master_spark = "spark://192.168.56.101:7077"
+spc = sparkR.session(master = master_spark, sparkEnvir = list(spark.driver.memory="3g"))
 
 df.iris1 = iris
-df.iris1$Sepal.Length <- discretize(iris$Sepal.Length, categories = 3, labels = c("bajo","medio","alto")) 
-df.iris1$Sepal.Width <- discretize(iris$Sepal.Width, categories = 3, labels = c("bajo","medio","alto")) 
-df.iris1$Petal.Length <- discretize(iris$Petal.Length, categories = 3, labels = c("bajo","medio","alto")) 
-df.iris1$Petal.Width <- discretize(iris$Petal.Width, categories = 3, labels = c("bajo","medio","alto")) 
+df.iris1$Sepal.Length <- discretize(iris$Sepal.Length, breaks = 3, labels = c("bajo","medio","alto")) 
+df.iris1$Sepal.Width <- discretize(iris$Sepal.Width, breaks = 3, labels = c("bajo","medio","alto")) 
+df.iris1$Petal.Length <- discretize(iris$Petal.Length, breaks = 3, labels = c("bajo","medio","alto")) 
+df.iris1$Petal.Width <- discretize(iris$Petal.Width, breaks = 3, labels = c("bajo","medio","alto")) 
 
 as_transaction = function(r){
   return(paste(paste(names(r),r,sep = "="), collapse = ','))
