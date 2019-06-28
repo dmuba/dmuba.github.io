@@ -17,6 +17,8 @@ Cada transacción representa a un usuario y los itemsets de las transacciones so
 
 El set de datos está dividido en 3 partes. La primera es el set de entrenamiento, donde vamos a generar reglas.
 
+Link de descarga: [data_movielens.zip](https://github.com/dmuba/dmuba.github.io/raw/master/Practicos/guias/datasets/data_movielens.zip)
+
 ```R
 library(arules)
 
@@ -85,7 +87,7 @@ inspect(head(reglas))
 
 ```
 
-## Recomendaciones películas usando las reglas generadas
+## Recomendaciones de películas usando las reglas generadas
 
 Para recomendar películas a un usuario determinado, se usará a su transacción como entrada, es decir, el conjunto de
 películas favoritas. Se seleccionarán a las reglas que coincidan en el antecedente con algún subconjunto de
