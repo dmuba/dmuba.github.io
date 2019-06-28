@@ -1,20 +1,19 @@
 # Guía LABORATORIO IX: Generación de recomendaciones a partir de reglas de asociación
 
-En esta guía se propone usar reglas de asociación con apriori para generar recomendaciones de películas.
+En esta guía se propone usar reglas de asociación con el algoritmo apriori para generar recomendaciones de películas.
 
 El algoritmo apriori está pensado para realizar una búsqueda generalizada de patrones de ítems. Si bien
-no es un algoritmo de recomendación per se, resultando poco escalable, con las reglas generadas se obtienen recomendaciones
+no es un algoritmo de recomendación per se, ya que es poco escalable, con las reglas generadas se pueden obtener recomendaciones
 de  popularidad (reglas 1-itemset), de tipo de asociación de productos (reglas 2-itemsets), o incluso asociaciones más complejas
 (>2-itemsets).
 
 ## Datos
 
-Vamos a utilizar un dataset Movielens. [Movielens](https://movielens.org/) es una aplicación web en donde los usuarios pueden hacer calificaciones de películas.
-Esta aplicación tiene fines netamente académicos, con el objetivo de generar datasets y evaluar algoritmos de sistemas de recomendación.
+Vamos a utilizar un dataset de Movielens. [Movielens](https://movielens.org/) es una aplicación web en donde los usuarios pueden hacer calificaciones de películas.
+Esta aplicación tiene fines netamente académicos, con el objetivo de generar datasets y estudiar algoritmos de sistemas de recomendación.
 
-Para esta actividad se realizó un preprocesamiento en los datos para que puedan ser leidos en formato transacción.
-Cada transacción representa un usuario y los itemsets de las transacciones son películas con calificaciones positivas realizadas
-por el usuario (al menos 3 estrellas de 5).
+Para esta actividad se realizó un preprocesamiento en los datos para que puedan ser leídos en formato transacción.
+Cada transacción representa a un usuario y los itemsets de las transacciones son películas con calificaciones positivas realizadas por el usuario (al menos 3 estrellas de 5).
 
 El set de datos está dividido en 3 partes. La primera es el set de entrenamiento, donde vamos a generar reglas.
 
@@ -36,7 +35,7 @@ summary(train)
 
 El proceso para generar reglas de recomendación es correr aprori con las transacciones de entrenamiento.
 Luego ordenar las reglas por alguna métrica, en el siguiente ejemplo se usa confianza. Este paso de ordenamiento
-es muy importante para la recomendación, con este definimos el órden de prioridad que tiene una regla sobre otra
+es muy importante para la recomendación, con este definimos el orden de prioridad que tiene una regla sobre otra
 para generar una recomendación.
 
 ```R
@@ -57,11 +56,11 @@ reglas<-head(reglas, 50000)
 inspect(head(reglas))
 ```
 
-También se pueden utilizar otras métricas para ordenar reglas. La función interestMeasure() de arules permite calcular varias
+También se pueden utilizar otras métricas. La función interestMeasure() de arules permite calcular varias
 métricas adicionales a las devueltas por apriori(). En la documentación de esta función se listan todas las métricas
 implementadas (?interestMeasure para acceder a la documentación).
 
-En el siguente ejemplo se calculan jaccard, coseno, y coverage (es el soporte del antecedente de la regla). Se usa jaccard para ordenar.
+En el siguiente ejemplo se calculan jaccard, coseno, y coverage (es el soporte del antecedente de la regla). Se usa jaccard para ordenar.
 
 ```R
 # generación de reglas de recomendación
@@ -88,14 +87,14 @@ inspect(head(reglas))
 
 ## Recomendaciones películas usando las reglas generadas
 
-Para recomendar películas a un usuario a partir de reglas, se usa su transacción como entrada, es decir, el conjunto de
-películas favoritas. Se seleccionarán a las reglas que coincidan en el antecedente con algún conjunto de
+Para recomendar películas a un usuario determinado, se usará a su transacción como entrada, es decir, el conjunto de
+películas favoritas. Se seleccionarán a las reglas que coincidan en el antecedente con algún subconjunto de
 películas de la transacción. Y finalmente se recomendarán las películas que forman parte de los consecuentes de las reglas
 seleccionadas. Como las reglas están ordenadas siguiendo una métrica, las películas quedarán ordenadas por este score.
 
 La siguiente función implementa este algoritmo de recomendación. Se le debe pasar como entrada una transacción,
 las reglas de entrenamiento ordenadas, y la cantidad de películas que se quiere que recomiende. La salida es un
-vector con ítems a recomendar.
+vector con ítems.
 
 ```R
 # Función para recomendar items
@@ -119,7 +118,7 @@ recommend <- function (transaction, rules, n=5){
 
 ```
 
-Por ejemplo, si queremos hace 5 recomendaciones al primer usuario de entrenamiento:
+Por ejemplo, si queremos hacer 5 recomendaciones al primer usuario de entrenamiento:
 
 ```R
 inspect(train[1])
@@ -130,8 +129,8 @@ recommend(train[1],reglas, 5)
 ## Evaluación de recomendaciones
 
 Para evaluar las recomendaciones usamos un set de prueba. En este conjunto de prueba, se separaron 5 películas favoritas
-de cada usuario para medir si existe coincidencia con las recomendaciones. Esta forma de medir a las recomendacions
-se lo llama "Test offline", es decir se realiza una simulación de recomendación usando los datos.
+al azar de cada usuario para medir si existe coincidencia con las recomendaciones. Esta forma de evaluar a las recomendaciones
+se la conoce como "Test offline", en donde se realiza una simulación de recomendaciones usando únicamente a los datos.
 
 ```
 # lee transacciones usadas como test - ítems usados como entrada
@@ -155,7 +154,7 @@ test_val = read.transactions("movies_test_val.csv",
 Usaremos las métricas [precision, recall y F1](https://en.wikipedia.org/wiki/Precision_and_recall)
 para evaluar la calidad de las recomendaciones.
 
-El siguiente ejemplo se evalúan a los primeros 100 usuarios de test.
+El siguiente ejemplo se evalúan a los primeros 100 usuarios de test. Usando como máximo 20 películas recomendadas por usuario.
 
 ```R
 # cantidad de recomendaciones a evaluar por usaurio
@@ -187,11 +186,12 @@ f1_at_k
 
 ## Consignas
 
-Probar distintas configuraciones parámetros en el entrenamiento reglas que optimicen el valor de recall en test.
+Probar distintas configuraciones de parámetros en el entrenamiento reglas que optimicen el valor de recall (en las primeras 20 recomendaciones k=20) en test.
 
 Se propone:
 - Probar distintas métricas de reglas (Ej, confianza, lift, support, jaccard, coseno, coverage)
 - Probar limitando los tamaños de reglas. Por ejemplo sólo usar reglas de tamaño 1, luego agregarles las de tamaño 2, etc.
 
+Luego de encontrar una buena configuración de parámetros, evalúe las métricas precision y recall al aumentar o disminuir el valor de k.
 
 
