@@ -186,11 +186,13 @@ f1_at_k
 
 ## Consignas
 
-Probar distintas configuraciones de parámetros en el entrenamiento reglas que optimicen el valor de recall (en las primeras 20 recomendaciones k=20) en test.
+Probar distintas configuraciones de parámetros en el entrenamiento de reglas que optimicen el valor de recall promedio por usuario en test, limitando a las salidas de recomendaciones a un tamaño 20 (k=20) 
 
 Se propone:
+- Generar un modelo baseline. Siempre es bueno comenzar evaluando el modelo más simple, en este caso el modelo más simple es genear recomendaciones por popularidad (reglas tamaño 1, ordenadas por soporte)  
 - Probar distintas métricas de reglas (Ej, confianza, lift, support, jaccard, coseno, coverage)
 - Probar limitando los tamaños de reglas. Por ejemplo sólo usar reglas de tamaño 1, luego agregarles las de tamaño 2, etc.
+- Analice que métricas y tamaño de reglas generaron mejores resultados para este problema.
 
 Luego de encontrar una buena configuración de parámetros, evalúe las métricas precision y recall al aumentar o disminuir el valor de k.
 
