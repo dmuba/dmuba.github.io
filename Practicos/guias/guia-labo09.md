@@ -62,7 +62,7 @@ También se pueden utilizar otras métricas. La función interestMeasure() de ar
 métricas adicionales a las devueltas por apriori(). En la documentación de esta función se listan todas las métricas
 implementadas (?interestMeasure para acceder a la documentación).
 
-En el siguiente ejemplo se calculan jaccard, coseno, y coverage (es el soporte del antecedente de la regla). Se usa jaccard para ordenar.
+En el siguiente ejemplo se calculan: jaccard, coseno y coverage (es el soporte del antecedente de la regla). Se usa jaccard para ordenar.
 
 ```R
 # generación de reglas de recomendación
@@ -89,8 +89,8 @@ inspect(head(reglas))
 
 ## Recomendaciones de películas usando las reglas generadas
 
-Para recomendar películas a un usuario determinado, se usará a su transacción como entrada, es decir, el conjunto de
-películas favoritas. Se seleccionarán a las reglas que coincidan en el antecedente con algún subconjunto de
+Para recomendar películas a un usuario determinado, se utilizará su transacción como entrada, es decir, el conjunto de
+películas favoritas. Se seleccionarán las reglas que coincidan en el antecedente con algún subconjunto de
 películas de la transacción. Y finalmente se recomendarán las películas que forman parte de los consecuentes de las reglas
 seleccionadas. Como las reglas están ordenadas siguiendo una métrica, las películas quedarán ordenadas por este score.
 
