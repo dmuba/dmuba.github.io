@@ -3,7 +3,7 @@ library(dplyr)
 library(arules)
 library(SparkR)
 
-master_spark = "spark://192.168.56.101:7077"
+master_spark = "spark://10.2.200.43:7077"
 spc = sparkR.session(master = master_spark, sparkEnvir = list(spark.driver.memory="3g"))
 
 df.iris1 = iris

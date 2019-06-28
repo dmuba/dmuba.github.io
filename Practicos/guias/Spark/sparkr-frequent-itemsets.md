@@ -99,6 +99,13 @@ Nos podemos comunicar a la interfaz de usuario en <IP-MASTER>:8080, nos aparecer
 
 ![](imgs/spark-web-ui.png)
 
+
+## Configuraciones adicionales
+
+### Script para 
+
+    sudo ln -s /etc/init.d/start-spark-framework  /etc/dhcp/dhclient-exit-hooks.d/start-spark-framework
+
 ## Ejemplo de FP-Growth con SparkR
 
 ```R
@@ -146,7 +153,7 @@ association_rules = spark.associationRules(model)
 showDF(association_rules, truncate=F)
 ```
 
-Ver archivo: [ejemplo-1.r]()
+Ver archivo: [ejemplo-1.r](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/Spark/ejemplo-1.r)
 
 
 ## Referencias
