@@ -1536,9 +1536,9 @@ class(estudios)
 
 ## list
 
-Hasta ahora los tipos de datos compuestos vistos hasta ahora contienen elementos del mismo tipo. Si se quieren representar datos compuestos de distintos tipos se utiliza el tipo de dato *list*.
+Los tipos de datos compuestos vistos hasta ahora contienen elementos del mismo tipo. Si se necesita mantener en una misma estructura elementos de distintos tipos, se utiliza el tipo de datos *list*.
 
-Este tipo de datos permite representar estructuras de datos más complejas, pero como contra es que se pierde funcionalidades que podemos hacer con otros tipos de datos (Por ejemplo realizar operaciones aritméticas, o comparaciones)
+Este tipo de datos permite representar estructuras de datos más complejas, pero como contra es que se pierden funcionalidades (Por ejemplo realizar operaciones aritméticas, o comparaciones)
 
 Por ejemplo si queremos representar los siguientes elementos en un *vector*, se convierten todos en *character* por *coercion*.
 
