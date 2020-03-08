@@ -1639,7 +1639,7 @@ empleado[["casado"]]
 
 Cuando se utiliza R como herramienta de análisis de datos, se trabaja con variables de tipo *data.frame*. Un *data.frame* representa un conjunto de datos. Este es nuestro objeto de estudio.
 
-*data.frame* es un tipo de datos más complejo de los que vimos hasta ahora. Y comprende las características de todos los anteriores.
+*data.frame* es el tipo de datos más complejo de los que vimos. Y comprende las características de todos los anteriores.
 
 Un *data.frame* es un tipo de datos de **dos dimensiones** (como matrix)
 
@@ -1649,7 +1649,7 @@ Y **variables** o **propiedades** asociadas a las observaciones: **columnas**
 
 Pero a diferencia de matrix, las columnas pueden ser de distintos tipos.
 
-Cada columna a su vez es un *vector* de un único tipo de datos, o de tipo *factor* para representar variables categóricas. Estor vectors o factors tienen la misma cantidad de elementos (cantidad de filas).
+Cada columna a su vez es un *vector* de un único tipo de datos, o de tipo *factor* para representar variables categóricas. Estos vectors o factors tienen la misma cantidad de elementos (cantidad de filas).
 
 Un *data.frame* puede ser importado desde una fuentes de datos (ej archivo csv o desde una DB a través de una consulta SQL).
 
@@ -1694,7 +1694,7 @@ str(df)
      $ ingreso  : num  15000 7450 83300 NA 22000 ...
 
 
-Observe que se utiliza $ para indicar a las columnas, además se muestra los tipos de datos. Esto nos recuerda al tipo de datos *list*, de hecho un *data.frame* es un caso particular de *list*, con filas y columnas.
+Observe que se utiliza $ para indicar a las columnas, además se muestran sus tipos de datos. Esto nos recuerda al tipo de datos *list*, de hecho un *data.frame* es un caso particular de *list*, con filas y columnas.
 
 
 ```R
@@ -1713,9 +1713,9 @@ is.list(df)
 	[1] TRUE
 
 
-También observe que las columnas *nombre* y *genero* es de tipo factor. Mientras que las variables originales eran  de *character*. Cuando se crea un *data.frame* automáticamente transforma los vectores de *character* a *factor*.
+También observe que las columnas *nombre* y *genero* son de tipo factor. Mientras que las variables originales eran *character*. Cuando se crea un *data.frame* automáticamente transforma los vectores de *character* a *factor*.
 
-Si queremos realizar un cambio en los tipos de datos podemos hacer transformaciones de tipos sobre algunas de las columnas, accediendo a la columna con el operador $.
+Si queremos realizar un cambio en los tipos de datos podemos hacer transformaciones sobre algunas de las columnas, accediendo a la columna con el operador $.
 
 
 ```R
@@ -1774,7 +1774,7 @@ dim(df)
 
 También podemos obtener los nombres de las columnas y renombrarlas usando *names()*. 
 
-Por ejemplo si queremos renombrar la columna 'hijos'. Podemos usar un vector con los nombres de todas las columnas, o cambiar únicamente a la columna en cuestión usando el índice de columna.
+Por ejemplo si queremos renombrar la columna 'hijos'. Podemos usar un vector con los nombres de todas las columnas, o cambiar únicamente a la columna en cuestión usando su índice.
 
 
 ```R
