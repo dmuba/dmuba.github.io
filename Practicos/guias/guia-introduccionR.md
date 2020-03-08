@@ -1442,7 +1442,7 @@ class(gaseosas)
 
 R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
 
-Si se necesita especificar todas las categorías posibles, y/o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
+Si se necesita especificar todas las categorías posibles, o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
 
 
 ```R
