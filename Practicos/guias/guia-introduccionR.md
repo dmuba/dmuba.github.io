@@ -1897,7 +1897,7 @@ df[c(1,2,5), 1:3]
 	2  Lucía      F   19
 	5  Paola      F   23
 
-Si queremos seleccionar a una **columna** para acceder a la variable de tipo *vector* o *factor*, se usa selección como en **list**
+Si queremos seleccionar una única **columna** y tratarla por separado como si fuese un *vector* o *factor*, se usa el operador **$** o doble corchete de **list**
 
 
 ```R
