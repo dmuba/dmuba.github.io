@@ -1397,7 +1397,7 @@ sum(m)
 
 Este tipo de datos se utiliza para representar datos categóricos en R.
 
-Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican a un número de categorías finitas.
+Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican un número de categorías finitas.
 
 Por ejemplo partimos de un vector con marcas de gaseosas
 
@@ -1442,7 +1442,7 @@ class(gaseosas)
 
 R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
 
-Si se necesita especificar todas las categorías posibles, y/o si se quiere dar un orden diferentes, se usa el parámetro *levels* en la creación del *factor*.
+Si se necesita especificar todas las categorías posibles, y/o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
 
 
 ```R
