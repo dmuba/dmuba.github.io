@@ -217,7 +217,7 @@ TRUE | FALSE
 
 ## numeric
 
-Los valores numéricos contienen una jerarquía de tipos: Un numeric representa los valores reales, mientras un integer es un subtipo de este, que representa a los enteros.
+Los valores numéricos contienen una jerarquía de tipos: Un numeric representa los valores reales, mientras que un integer es un subtipo de este, que representa a los enteros.
 
 
 ```R
