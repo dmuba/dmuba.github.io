@@ -1471,7 +1471,7 @@ levels(gaseosas)
 	[1] "coca-cola" "fanta"     "manaos"    "pepsi"      
 
 
-En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.*
+En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.
 
 
 ```R
@@ -1494,7 +1494,7 @@ gaseosas
     Levels: marca_coca marca_fanta marca_manaos marca_pepsi
 
 
-Hasta ahora con *factor* representamos datos **categóricos nominales**. Es decir que el orden de las categorías no importa. 
+Hasta ahora con *factor* representamos datos **categóricos nominales**. Es decir que las categorías no tienen un orden asociado. 
 
 
 ```R
