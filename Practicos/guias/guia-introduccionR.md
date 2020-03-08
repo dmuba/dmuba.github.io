@@ -332,7 +332,7 @@ En el caso de que el texto contenga comillas del mismo tipo que usamos para deli
 
 ## NA
 
-Para representar datos faltantes r utiliza *NA* (equivalente a NULL en SQL).
+Para representar datos faltantes, R utiliza *NA* (equivalente a NULL en SQL).
 
 Un NA puede ser asignado inicialmente a una variable o puede ser resultado de una operación en donde no se puede determinar un resultado válido.
 
@@ -394,7 +394,7 @@ TRUE & NA
 
 ## coercion (transformación de tipos de datos)
 
-En ciertas ocasiones nos resultará útil convertir el tipo de datos de una variable para poder realizar alguna operación (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para compatibilizar el tipo de datos para realizar una operación, se habla de **coercion**.
+En ciertas ocasiones para poder realizar alguna operación, nos resultará útil convertir el tipo de datos de una variable (por ejemplo de cadena a numérico). A esta operación en programación se la conoce como **casting**. Cuando R tiene que hacer esta transformación de forma forzada para para poder realizar una operación, se habla de **coercion**.
 
 Para llevar a cabo una transformación se utilizan funciones como *as.logical()*, *as.numeric()*, *as.character()*. Es decir *as.* seguido del tipo de datos a convertir.
 
@@ -405,7 +405,7 @@ R utiliza como traducción del valor TRUE al valor 1. Y de FALSE a 0.
 ```R
 as.numeric(TRUE) 
 ```
-    [1] NA
+    [1] 1
 
 ```R
 as.numeric(FALSE) 
