@@ -964,7 +964,7 @@ edades[edades > 30]
          55      34 
 
 
-En el caso de pasarse menor número de elementos en la máscara, realiza extensión del vector:
+En el caso de pasarse una máscara con menor número de elementos, extiende al vector de máscara con la misma regla que comentamos anteriormente:
 
 
 ```R
