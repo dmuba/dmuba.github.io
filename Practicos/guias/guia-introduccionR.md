@@ -673,7 +673,7 @@ edades <- c("Javier"=24, "Marcela"=55, "Liliana"=26, "Claudia"=34, "Juan"=26)
 
 ### Vectores de un único elemento
 
-En R el caso de variables con un valor de tipo de dato simple como los que vimos con anterioridad. los trata como vectores de un único elemento.
+En R, a las variables con tipos de datos simples como los que vimos con anterioridad, los trata como vectores de un único elemento.
 
 
 ```R
@@ -712,7 +712,7 @@ nchar(mi_nombre)
 
 ### Coercion
 
-Los vectores tienen que ser del mismo tipo, por lo tanto realiza coercion para lograr que todos los elementos sean del mismo tipo.
+Los elementos de los vectores tienen que ser del mismo tipo, por lo tanto si difieren, realiza coercion al tipo de datos más general.
 
 
 ```R
