@@ -982,7 +982,7 @@ edades[c(T,F,T,F,T)]
 
 
 ## matrix
-Un vector es un arreglo de 1 dimensión., mientras que matrix es un arreglo de elementos de 2 dimensiones. Es decir que podría verse como un vector con elementos del tipo vector de igual cantidad de elementos.
+Un vector es un arreglo de 1 dimensión, mientras que matrix es un arreglo de 2 dimensiones. Es decir que podría verse como un vector de vectores de igual cantidad de elementos y mismo tipo.
 
 Las matrices se dividen en filas (primera dimensión) y columnas (segunda dimensión)
 
@@ -1442,7 +1442,7 @@ class(gaseosas)
 
 R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
 
-Si se necesita especificar todos las categorías posibles, o si se quiere dar un orden diferentes a las categorías se usa el parámetro *levels* en la creación del *factor*.
+Si se necesita especificar todas las categorías posibles, y/o si se quiere dar un orden diferentes, se usa el parámetro *levels* en la creación del *factor*.
 
 
 ```R
