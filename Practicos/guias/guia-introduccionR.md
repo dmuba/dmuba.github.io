@@ -517,7 +517,7 @@ as.character(NA)
 
 ## vector
 
-Un *vector* es una secuencia de elementos de datos del **mismo tipo**. (Por ejemplo: *vector de numerics, *vector de characters*, *vector de *logicals*). Además puede tener elementos del tipo NA.
+Un *vector* es una secuencia de elementos de datos del **mismo tipo**. (Por ejemplo: *vector de numerics, *vector de characters*, *vector de *logicals*). Además pueden tener elementos del tipo NA.
 
 Para crear un vector usamos *c()* separando sus elementos por coma:
 
@@ -636,11 +636,11 @@ edades
          24      55      26      34      26 
 
 
-*names()* también permite devolver los nombres asignados a los elementos.
+*names()* también devuelve los nombres asignados a los elementos.
 
 
 ```R
-edades
+names(edades)
 ```
 
     [1] "Javier"  "Marcela" "Liliana" "Claudia" "Juan"   
@@ -679,7 +679,7 @@ edades <- c("Javier"=24, "Marcela"=55, "Liliana"=26, "Claudia"=34, "Juan"=26)
 
 ### Vectores de un único elemento
 
-En R, a las variables con tipos de datos simples como los que vimos con anterioridad, los trata como vectores de un único elemento.
+En R, a las variables de tipos de datos simples, como los que vimos con anterioridad, los trata como vectores de un único elemento.
 
 
 ```R
@@ -875,7 +875,7 @@ mean(c(7, 8, 6, NA, 10), na.rm = TRUE)
 
 ### Subset
 
-Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en sí mismo. Así que usando \[\] podemos seleccionar elementos y formar otro vector.
+Vimos que el operador \[\] nos permite acceder a un elemento del vector, y a su vez, un elemento es un vector en sí mismo. Así que usando \[\] también podemos seleccionar conjuntos de elementos formando un nuevo vector.
 
 
 ```R
@@ -948,7 +948,7 @@ edades[-c("Javier", "Liliana")]
 
 
 
-Otra forma de selección es usar vectores lógicos. Al operador \[\] debe pasarse un vector de tipo *logical* con la misma cantidad de elementos que el vector original. El valor TRUE indica que selecciona el elemento, y FALSE indica que se excluye.
+Otra forma de selección es usar vectores lógicos. Al operador \[\] debe pasarse un vector de tipo *logical* con la misma cantidad de elementos que el vector original. El valor TRUE indica que se selecciona el elemento, y FALSE indica que se excluye.
 
 A este tipo de vector de selección también se lo conoce como **máscara**.
 
