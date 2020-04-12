@@ -17,13 +17,7 @@
       height: 100%;
     }
     
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
+        
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
@@ -32,37 +26,109 @@
       }
       .row.content {height: auto;} 
     }
-    
-    
+    /**/
+    .panel-primary {
+		width: 100%;
+	}
   </style>
 </head>
 <body>
 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DM UBA</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+			<li><a data-toggle="pill" href="#teoricas">Teóricas</a></li>
+			<li><a data-toggle="pill" href="#practicas">Prácticos</a></li>
+			<li><a data-toggle="pill" href="#cronograma">Cronograma</a></li>
+			<li><a data-toggle="pill" href="#bibliografia">Bibliografía</a></li>
+<!--
+			<li><a data-toggle="pill" href="https://github.com/dmuba">Repositorio</a></li>
+-->
+<!--
+			<li><a data-toggle="pill" href="https://join.slack.com/t/cursodatamining-uba/shared_invite/zt-d9xus9dy-LlafQswFgi41CxhoGefcLA">Slack</a></li>
+-->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
 <div class="container-fluid">
   <div class="row content">
-    <!-- div class="col-sm-3 sidenav" -->
-	<div class="col-xs-3 sidenav">
-      <h4>DM UBA</h4>
-      <ul class="nav nav-pills nav-stacked">
-	    <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-        <li><a data-toggle="pill" href="#teoricas">Teóricas</a></li>
-        <li><a data-toggle="pill" href="#practicas">Prácticos</a></li>
-        <li><a data-toggle="pill" href="#cronograma">Cronograma</a></li>
-        <li><a data-toggle="pill" href="#bibliografia">Bibliografía</a></li>
-        <li><a data-toggle="pill" href="#temas">Temas de interés</a></li>
-
-      </ul>
-    </div>
-	
-    <div class="col-sm-9">
+    <div class="col-sm-8">
       <div class="tab-content">
           <!-- Home -->
           <div id="home" class="tab-pane fade in active">
             <h4><small>Data Mining - UBA</small></h4>
             <hr>
             <h2>Curso de Minería de Datos</h2>
+<!--
             <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Comisión 1</span> Martes de 19 a 22 hs </h5><h5><span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Comisión 2</span> Viernes de 19 a 22 hs </h5><br>
-          </div>
+-->			   <div class="row">
+				   <div class="col-sm-4">
+
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+						<h3 class="panel-title">Horarios para las clases virtuales</h3>
+					  </div>
+					  <div class="panel-body">
+						  <span class="glyphicon glyphicon-time"></span> <span class="label label-danger">Teóricas</span> <p>Martes de 19 a 21 hs (ambas comisiones) </p>
+						  <span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Prácticas</span> <p>Viernes de 19 a 22 hs (Nos tenemos que organizar!) </p>
+						  <span class="glyphicon glyphicon-time"></span> <span class="label label-primary">Consultas</span> <p>Miércoles (Horario a confirmar) </p><br>
+					  </div>
+					</div> <!-- end panel-->
+				
+				</div> <!-- end col-->
+				<div class="col-sm-6">
+						<div class="panel panel-primary">
+						  <div class="panel-heading">
+							<h3 class="panel-title">Tutorial de R</h3>
+						  </div>
+						  <div class="panel-body">
+							<p>Guía de introducción para conocer los fundamentos y conceptos del lenguaje R [<a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-introduccionR.md" target="_blank" class="small-box-footer">Ir al tutorial</a>]</p>
+							<p>Para probar sin instalar nada pueden comenzar a probar <a href="https://rstudio.cloud/">RStudio Cloud</a>. Es una IDE online para correr scripts R.</p>
+						  </div>
+						</div>	<!-- end panel-->
+					</div> <!-- end col -->
+					
+					<div class="col-sm-6">					
+						<div class="panel panel-primary">
+						  <div class="panel-heading">
+							<h3 class="panel-title">Nuestro Canal de Slack</h3>
+						  </div>
+						  <div class="panel-body">
+							Para sumarse al sitio del curso sigan este link: <a href="https://join.slack.com/t/cursodatamining-uba/shared_invite/zt-d9xus9dy-LlafQswFgi41CxhoGefcLA" target="_blank"> Curso de Data Mining - UBA </a>.
+							Vamos a mantener la interacción a través de este canal de Slack: <a href="https://cursodatamining-uba.slack.com/archives/C010UDPM50R">#curso-dm-2020</a>
+						  </div>
+						</div>	<!-- end panel-->			
+					</div>
+			 </div> <!-- end row -->
+				
+					<div class="row">
+					<div class="col-sm-6">					
+						<div class="panel panel-primary">
+						  <div class="panel-heading">
+							<h3 class="panel-title">Otros recursos</h3>
+						  </div>
+						  <div class="panel-body">
+							Repositorio Github: <a href="https://github.com/dmuba" target="_blank"> DM UBA </a>.
+						  </div>
+						</div>	<!-- end panel-->			
+					</div>
+				</div> <!-- end row -->              
+		  </div> <!-- end home-->
+
 
           <!-- Teoria -->
           <div id="teoricas" class="tab-pane fade">
@@ -82,52 +148,31 @@
                 <li>LAB02: Detección de Outliers [ <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB02/LAB01%20-%20Detecci%C3%B3n%20de%20Outliers.pdf" target="_blank">Consignas</a> ] [ <a href="https://rpubs.com/jumafernandez/outliers_detection" target="_blank">Presentación</a> ] [ <a href="https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/LAB02/ruidoso.txt">Set de datos</a> ]</li>
                 <li>LAB03: Tratamiento de Datos Faltantes [ <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB03/LAB03%20-%20Missing%20values.pdf" target="_blank">Consignas</a> ] [ <a href="https://rpubs.com/jumafernandez/missing_values" target="_blank">Presentación</a> ] [ <a href="https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/LAB03/auto-mpg.data-original.txt">Set de datos</a> ]</li>  
                 <li>LAB04: Reducción de dimensionalidad [ <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB04/LAB04%20-%20Reduccion%20de%20Dimensionalidad.pdf" target="_blank">Consignas</a> ] [ <a href="https://rpubs.com/jumafernandez/dimensionality_reduction" target="_blank">Presentación</a> ] [ <a href="https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/LAB04/auto-mpg.data-original.txt">Set de datos</a> ]</li> 
+<!--
                 <li>LAB05: Bases de Datos NSQL -MongoDB- [ <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB05/LAB05%20-%20DB-NOSQL.pdf" target="_blank">Consignas</a> ] [ <a href="https://docs.mongodb.com/manual/crud/" target="_blank">Referencias MongoDB</a> ] [ <a href="https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/LAB05/tweets-dolar-Final.json" target="_blank">Set de datos</a> ]</li> 
-            </ul>
-		  
-<!--            <ul id="practicos"></ul>
-            <h2>TPs Entregables</h2>
-            <ul>
-                <li>TP01: Preprocesamiento de datos, integración y gestión de datos mediante una DB NOSQL [ <a href="dmuba.github.io/Practicos/TPs Entregables/TP01/TP01.pdf" target="_blank">Consignas</a> ]</li>
-                <li>Recursos (datasets & scripts) [ <a href="https://github.com/dmuba/dmuba.github.io/tree/master/Practicos/TPs Entregables/TP01" target="_blank">Abrir</a> ]</li>
-                <li>Fechas de entrega:
-                    <ul>
-                        <li>Comisión 1: 19/06</li>
-                        <li>Comisión 2: 22/06</li>
-                    </ul>
-                <li>Formato de entrega: [ <a href="https://github.com/dmuba/dmuba.github.io/raw/master/Practicos/TPs%20Entregables/Template_de_entrega.docx">doc</a> ]</li>
-                </li>
-            </ul>	  
-            <ul>
-                <li>TP02: Reglas de Asociación [ <a href="dmuba.github.io/Practicos/TPs Entregables/TP02/TP02.pdf" target="_blank">Consignas</a> ]</li>
-                <li>Dataset [ <a href="https://github.com/dmuba/dmuba.github.io/tree/master/Practicos/TPs Entregables/TP02/Shark_Attack_Data.csv" target="_blank">Enlace</a> ]</li>
-                <li>Fechas de entrega:
-                    <ul>
-                        <li>Comisión 1: 10/07</li>
-                        <li>Comisión 2: 13/07</li>
-                    </ul>
-                <li>Formato de entrega: [ <a href="https://github.com/dmuba/dmuba.github.io/raw/master/Practicos/TPs%20Entregables/Template_de_entrega.docx">doc</a> ]</li>
-                </li>
-            </ul>	  
 -->
+            </ul>
+
 	      <h3>Software</h3>
             <ul>
                 <li>Lenguaje R [ <a href="https://www.r-project.org/" target="_blank">Descargas</a> ]</li>
-		<li>RStudio [ <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">Descargas</a> ]</li>
-		<li>MongoDB - Instalador para Windows (64-bit) (182MB) [ <a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.4-signed.msi" target="_blank">Instalador</a> ]<br/>Otras instalaciones: [ <a href="https://www.mongodb.com/download-center?#community">Aquí</a> ]</li>
+				<li>RStudio [ <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">Descargas</a> ]</li>
+				<!--
+				<li>MongoDB - Instalador para Windows (64-bit) (182MB) [ <a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.4-signed.msi" target="_blank">Instalador</a> ]<br/>Otras instalaciones: [ <a href="https://www.mongodb.com/download-center?#community">Aquí</a> ]</li>
                 <li>Robo3T (ex-Robomongo :D). Cliente para MongoDB [ <a href="https://robomongo.org/download" target="_blank">Descargas</a> ]</li>
+                -->
             </ul>
             <h3>Guías</h3>
               <ul>      
                 <li>Guía laboratorio Nro. 1: Introducción a R <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-introduccionR.md" target="_blank">[ Abrir ]</a></li>
-		<li>Guía Trabajo Práctico Nro. 1: Tips de introducción <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-TP1.md" target="_blank">[ Abrir ]</a></li>
-		<li>Guía laboratorio Nro. 3: Interacción con MongoDB desde Robo3T. <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md" target="_blank">[ Abrir ]</a></li>
+				<li>Guía Trabajo Práctico Nro. 1: Tips de introducción <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-TP1.md" target="_blank">[ Abrir ]</a></li>
+				<li>Guía laboratorio Nro. 3: Interacción con MongoDB desde Robo3T. <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md" target="_blank">[ Abrir ]</a></li>
                 <li>Guía laboratorio Nro. 4: Bases de datos textuales. <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo04.md" target="_blank">[ Abrir ]</a></li>
                 <li>Guía laboratorio Nro. 5: Introducción a reglas de asociación. <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo05.md" target="_blank">[ Abrir ]</a></li>
                 <li>Guía laboratorio Nro. 6: Introducción a reglas de asociación con Arules en R. <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo06.md" target="_blank">[ Abrir ]</a></li>
                 <li>Guía laboratorio Nro. 7: Introducción al Análisis de Secuencias (SPADE) <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo07.md" target="_blank">[ Abrir ]</a></li>
                 <li>Guía laboratorio Nro. 8: Reglas de Asociación FP-Growth <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo08.md" target="_blank">[ Abrir ]</a></li>
-		<li>Guía laboratorio Nro. 9: Sistemas de recomendación usando reglas de asociación <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo09.md" target="_blank">[ Abrir ]</a></li>
+				<li>Guía laboratorio Nro. 9: Sistemas de recomendación usando reglas de asociación <a href="https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo09.md" target="_blank">[ Abrir ]</a></li>
               </ul>
           </div>
       
@@ -154,20 +199,11 @@
             <hr>
             <h2>Temas de interés</h2>
             <p>En este apartado se presentan algunos temas que pueden servir como disparadores para la elección de trabajos finales de Especialización o Maestría.</p>
-<!--
-            <ul>
-                <li></li> 
-                <li></li>
-            </ul>
--->
            </div>
         </div> <!-- end tab-->
   </div>
 </div>
 
-<footer class="container-fluid">
-  <p></p>
-</footer>
 <script src="js/dmuba.js"></script>
 </body>
 </html>
