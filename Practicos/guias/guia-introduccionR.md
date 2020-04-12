@@ -283,21 +283,21 @@ Una cadena de caracteres debe delimitarse entre comillas (simples o dobles).
 
 
 ```R
-"DM uba 2019"
+"DM uba 2020"
 ```
 
-    [1] "DM uba 2019"
+    [1] "DM uba 2020"
 
 
 ```R
-'DM uba 2019'
+'DM uba 2020'
 ```
 
-    [1] "DM uba 2019"
+    [1] "DM uba 2020"
 
 
 ```R
-class("DM uba 2019")
+class("DM uba 2020")
 ```
 
     [1] 'character'
@@ -307,27 +307,27 @@ La función nchar nos devuelve el tamaño de cadena en cantidad de caracteres:
 
 
 ```R
-nchar("DM uba 2019")
+nchar("DM uba 2020")
 ```
 
     [1] 11
 
 
-En el caso de que el texto contenga comillas del mismo tipo que usamos para delimitar la cadena, se utiliza el caracter **\\** (caracter de escape) para idicar que la comilla de a continuación no indica clausura de la cadena.
+En el caso que el texto contenga comillas del mismo tipo del delimitador que usamos, se utiliza el caracter **\\** (caracter de escape) para indicar que la comilla de continuación no indica clausura de cadena.
 
 
 ```R
-"DM uba \"2019\""
+"DM uba \"2020\""
 ```
-    [1] 'DM uba "2019"'
+    [1] 'DM uba "2020"'
 
 
 
 ```R
-'DM uba "2019"'
+'DM uba "2020"'
 ```
 
-    [1] 'DM uba "2019"'
+    [1] 'DM uba "2020"'
 
 
 ## NA
@@ -384,9 +384,15 @@ TRUE & NA
     [1] NA
 
 
-
 ```R
 "cadena" == NA
+```
+
+    [1] NA
+    
+    
+```R
+NA == NA
 ```
 
     [1] NA
