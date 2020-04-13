@@ -1201,8 +1201,8 @@ m
 
 ### Subset
 
-De la misma manera que en vector se utiliza el operador *\[\]* para acceder a sus elementos y seleccionar sub-matrices o sub-vectores.
-En este se debe especificar la selección de filas y columnas.
+De la misma manera que en vector, se utiliza al operador *\[\]* para acceder y seleccionar elementos.
+En este caso se debe especificar la selección de filas y columnas.
 
 
 ```R
