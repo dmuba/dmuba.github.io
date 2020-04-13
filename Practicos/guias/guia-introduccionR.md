@@ -517,7 +517,7 @@ as.character(NA)
 
 ## vector
 
-Un *vector* es una secuencia de elementos de datos del **mismo tipo**. (Por ejemplo: *vector de numerics, *vector de characters*, *vector de *logicals*). Además puede tener elementos del tipo NA.
+Un *vector* es una secuencia de elementos de datos del **mismo tipo**. (Por ejemplo: *vector de numerics, *vector de characters*, *vector de *logicals*). Además pueden tener elementos del tipo NA.
 
 Para crear un vector usamos *c()* separando sus elementos por coma:
 
@@ -636,11 +636,11 @@ edades
          24      55      26      34      26 
 
 
-*names()* también permite devolver los nombres asignados a los elementos.
+*names()* también devuelve los nombres asignados a los elementos.
 
 
 ```R
-edades
+names(edades)
 ```
 
     [1] "Javier"  "Marcela" "Liliana" "Claudia" "Juan"   
@@ -679,7 +679,7 @@ edades <- c("Javier"=24, "Marcela"=55, "Liliana"=26, "Claudia"=34, "Juan"=26)
 
 ### Vectores de un único elemento
 
-En R, a las variables con tipos de datos simples como los que vimos con anterioridad, los trata como vectores de un único elemento.
+En R, a las variables de tipos de datos simples, como los que vimos con anterioridad, los trata como vectores de un único elemento.
 
 
 ```R
@@ -875,7 +875,7 @@ mean(c(7, 8, 6, NA, 10), na.rm = TRUE)
 
 ### Subset
 
-Vimos que el operador \[\] nos permite acceder a elementos del vector, pero a su vez, un elemento es un vector en sí mismo. Así que usando \[\] podemos seleccionar elementos y formar otro vector.
+Vimos que el operador \[\] nos permite acceder a un elemento del vector, y a su vez, un elemento es un vector en sí mismo. Así que usando \[\] también podemos seleccionar conjuntos de elementos formando un nuevo vector.
 
 
 ```R
@@ -948,7 +948,7 @@ edades[-c("Javier", "Liliana")]
 
 
 
-Otra forma de selección es usar vectores lógicos. Al operador \[\] debe pasarse un vector de tipo *logical* con la misma cantidad de elementos que el vector original. El valor TRUE indica que selecciona el elemento, y FALSE indica que se excluye.
+Otra forma de selección es usar vectores lógicos. Al operador \[\] debe pasarse un vector de tipo *logical* con la misma cantidad de elementos que el vector original. El valor TRUE indica que se selecciona el elemento, y FALSE indica que se excluye.
 
 A este tipo de vector de selección también se lo conoce como **máscara**.
 
@@ -1201,8 +1201,8 @@ m
 
 ### Subset
 
-De la misma manera que en vector se utiliza el operador *\[\]* para acceder a sus elementos y seleccionar sub-matrices o sub-vectores.
-En este se debe especificar la selección de filas y columnas.
+De la misma manera que en vector, se utiliza al operador *\[\]* para acceder y seleccionar elementos.
+En este caso se debe especificar la selección de filas y columnas.
 
 
 ```R
@@ -1403,7 +1403,7 @@ sum(m)
 
 Este tipo de datos se utiliza para representar datos categóricos en R.
 
-Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican un número de categorías finitas.
+Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican categorías finitas.
 
 Por ejemplo partimos de un vector con marcas de gaseosas
 
@@ -1426,7 +1426,7 @@ class(vector_gaseosas)
 
 A partir de este vector se puede generar una variable de tipo *factor*. Las categorías son llamadas *levels*.
 
-Cuando se crea una variable de tipo factor, R automáticamente genera los las categorías o *levels*.
+Cuando se crea una variable de tipo factor, R automáticamente genera las categorías o *levels*.
 
 ```R
 gaseosas <- factor(vector_gaseosas)
@@ -1446,9 +1446,9 @@ class(gaseosas)
     [1] 'factor'
 
 
-R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
+R asigna los *levels* a partir de los valores únicos del vector ordenados alfabéticamente.
 
-Si se necesita especificar todas las categorías posibles, o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
+Si se necesitan especificar todas las categorías posibles, o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
 
 
 ```R
@@ -1477,8 +1477,7 @@ levels(gaseosas)
 	[1] "coca-cola" "fanta"     "manaos"    "pepsi"      
 
 
-En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.
-
+Internamente cada *level* es asociado a un valor entero. Se puede acceder a esta representación convirtiendo la variable a tipo numérico.
 
 ```R
 as.numeric(gaseosas)
@@ -1486,7 +1485,7 @@ as.numeric(gaseosas)
 	[1] 1 3 2 3 1 4
 
 
-Es posible renombrar a las categorías usando la función *levels()*
+También es posible renombrar las categorías usando la función *levels()*
 
 
 ```R
@@ -1512,7 +1511,7 @@ gaseosas[1] < gaseosas[2]
     [1] NA
 
 
-*Factor* también permite representar **categóricos ordinales**. En este caso debe pasarse en la función *factor()* como parámetro *ordered* en TRUE (por defecto es FALSE). Además en *levels* deben pasarse las categorías en orden creciente.
+*Factor* también permite representar **categóricos ordinales**. Para especificar esto, en la función *factor()* se tiene que pasar el parámetro *ordered* en TRUE (por defecto es FALSE), y en el parámetro *levels* se debe indicar las categorías en orden creciente.
 
 
 ```R
