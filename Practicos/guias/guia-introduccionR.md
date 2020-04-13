@@ -1426,7 +1426,7 @@ class(vector_gaseosas)
 
 A partir de este vector se puede generar una variable de tipo *factor*. Las categorías son llamadas *levels*.
 
-Cuando se crea una variable de tipo factor, R automáticamente genera los las categorías o *levels*.
+Cuando se crea una variable de tipo factor, R automáticamente genera las categorías o *levels*.
 
 ```R
 gaseosas <- factor(vector_gaseosas)
@@ -1446,9 +1446,9 @@ class(gaseosas)
     [1] 'factor'
 
 
-R genera a los *levels* a partir de los valores del vector y los ordena alfabéticamente.
+R asigna los *levels* a partir de los valores únicos del vector ordenados alfabéticamente.
 
-Si se necesita especificar todas las categorías posibles, o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
+Si se necesitan especificar todas las categorías posibles, o si se quiere dar un orden diferente, se usa el parámetro *levels* en la creación del *factor*.
 
 
 ```R
@@ -1477,8 +1477,7 @@ levels(gaseosas)
 	[1] "coca-cola" "fanta"     "manaos"    "pepsi"      
 
 
-En *factor* cada elemento se representa en un valor numérico según su *level* o categoría asociada. Si se convierte a tipo numérico se puede ver su representación en *levels*.
-
+Internamente cada *level* es asociado a un valor entero. Se puede acceder a esta representación convirtiendo la variable a tipo numérico.
 
 ```R
 as.numeric(gaseosas)
@@ -1486,7 +1485,7 @@ as.numeric(gaseosas)
 	[1] 1 3 2 3 1 4
 
 
-Es posible renombrar a las categorías usando la función *levels()*
+También es posible renombrar las categorías usando la función *levels()*
 
 
 ```R
@@ -1512,7 +1511,7 @@ gaseosas[1] < gaseosas[2]
     [1] NA
 
 
-*Factor* también permite representar **categóricos ordinales**. En este caso debe pasarse en la función *factor()* como parámetro *ordered* en TRUE (por defecto es FALSE). Además en *levels* deben pasarse las categorías en orden creciente.
+*Factor* también permite representar **categóricos ordinales**. Para especificar esto, en la función *factor()* se tiene que pasar el parámetro *ordered* en TRUE (por defecto es FALSE), y en el parámetro *levels* se debe indicar las categorías en orden creciente.
 
 
 ```R
