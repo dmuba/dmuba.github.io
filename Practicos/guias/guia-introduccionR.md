@@ -1403,7 +1403,7 @@ sum(m)
 
 Este tipo de datos se utiliza para representar datos categóricos en R.
 
-Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican un número de categorías finitas.
+Al igual que los vectores, una variable de tipo *factor* contiene una secuencia de elementos, pero en este caso los elementos codifican categorías finitas.
 
 Por ejemplo partimos de un vector con marcas de gaseosas
 
