@@ -1,0 +1,171 @@
+
+
+Conociendo R 
+========================================================
+autosize: true
+width: 1200
+height: 800
+
+Preprocesamiento -Volumen 1-
+<br />
+<br />
+Santiago Banchero
+<br />
+Leo Lucianna
+<br />
+Juan Manuel Fernandez
+
+<br />
+Minería de Datos - UBA
+
+
+Preprocesamiento (Volumen I)
+========================================================
+<br />
+En esta clase, vamos a abordar las siguientes técnicas a través del lenguaje R:
+- Integración de datos de múltiples fuentes
+- Limpieza de datos: Manejo de Ruido
+- Selección de variables: Detección de Atributos Redundantes
+
+Integración de datos de múltiples fuentes
+========================================================
+<small>
+Existen, varias operaciones para integrar datos, por ejemplo merge:
+```{r}
+productos<-data.frame(Codigo=c(45, 46), Denominacion=c("Licuadora", "TV 4k"), Precio=c(1245.10, 14742))
+head(productos)
+stock<-data.frame(Cod=c(45, 46), stock=c(8650, 145))
+dataset<-merge(productos, stock, by.x = "Codigo",  by.y = "Cod")
+head(dataset)
+```
+<br/>
+Bonus Track: Librerías sqldf y dplyr.
+
+Bonus Track para Integración/Manipulación de datos: sqldf y dplyr
+========================================================
+
+Con sqldf vamos a manipular los dataframes como si fueran tablas sql:
+```{r}
+library(sqldf)
+join_string = "SELECT Codigo, Denominacion, Precio, stock as Stock FROM productos p INNER JOIN stock s ON p.Codigo=s.Cod"
+sql_query = sqldf(join_string,stringsAsFactors = FALSE)
+head(sql_query)
+```
+Otra librería muy conocida de R para la manipulación de dataframes es dplyr:
+```{r}
+library(dplyr)
+data.dplyr = inner_join(productos, stock, by = c("Codigo" = "Cod"))
+head(data.dplyr)
+```
+</small>
+
+Integración de datos de múltiples fuentes (++)
+========================================================
+Además, como vimos antes, debemos tener en cuenta:
++ Diferentes nombres de atributos,
+```{r}
+names(stock)
+names(stock)[1]="Codigo"
+names(stock)
+```
+***
++ Diferente representación de los mismos datos,
+```{r}
+celsius=c(26,32)
+fahrenheit=(celsius*1.8)+32
+print(fahrenheit)
+```
++ Diferente granularidad.
+```{r}
+library(lubridate)
+fechas <- c(as.Date("2011-06-26"), as.Date("2013-07-15"))
+meses <- c(5, 8)
+todos <- cbind(meses, month(fechas))
+```
+
+Limpieza de datos: Manejo de Ruido
+========================================================
+autosize:true
+Manejo de Ruido por Binning: Equal Freq // Equal Width
+<center>
+```{r}
+library(infotheo)
+
+# Discretize recibe el atributo, el método de binning y la cantidad de bins
+bin_eq_freq <- discretize(iris$Sepal.Width,"equalfreq", 5)
+
+# Nos copiamos el atributo original
+bin_eq_freq$Sepal.Width = iris$Sepal.Width
+
+# Por cada bin calculamos la media y reemplazamos en el atributo suavizado
+for(bin in 1:5){
+  bin_eq_freq$suavizado[ bin_eq_freq$X==bin] = mean(bin_eq_freq$Sepal.Width[ bin_eq_freq$X==bin])
+}
+```
+</center>
+
+Limpieza de datos: Manejo de Ruido (++)
+========================================================
+<center>
+```{r, eval=F}
+# grafico Sepal.Width ordenado de menor a mayor
+plot(sort(iris$Sepal.Width) , type = "l", col="red", ylab = "Sepal.Width", xlab = "Observaciones", main = "Dato original vs suavizado")
+# Agrego la serie de la variable media 
+lines(sort(bin_eq_freq$suavizado),
+      type = "l", col="blue")
+legend("topleft", legend=c("Original", "Suavizado"), col=c("red", "blue"), lty=1)
+```
+***
+```{r, echo=F}
+# grafico Sepal.Width ordenado de menor a mayor
+plot(sort(iris$Sepal.Width,decreasing = FALSE) , type = "l", col="red", ylab = "Sepal.Width", xlab = "Observaciones", main = "Dato original vs suavizado")
+# Agrego la serie de la variable media 
+lines(sort(bin_eq_freq$suavizado),type = "l", col="blue")
+legend("topleft", legend=c("Original", "Suavizado"), col=c("red", "blue"), lty=1)
+```
+</center>
+
+
+Reducción de datos: Atributos Redundantes
+========================================================
+autosize:true
+<small>
+En datos de tipo cualitativos/nominales: Test de Chi-Cuadrado
+<br />
+<br />
+Hacemos la tabla de contingencia:
+```{r}
+library(MASS)
+tbl_cont = table(survey$Smoke, survey$Exer)
+print(tbl_cont)
+```
+***
+<br />
+<br />
+<br />
+Luego aplicamos el Test de Chi-cuadrado:
+```{r}
+chisq.test(tbl_cont)
+```
+</small>
+
+Reducción de datos: Atributos Redundantes (++)
+========================================================
+<small>
+En datos de tipo cuantitativos/numéricos: Coeficiente de Correlación & Covarianza
+```{r}
+llamadas=read.csv('llamadas.csv')
+```
+```{r}
+cor(llamadas$minutos,llamadas$unidades)  # Coeficiente de Pearson
+```
+<br />
+<br />
+Debemos recordar validar los supuestos para una regresión -a menudo, esto no aparece en la Bibliografía-
+***
+<center>
+```{r}
+plot(llamadas$minutos,llamadas$unidades, main = "Relación entre unidades y minutos", xlab = "Duración de la llamada (minutos)", ylab = "Unidades") # Gráficamente
+```
+</center>
+</small>
