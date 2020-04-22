@@ -5,6 +5,9 @@
 # Cargo el dataset iris
 data(iris)
 
+# Cargo las librerias instaladas en un vector de chars
+librerias_instaladas<-rownames(installed.packages())
+
 # Chequeo si está instalada la librería ggplot2
 # Si no está instalada, la instalo
 if("ggplot2" %in% librerias_instaladas == FALSE) {
