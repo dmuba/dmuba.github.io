@@ -2,7 +2,7 @@
 #########  GRÁFICOS CON GGPLOT2 #########
 #########################################
 
-# Cargo el dataset itis
+# Cargo el dataset iris
 data(iris)
 
 # Chequeo si está instalada la librería ggplot2
