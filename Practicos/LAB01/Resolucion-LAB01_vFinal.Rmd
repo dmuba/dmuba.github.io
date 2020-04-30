@@ -1,0 +1,165 @@
+---
+title: 'Laboratorio 01: Análisis Exploratorio de Datos'
+author: "Santiago Banchero, Juan Fernandez, Leo Lucianna"
+date: "25/4/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exploración de datos
+
+**Explore y explique en qué consiste el dataset utilizando herramientas de exploración de datos.**
+<br />
+<br />
+**a. Releve las características de los atributos.**
+
+Verificamos los nombres de los atributos y sus características con *str*:
+```{r summary_mpi}
+MPI_subnational = read.csv('https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/LAB01/MPI_subnational.csv', header = TRUE, sep = ',')
+
+# Nombres de variables
+names(MPI_subnational)
+
+# Caracteristicas de las variables
+str(MPI_subnational)
+```
+
+**b. Represente gráficamente la cantidad de ciudades agrupados por Región.**
+```{r pie_mpi}
+pie(table(MPI_subnational$World.region), main="Ciudades agrupadas por región")
+```
+<br />
+
+
+## Medidas de posición
+
+**Calcule las medidas de posición para los atributos numéricos y agrupe los cálculos de acuerdo a la Región.**
+
+```{r medidas_posicion}
+# Calculo la Media
+apply(MPI_subnational[,5:8], 2, mean, na.rm=TRUE)
+
+# Calculo la Mediana
+apply(MPI_subnational[,5:8], 2, median, na.rm=TRUE)
+
+# Calculo de moda
+library(modeest)
+apply(MPI_subnational[,5:8], 2, mfv, na.rm=TRUE)
+```
+### Cálculos agrupados por región
+Se define un ejemplo de una medida de posición (media) agrupada por región:
+
+```{r medidas_posicion_region}
+# Agrupando por Región
+aggregate(MPI.National ~ World.region, data=MPI_subnational, FUN=mean)
+```
+
+
+**a. Ordene los resultados del MPI resultante y concluya al respecto. Help(order).**
+
+```{r ordenado}
+# Por país
+MPI_x_WR=aggregate(MPI.National ~ World.region, data=MPI_subnational, FUN=mean)
+# Ranking
+MPI_x_WR[order(-MPI_x_WR$MPI.National),]
+```
+En función del MPI (Multidimensional Poverty Measures) ordenado de forma descendente se puede concluir respecto a la pobreza promedio por región. En función de ello, se observa que la región mundial con mayores índices de pobreza en función de la métrica MPI es Sub-Saharan Africa con 0.33, seguida por South Asia, con 0.20. Para el resto de las regiones mundiales el indicador varía entre 0.12 y 0.02 que es el menor valor (observado para Europe and Central Asia).
+
+**b. Grafique las variables y observe su comportamiento (graph: barplot, pie & hist).**
+<br />
+<br />
+Ejemplo de variable continua:
+```{r cont_graph}
+hist(MPI_subnational$MPI.National, main = "Histograma del MPI.National", xlab = "MPI.National", ylab = "Frecuencia")
+```
+<br />
+El histograma de la variable MPI.National permite ver que una gran proporción de los valores se encuentran entre 0 y 0.1. Luego, es posible observar que existe una nueva concentración de observaciones en torno 0.25-0.4, por encima de esos valores la cantidad de observaciones disminuye.
+<br />
+<br />
+Ejemplo de variable discreta:
+```{r disc_graph}
+pie(table(MPI_subnational$World.region), main="Países agrupadas por región")
+barplot(table(MPI_subnational$World.region), las=2, cex.names=.5, main="Países agrupadas por región")
+```
+
+En los gráficos precedentes puede observarse que las regiones que cuentan con mayor cantidad de países observados son Sub-Saharan Africa y Latin America and Caribbean. A continuación le siguen East Asia and the Pacific, Arab States, South Asia mientras que la región con menos paises observados es Europe and Central Asia.
+
+## Medidas de dispersión
+
+**Calcular el desvío estándar, la varianza y el rango para cada una de las variables.**
+
+Cálculo del *desvío estandar* para cada atributo numérico:
+```{r sd_c}
+apply(MPI_subnational[,5:8], 2, sd, na.rm=TRUE)
+```
+
+Cálculo de la *varianza* para cada atributo numérico:
+```{r var_c}
+apply(MPI_subnational[,5:8], 2, var, na.rm=TRUE)
+```
+
+Cálculo del *rango* para cada atributo numérico:
+```{r range_c}
+apply(MPI_subnational[,5:8], 2, range, na.rm=TRUE)
+```
+
+Cálculo del *Coeficiente de Variación* para cada atributo numérico (mediante la función cv del paquete statip): 
+```{r cv_c}
+apply(MPI_subnational[,5:8], 2, statip::cv, na_rm=TRUE)
+```
+
+También puede ser calculado usando una función propia: 
+```{r cv_c_fun}
+apply(MPI_subnational[,5:8], 2, FUN = function(x) sd(x,na.rm=TRUE)/mean(x, na.rm=TRUE))
+```
+
+**a. Realice diagramas de cajas y scatterplot’s. Documente las conclusiones.**
+
+### Diagramas de cajas:
+
+```{r disp_gr, echo=FALSE}
+boxplot(MPI_subnational[,5:6], main="Boxplot de MPI National y Regional")
+```
+<br />
+En este boxplot puede observarse que las distribuciones de ambas variables no presentan valores extremos, pero presentan un sesgo hacia la derecha, particularmente MPI.Regional, lo cual significa que existen más cantidad de observaciones sobre la mediana que por debajo de ella.
+<br />
+
+```{r disp_gr2, echo=FALSE}
+boxplot(MPI_subnational[,7:8], main="Boxplott")
+```
+<br />
+En este boxplot puede observarse que la distribución de Headcount.Ratio.Regional presenta se distribuyen de manera homogénea en torno a la mediana registrando un leve sesgo hacia la derecha, sus valores varían entre 0-100 y no se observan valores atípicos (o por fuera de +/-1.5*IQR). En cambio, la variable Intensity.of.deprivation.Regional posee una distribución compacta concentrada en torno a la mediana con sus datos concentrados entre 35-65 aproximadamente. Además, registra presencia de valores atípicos en el extremo superior de la distribución.
+<br />
+
+### Gráficos de dispersión:
+```{r disp_gr4, echo=FALSE}
+plot(MPI_subnational[,5:8], labels = names(MPI_subnational)[5:8])
+```
+<br />
+**b. ¿Qué variable es la que presenta mayor dispersión? Tenga en cuenta que cada variable puede estar expresada en diferentes unidades y magnitudes.**
+
+Dada la diferencia de magnitudes se utilizó el Coeficiente de Variación, este muestra que la mayor variación porcentual se adjudica a MPI.Regional (con ~86.8%), es seguida por MPI.Nacional (~78.5%), en tercer lugar Headcount.Ratio.Regional (~74.6%) y por último Intensity.of.deprivation.Regional (~17%). Esto es coherente con lo observado en los gráficos de cajas donde los bigotes más amplios son los de la variable MPI.Regional y la distribución más compacta es Intensity.of.deprivation.Regional.
+
+## Medidas de asociación
+**Calcular el coeficiente de correlación de todas las variables y explique el resultado.**
+
+```{r coef_cor, echo}
+matriz.correlaciones = cor(MPI_subnational[,5:8], use = "complete.obs")
+colnames(matriz.correlaciones)=c("MPI.Nat","MPI.Reg","Headcount.Reg","Intensity.Reg")
+rownames(matriz.correlaciones)=c("MPI.Nat","MPI.Reg","Headcount.Reg","Intensity.Reg")
+print(matriz.correlaciones)
+```
+
+Como puede observarse en el cálculo del coeficiente de correlación de Pearson, todas las variables tienen una correlación positiva alta entre sí, observando coeficientes de correlación entre 0.81 y 0.98.
+
+**¿Qué tipo de gráficos describen mejor esta relación entre las variables?**
+
+Los gráficos que mejor describen la relación entre variables son los diagramas de dispersión. Como se observa en los gráficos del punto anterior en la matriz de _scatter plots_, ya se observa una relación lineal entre todas las variables observadas del dataset. Esa dependencia se ve reflejada en los valores de correlación de Pearson obtenidos.
+
+
+
