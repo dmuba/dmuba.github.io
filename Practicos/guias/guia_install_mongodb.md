@@ -77,16 +77,17 @@ gedit ~/.local/share/applications/robo3t.desktop
 Editar el archivo con las siguiente configuración y guardar
 
 ```
-       [Desktop Entry]
-       Encoding=UTF-8
-       Name=Robo 3T
-       Exec=robo3t
-       Icon=/opt/robo3t/robo3t.png
-       Terminal=false
-       Type=Application
-       Categories=Development;
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Robo3t
+Icon=/opt/robo3t/bin/icon.png
+Exec="/opt/robo3t/bin/robo3t"
+Comment=Robo3t
+Categories=Development;
+Terminal=false
+StartupNotify=true
 ```
- 
 
 ## Utilizando MongoDB a través de Robo 3T (para todos los Sistemas Operativos)
 
