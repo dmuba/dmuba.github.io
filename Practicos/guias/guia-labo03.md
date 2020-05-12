@@ -8,13 +8,13 @@ A continuación se presentan algunas operaciones básicas de gestión de Bases d
 Con botón derecho sobre la conexión, __Create Database__
 
 
-![crear db](./imgs/Mongo-creardb.png)
+![crear db](./img/Mongo-creardb.png)
 
 
 ### Crear una colección
 Botón derecho sobre *collections* __Create Collection__
 
-![crear col](./imgs/Mongo-crearcol.png)
+![crear col](./img/Mongo-crearcol.png)
 
 
 ## OPERACIONES CRUD
