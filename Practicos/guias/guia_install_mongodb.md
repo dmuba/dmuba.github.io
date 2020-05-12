@@ -5,20 +5,25 @@
 ### Servidor MongoDB
 
 1. En primer lugar, vamos a instalar el Servidor MongoBD, para ello debemos descargarlo desde [el Sitio Web, en la Sección Community](https://www.mongodb.com/download-center/community). 
-2. Una vez que descargado el instalador, se instala optando por el tipo de instalación _complete_.
-3. Ahora, debemos crear una carpeta llamada _data_ en la Unidad _C:_ y dentro de ella una carpeta que denominada _data_. El path completo de estos nuevos directorios quedará de la siguiente manera: _C:\data\db_.
+2. Una vez que descargado el instalador, se instala optando por el tipo de instalación __complete__.
+3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __data__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
 
-Ahora ya tenemos instalado el servidor mongoDB, lo que debemos hacer es iniciarlo ejecutando el archivo _mongod_ que se encuentra en el directorio de instalación, generalmente en _C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin_.
+A continuación podemos observar gráficamente estas últimas instrucciones:
+![crear col](./img/instalar_mongo.png)
 
+Ahora ya tenemos instalado el servidor mongoDB, lo que debemos hacer es iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
 En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
 1. Abrimos una Consola de Windows escribiendo _cmd_ en la barra de búsqueda de la barra inferior de Windows.
-2. Escribimos _cd _C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin_
-3. Escribimos _mongod_.
+2. Escribimos __cd C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__.
+3. Escribimos __mongod__ y damos Enter.
+
+A continuación podemos observar gráficamente estas últimas instrucciones:
+![crear col](./img/ejecutar_mongo.png)
+
 
 ### Robo3T
 
 
-![crear col](./img/crearcol.png)
 
 
 ## Sistemas Operativos UNIX
