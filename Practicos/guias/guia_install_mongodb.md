@@ -1,6 +1,6 @@
 # Guía de Instalación de MongoDB y Robo 3T
 
-En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como cargar una Base de Datos NOSQL de MongoDB a través del comando __mongorestore__.
+En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Además, hacia el final de la guía, vamos a mostrar como restaurar y backupear Base de Datos Mongo a través de los comandos __mongorestore__ y __mongodump__.
 
 ## Sistemas Operativos Windows
 
@@ -55,3 +55,14 @@ A continuación podemos observar gráficamente como conectarnos a MongoDB con Ro
 <img src="./img/conectar_robo3t.png" alt="drawing" width="700px" align="middle"/>
 
 Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que muestra una introducción a como gestionar nuestras bases de datos con estas herramientas. Podemos acceder presionando [aquí](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/guias/guia-labo03.md).
+
+
+## Backups y Restauración de una base de datos (mongodump y mongorestore)
+
+### Exportar una Base de Datos desde un arhivo gzip
+
+mongodump -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
+
+### Restaurar una Base de Datos desde un arhivo gzip
+
+mongorestore -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
