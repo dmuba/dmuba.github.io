@@ -21,20 +21,22 @@
          "caption": "Abrir"
         },
         {"id": 5,
-         "ref": "Clase 5: Reducción de dimensionalidad",
+         "ref": "Clase 5: Bases de datos NoSQL",
+         "link": "https://docs.google.com/presentation/d/1vm8e2oTAjsvkR2WBCiyVLBxrWo3Rc2SqcAxPjtn3FKg/edit?usp=sharing",
+         "caption": "Abrir"
+        } ,
+        {"id": 6,
+         "ref": "Clase 6: Reducción de dimensionalidad",
          "link": "https://docs.google.com/presentation/d/1TAI-xSn2md081pCs_Q2zRtEeiuckLX0M1R1-s6_MK9M/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 6,
-         "ref": "Clase 6: Feature Engineering",
+        
+        {"id": 7,
+         "ref": "Clase 7: Feature Engineering",
          "link": "https://docs.google.com/presentation/d/1_RkkmdMl4MHrSz9XpW9LpWMCqPGMfkb8FJm9e0gzDqY/edit?usp=sharing",
          "caption": "Abrir"
         },
-        {"id": 7,
-         "ref": "Clase 7: Bases de datos NoSQL",
-         "link": "https://docs.google.com/presentation/d/1vm8e2oTAjsvkR2WBCiyVLBxrWo3Rc2SqcAxPjtn3FKg/edit?usp=sharing",
-         "caption": "Abrir"
-        } ,       
+               
         {"id": 8,
          "ref": "Clase 8: Datos No Estructurados. De bases de datos textuales a features",
          "link": "https://docs.google.com/presentation/d/1BCNNOGaiTb3mpqtRaA2yTmtJyGdXxzGy0am_BPJGUrE/edit?usp=sharing",
