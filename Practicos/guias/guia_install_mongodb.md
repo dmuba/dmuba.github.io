@@ -68,7 +68,7 @@ sudo mv robo3t /opt/robo3t
 sudo ln -s /opt/robo3t/bin/robo3t /usr/bin/robo3t
 ```
 
-6. Crear el acceso directo para acceder desde el manú de aplicaciones del escritorio. Para eso hay que crear un archivo en la carpeta *~/.local/share/applications*
+6. Crear el acceso directo para acceder desde el menú de aplicaciones del escritorio. Para eso hay que crear un archivo en la carpeta *~/.local/share/applications*
 
 ```
 gedit ~/.local/share/applications/robo3t.desktop
