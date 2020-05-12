@@ -1,4 +1,4 @@
-# Guía de Instalación MongoDB y Robo3t
+# Guía de Instalación MongoDB y Robo3T
 
 ## Sistemas Operativos Windows
 
@@ -18,7 +18,7 @@ En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
 3. Escribimos __mongod__ y damos Enter.
 
 A continuación podemos observar gráficamente estas últimas instrucciones:
-![crear col](./img/ejecutar_mongo.png =300x)
+![crear col](./img/ejecutar_mongo.png =300x300)
 
 
 ### Robo3T
