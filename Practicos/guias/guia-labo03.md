@@ -1,19 +1,25 @@
-# Guía LABORATORIO III: Introducción a Bases de Datos NOSQL
+# Guía LABORATORIO: Introducción a Bases de Datos NOSQL
 
-## Crear una db. 
+## Creación de "esquemas" con MongoDB con Robo3T
+
+A continuación se presentan algunas operaciones básicas de gestión de Bases de Datos con MongoDB a través de la interfaz Robo3T.
+
+### Crear una db. 
 Con botón derecho sobre la conexión, __Create Database__
 
 
-![crear db](./img/creardb.png)
+![crear db](./imgs/Mongo-creardb.png)
 
 
-## Crear una colección
+### Crear una colección
 Botón derecho sobre *collections* __Create Collection__
 
-![crear col](./img/crearcol.png)
+![crear col](./imgs/Mongo-crearcol.png)
 
 
 ## OPERACIONES CRUD
+
+Como vimos en la teoría, las operaciones de creación, actualización, borrado y consulta de datos son denominadas CRUD (create, read, update, delete) y son similares a las que estamos acostumbrados en los Sistemas Gestores de Bases de Datos tradicionales.
 
 Ejemplo: cómo armar un documento JSON para importar a la base.
 
@@ -47,7 +53,7 @@ c) Actualizar un atributo con __update__
 ```javascript
     db.documentos.update(
         {"_id": 1},
-        {$set: {"titulo": "NOTICIA MODIFICADA EN DMUBA"}}
+        {$set: {"titulo": "NOTICIA MODIFICADA EN UNLu"}}
     )
 ```
 
@@ -81,8 +87,6 @@ Ejemplo:
         "is_retweet" : false,
 ```
 
-El dataset de Tweets está disponible [acá](https://raw.githubusercontent.com/dmuba/dmuba.github.io/master/Practicos/guias/tweets-dolar.json).
-
 d) Utilizar operadores de comparación
 
 ¿Cuantos tweets tienen más de un retweet?
@@ -92,7 +96,7 @@ d) Utilizar operadores de comparación
 db.getCollection('tweets').find({retweet_count: {$gt: 1} })
 
 ```
-Ver otros operadores [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
+Además, podemos consultar otros operadores de MongoDB [aquí](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
 
 e) Utilizar búsquedas por cadenas
 
@@ -136,3 +140,22 @@ q4 = tweets$aggregate(
 
 ```
 
+## Importación de Datos con MongoImport
+
+La herramienta _mongoimport_ es una herramienta de MongoDB que permite importar a una DB Mongo contenido de una exportación JSON, CSV o TSV creada por mongoexport, o potencialmente, otra herramienta de exportación de terceros.
+
+La forma de utilización es mediante el comando _mongoimport_ es la siguiente desde una consola:
+
+Sistemas Operativos UNIX:
+```javascript
+
+$ mongoimport --host localhost --port 27017 --username user --password "pass" --collection tweets --db dolar --file /home/juan/Escritorio/dolar.json
+
+```
+
+Sistemas Operativos Windows:
+```javascript
+
+> mongoimport --host localhost --port 27017 --collection tweets --db dolar --file C:\Users\unlu\dolar.json
+
+```
