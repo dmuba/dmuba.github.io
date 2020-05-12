@@ -61,12 +61,19 @@ Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que 
 
 ### Exportar una Base de Datos desde un arhivo gzip
 
+Para exportar una base de datos cuyo nombre es _nombre_base_datos_ podemos utilizar __mongodump__ de la siguiente manera:
+
 ```bash
-mongodump -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
+mongodump  -h localhost -d nombre_base_datos -o path_backup --gzip
 ```
+
+El último argumento "--gzip" es para que comprima las colecciones en un archivo gzipeado, de lo contrario realiza los backups en archivos json, uno por cada colección.
+
 
 ### Restaurar una Base de Datos desde un arhivo gzip
 
+Para restaurar una Base de Datos que fue backupeada o "dumpeada" a partir de un mongodump como el anterior, utilizamos el siguiente comando:
+
 ```bash
-mongorestore -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
+mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 ```
