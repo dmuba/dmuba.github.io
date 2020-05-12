@@ -75,3 +75,12 @@ Para restaurar una Base de Datos que fue backupeada o "dumpeada" a partir de un 
 ```bash
 mongorestore -d nombre_nueva_base_datos -o path_donde_esta_backup --gzip
 ```
+### Restaurar una Base de Datos desde un arhivo json
+
+Para restaurar una Base de Datos a partir de un archivo __json__ podemos utilizar el siguiente comando:
+
+```bash
+mongoimport --db nombre_nueva_base_datos --collection nombre_coleccion --file path_donde_esta_json --jsonArray
+```
+
+Recuerden que si están utilizando el Sistema Operativo Windows, previo a ejecutar estos comandos debemos posicionarnos en el directorio de instalación de MongoDB, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__.
