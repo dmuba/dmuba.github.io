@@ -39,6 +39,55 @@ Los pasos para instalar el servidor de MongoDB se describen a continuación:
 <img src="./img/descargar_robo3t.png" alt="drawing" width="700px" align="middle"/>
 
 
+## Ubuntu
+
+### Robo3T
+
+1. Para instalar Robo3T en Ubuntu primero hay que descargarlo desde el sitio oficial https://robomongo.org/download. Hacer click en "*Download Robo 3T*" (No hacer las descarga desde "Download Your Double Pack"). Se selecciona la solapa *"Linux"*, y descargar el archivo *.tar.gz* en la carpeta *Descargas*.
+
+2. Abrir la *Terminal*, ingresar a la carpeta *Descargas*, y descomprimir el archivo descargado con el comando *tar*.
+
+```
+cd ~/Descargas
+tar -xzf robo3t-x.x.x-linux-x86_64-xxxxxxx.tar.gz
+```
+
+3. Renombar la carpeta generada por el nombre *robo3t*:
+
+```
+mv  robo3t-x.x.x-linux-x86_64-xxxxxxx robo3t
+```
+
+4. Mover la carpeta robo3t de *~/Descargas/robo3t* a */opt/robo3t*:
+```
+sudo mv robo3t /opt/robo3t
+```
+
+5. Generar link simbólico del ejecutable robo3t para que quede accesible para usar como comando:
+```
+sudo ln -s /opt/robo3t/bin/robo3t /usr/bin/robo3t
+```
+
+6. Crear el acceso directo para acceder desde el manú de aplicaciones del escritorio. Para eso hay que crear un archivo en la carpeta *~/.local/share/applications*
+
+```
+gedit ~/.local/share/applications/robo3t.desktop
+```
+
+Editar el archivo con las siguiente configuración y guardar
+
+```
+       [Desktop Entry]
+       Encoding=UTF-8
+       Name=Robo 3T
+       Exec=robo3t
+       Icon=/opt/robo3t/robo3t.png
+       Terminal=false
+       Type=Application
+       Categories=Development;
+```
+ 
+
 ## Utilizando MongoDB a través de Robo 3T (para todos los Sistemas Operativos)
 
 Una vez que tenemos el Servidor de MongoDB y Robo 3T instalados y operativos, podemos utilizar MongoDB a través de la interfaz gráfica de Robo 3T. Para ello debemos seguir los siguientes pasos, que son muy sencillos:
