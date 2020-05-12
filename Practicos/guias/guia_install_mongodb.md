@@ -39,8 +39,6 @@ Los pasos para instalar el servidor de MongoDB se describen a continuación:
 <img src="./img/descargar_robo3t.png" alt="drawing" width="700px" align="middle"/>
 
 
-## Sistemas Operativos UNIX
-
 ## Utilizando MongoDB a través de Robo 3T (para todos los Sistemas Operativos)
 
 Una vez que tenemos el Servidor de MongoDB y Robo 3T instalados y operativos, podemos utilizar MongoDB a través de la interfaz gráfica de Robo 3T. Para ello debemos seguir los siguientes pasos, que son muy sencillos:
