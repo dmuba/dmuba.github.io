@@ -61,8 +61,12 @@ Para empezar a trabajar, creamos otra Guía de Laboratorio, la número III, que 
 
 ### Exportar una Base de Datos desde un arhivo gzip
 
+```bash
 mongodump -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
+```
 
 ### Restaurar una Base de Datos desde un arhivo gzip
 
+```bash
 mongorestore -h localhost -d DMUBA -c users_mongo_covid19 --archive=./users_covid_curso2020.gz --gzip
+```
