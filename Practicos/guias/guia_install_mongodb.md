@@ -6,7 +6,7 @@
 
 1. En primer lugar, vamos a instalar el Servidor MongoBD, para ello debemos descargarlo desde [el Sitio Web, en la Sección Community](https://www.mongodb.com/download-center/community). 
 2. Una vez que descargado el instalador, se instala optando por el tipo de instalación __complete__.
-3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __data__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
+3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __db__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
 
 A continuación podemos observar gráficamente estas últimas instrucciones:
 ![crear col](./img/instalar_mongo.png)
