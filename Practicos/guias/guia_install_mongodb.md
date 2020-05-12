@@ -9,7 +9,7 @@
 3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __db__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
 
 A continuación podemos observar gráficamente estas últimas instrucciones:
-<img src="./img/ejecutar_mongo.png" alt="drawing" height="300" width="300"/>
+<img src="./img/ejecutar_mongo.png" alt="drawing" width="600px" align="center"/>
 
 Ahora ya tenemos instalado el servidor mongoDB, lo que debemos hacer es iniciarlo ejecutando el archivo __mongod__ que se encuentra en el directorio de instalación, generalmente en __C:\Program Files\MongoDB\Server\<VERSION_INSTALADA>\bin__. 
 En caso que no sepas como hacerlo, seguí las siguientes instrucciones:
