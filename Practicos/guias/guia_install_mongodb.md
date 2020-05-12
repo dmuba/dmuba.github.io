@@ -36,7 +36,7 @@ Los pasos para instalar el servidor de MongoDB se describen a continuación:
 1. Descargamos ROBO 3T del [Sitio web de la herramienta](https://robomongo.org/download), de acuerdo a la versión de nuestro Sistema Operativo.
 2. Ejecutamos el instalador, que es un instalador típico de Windows (siguiente, siguiente...) y listo.
 
-<img src="./img/instalar_robo3t.png" alt="drawing" width="700px" align="middle"/>
+<img src="./img/descargar_robo3t.png" alt="drawing" width="700px" align="middle"/>
 
 
 ## Sistemas Operativos UNIX
