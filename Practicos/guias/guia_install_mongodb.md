@@ -7,7 +7,7 @@ En esta guía vamos a mostrar paso a paso como instalar MongoDB y Robo3T. Ademá
 ### Servidor MongoDB
 
 Los pasos para instalar el servidor de MongoDB se describen a continuación:
-1. En primer lugar, vamos a instalar el Servidor MongoBD, para ello debemos descargarlo desde [el Sitio Web, en la Sección Community](https://www.mongodb.com/download-center/community) y descargamos el Server (en la Sección Server) para nuestro Sistema Operativo Windows. 
+1. En primer lugar, vamos a instalar el Servidor MongoBD, para ello debemos descargarlo desde [el Sitio Web, en la Sección Community](https://www.mongodb.com/download-center/community) y descargamos el Server -archivo MSI- (en la Sección Server) para nuestro Sistema Operativo Windows. 
 2. Una vez que descargado el instalador, se instala optando por el tipo de instalación __complete__.
 3. Ahora, debemos crear una carpeta llamada __data__ en la Unidad __C:__ y dentro de ella una carpeta que denominada __db__. El path completo de estos nuevos directorios quedará de la siguiente manera: __C:\data\db__.
 
