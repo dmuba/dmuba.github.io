@@ -11,7 +11,7 @@ Una forma eficiente para trabajar consta de generar nuevas colecciones en MongoD
 #### Creación de colecciones a partir de agregaciones de datos _aggregate_ y _$out_
 Supongamos por un momento que tenemos la necesidad de generar una nueva colección con la cantidad de Tweets de nuestra colección agrupados por el atributo source (la aplicación desde la cual se realizó el tweet).
 La consulta sería la siguiente:
-```mongodb
+```javascript
 db.tweets_mongo_covid19.aggregate( [
     {$group: { _id: "$source", cantidad: {$sum: 1} } },
   ] )
@@ -19,7 +19,7 @@ db.tweets_mongo_covid19.aggregate( [
 En el operador _$group_ definimos, en el atributo __id_ cual es el atributo a partir del cual realizamos la agregación y luego creamos el atributo _cantidad_ con la operación de agregación.
 
 Si quisieramos ordenar el listado, podemos incorporar el operador _$sort_:
-```mongodb
+```javascript
 db.tweets_mongo_covid19.aggregate( [
     {$group: { _id: "$source", cantidad: {$sum: 1} } },
     {$sort:{"cantidad":-1} }
@@ -29,7 +29,7 @@ db.tweets_mongo_covid19.aggregate( [
 En este caso, con el -1 sobre el atributo _cantidad_, estamos indicando que el orden sea descendente.
 
 Por otro lado, es deseable, como planteamos antes crear colecciones, o subcolecciones, a partir de estas consultas a modo de _views_ en SQL. Eso lo logramos con el operador _$out_ de la instrucción aggregate:
-```mongodb
+```javascript
 db.tweets_mongo_covid19.aggregate( [
     {$group: { _id: "$source", cantidad: {$sum: 1} } },
     {$sort:{"cantidad":-1} },
@@ -44,12 +44,12 @@ El operador _$out_ generará una nueva colección denominada __origenes_tweets__
 En aquellos casos que deseáramos crear nuevos subconjuntos de datos que no necesariamente consten de agregaciones (resúmenes, _group by_), también podemos hacerlo en MongoDB.
 
 Supongamos que necesitamos obtener una vista con el nombre, el _screen name_ y la cantidad de seguidores de los tweets de aquellos ususarios con mas de 100 seguidores. La consulta en MongoDB sería la siguiente:
-```mongodb
+```javascript
 db.tweets_mongo_covid19.find({ followers_count: {$gt: 100} }, { name: 1, screen_name: 1, followers_count: 1, verified:1  })
 ```
 
 Ahora bien, si deseamos crear una vista con esta información utilizamos el método _CreateView_ de la siguiente manera:
-```mongodb
+```javascript
 db.createView("mas_100_followers", "tweets_mongo_covid19", [ 
     { $match: { followers_count: {$gt: 100} } }, 
     { $project: { name: 1, screen_name: 1, followers_count: 1, verified:1  } } ])
@@ -89,18 +89,22 @@ df_100f = followers_100$find()
 __¿Cuál es la proporción de tweets que contienen al menos una marca (RT o fav)?__
 
 Cantidad con al menos una marca:
-```mongodb
-db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})
+```javascript
+db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
+                                         {"retweet_count" : {"$gt" : 0}}]})
 ```
 
 Tweets con al menos una marca:
-```mongodb
-db.tweets_mongo_covid19.find({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})
+```javascript
+db.tweets_mongo_covid19.find({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
+                                        {"retweet_count" : {"$gt" : 0}}]})
 ```
 
 Proporción sobre el Total de Tweets:
-```mongodb
-db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})/db.tweets_mongo_covid19.count()*100
+```javascript
+db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, 
+                                         {"retweet_count" : {"$gt" : 0}}]
+                              }) /db.tweets_mongo_covid19.count()*100
 ```
 Cuantas veces un hashtag fue utilizado por un usuario
 ```javascript
