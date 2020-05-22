@@ -8,6 +8,7 @@ Una forma eficiente para trabajar consta de generar nuevas colecciones en MongoD
 
 ### Parte I: Creación de consultas en MongoDB
 
+#### Creación de colecciones a partir de agregaciones de datos _aggregate_ y _$out_
 Supongamos por un momento que tenemos la necesidad de generar una nueva colección con la cantidad de Tweets de nuestra colección agrupados por el atributo source (la aplicación desde la cual se realizó el tweet).
 La consulta sería la siguiente:
 ```mongodb
@@ -38,7 +39,30 @@ db.tweets_mongo_covid19.aggregate( [
 
 El operador _$out_ generará una nueva colección denominada __origenes_tweets__.
 
-## Parte II: Acceder a los documentos
+#### Creación de vistas en MongoDB a partir del método _CreateView()
+
+En aquellos casos que deseáramos crear nuevos subconjuntos de datos que no necesariamente consten de agregaciones (resúmenes, _group by_), también podemos hacerlo en MongoDB.
+
+Supongamos que necesitamos obtener una vista con el nombre, el _screen name_ y la cantidad de seguidores de los tweets de aquellos ususarios con mas de 100 seguidores. La consulta en MongoDB sería la siguiente:
+```mongodb
+db.tweets_mongo_covid19.find({ followers_count: {$gt: 100} }, { name: 1, screen_name: 1, followers_count: 1, verified:1  })
+```
+
+Ahora bien, si deseamos crear una vista con esta información utilizamos el método _CreateView_ de la siguiente manera:
+```mongodb
+db.createView("mas_100_followers", "tweets_mongo_covid19", [ 
+    { $match: { followers_count: {$gt: 100} } }, 
+    { $project: { name: 1, screen_name: 1, followers_count: 1, verified:1  } } ])
+```
+
+En la instrucción anterior, definimos -en el orden de aparición- las siguientes cuestiones:
+- Nombre de la vista,
+- Nombre de la colección consultada,
+- _$match_: condiciones que deben cumplir las filas que integrarán la vista,
+- _$project_: columnas que incluirá la vista.
+
+
+### Parte II: Acceder a los datos mediante R
 
 Una vez que contamos con esta colección, podemos consultarla desde R:
 
@@ -51,10 +75,13 @@ install.packages("mongolite")
 library(mongolite)
 ```
 
-2. Leemos los datos, los que se guardan en el dataframe _df_:
+2. Obtenemos los datos en R desde MongoDB, los que se guardan en un dataframe:
 ```R
 sources = mongo(collection = "origenes_tweets", db = "DMUBA" )
-df <- sources$find('{}')
+followers_100 = mongo(db = "DMUBA", collection = "mas_100_followers")
+
+df_sources <- sources$find()
+df_100f = followers_100$find()
 ```
 
 # Algunas consultas mas de ejemplo
