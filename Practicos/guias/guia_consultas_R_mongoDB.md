@@ -102,3 +102,20 @@ Proporción sobre el Total de Tweets:
 ```mongodb
 db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})/db.tweets_mongo_covid19.count()*100
 ```
+Cuantas veces un hashtag fue utilizado por un usuario
+```javascript
+//Cuantas veces un usuario utilizo un hashtag
+db.tweets_mongo_covid19.aggregate(
+  [
+    {$project: {"hashtags": 1, "screen_name": 1, _id: 0}},
+    {$unwind: "$hashtags"},
+    {$match: {"hashtags": {$ne: null}}},
+    {$group: {_id: {"usuarios": "$screen_name", 
+                    "hashtags": "$hashtags"}, 
+                    count: {$sum: 1}}},
+    {$sort: {count: -1}},
+    {$project: {"usuario": "$_id.usuarios","hashtag": "$_id.hashtags", "count": 1, "_id": 0}},
+    {$out: "hashtag_usados_x_usuario"}
+  ]
+)
+```
