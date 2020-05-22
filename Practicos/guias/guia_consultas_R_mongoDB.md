@@ -51,10 +51,10 @@ install.packages("mongolite")
 library(mongolite)
 ```
 
-2. Leemos los datos:
+2. Leemos los datos, los que se guardan en el dataframe _df_:
 ```R
 sources = mongo(collection = "origenes_tweets", db = "DMUBA" )
-query <- sources$find('{}')
+df <- sources$find('{}')
 ```
 
 # Algunas consultas mas de ejemplo
