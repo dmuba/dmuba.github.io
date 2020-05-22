@@ -119,3 +119,20 @@ db.tweets_mongo_covid19.aggregate(
   ]
 )
 ```
+
+Agregación de resumen de tweets por usuario. Con cantidad de tweets, fecha del primer y último tweet, cantidad de RT y favs que recibió, cantidad tweets que son RT o citas. Ordena por cantidad de tweets y RT.
+```mongodb
+db.tweets_mongo_covid19.aggregate( [
+    {$group: { _id: "$user_id", 
+                screen_name: { $first: "$screen_name" }, 
+                tweets: {$sum: 1},
+                fecha_primero: { $min: "$created_at" }, 
+                fecha_ultimo: { $max: "$created_at" }, 
+                retweet_count: {$sum: "$retweet_count"},
+                favorite_count: {$sum: "$favorite_count"},
+                num_quote: {$sum: { $cond: ["$is_quote", 1, 0]}},
+                num_retweet: {$sum: { $cond: ["$is_retweet", 1, 0]}},
+                }},
+    {$sort:{"tweets": -1, "retweet_count": -1} }
+  ] )
+```
