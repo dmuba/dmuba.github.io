@@ -56,3 +56,22 @@ library(mongolite)
 sources = mongo(collection = "origenes_tweets", db = "DMUBA" )
 query <- sources$find('{}')
 ```
+
+# Algunas consultas mas de ejemplo
+
+__¿Cuál es la proporción de tweets que contienen al menos una marca (RT o fav)?__
+
+Cantidad con al menos una marca:
+```mongodb
+db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})
+```
+
+Tweets con al menos una marca:
+```mongodb
+db.tweets_mongo_covid19.find({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})
+```
+
+Proporción sobre el Total de Tweets:
+```mongodb
+db.tweets_mongo_covid19.count({ "$or" : [{"favorite_count" : {"$gt" : 0}}, {"retweet_count" : {"$gt" : 0}}]})/db.tweets_mongo_covid19.count()*100
+```
