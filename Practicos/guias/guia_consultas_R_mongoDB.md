@@ -39,7 +39,7 @@ db.tweets_mongo_covid19.aggregate( [
 
 El operador _$out_ generará una nueva colección denominada __origenes_tweets__.
 
-#### Creación de vistas en MongoDB a partir del método _CreateView()
+#### Creación de vistas en MongoDB a partir del método _createView()_
 
 En aquellos casos que deseáramos crear nuevos subconjuntos de datos que no necesariamente consten de agregaciones (resúmenes, _group by_), también podemos hacerlo en MongoDB.
 
