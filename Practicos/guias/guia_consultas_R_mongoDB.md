@@ -140,3 +140,45 @@ db.tweets_mongo_covid19.aggregate( [
     {$sort:{"tweets": -1, "retweet_count": -1} }
   ] )
 ```
+
+Agregación que combina información de uso de hashtags de un usuario (colección de tweets) y estadísticas del usuario (colección de usuarios).
+
+```javascript
+db.tweets_mongo_covid19.aggregate(
+  [
+    {$project: {"hashtags": 1, "screen_name": 1, _id: 0}},
+    {$unwind: "$hashtags"},
+    {$match: {"hashtags": {$ne: null}}},
+    {$group: {_id: {"usuarios": "$screen_name", 
+                    "hashtags": "$hashtags"}, 
+                    count: {$sum: 1}}},
+    {$sort: {count: -1}},
+    {$project: {"usuario": "$_id.usuarios","hashtag": "$_id.hashtags", "count": 1, "_id": 0}},
+    {$lookup:  {
+       from: "users_mongo_covid19",
+       localField: "usuario",
+       foreignField: "screen_name",
+       as: "join_usuarios"
+     }
+    },
+    {$project: 
+        {
+            "usuario": 1,"hashtag": 1, "count": 1,
+            "followers_count": {"$arrayElemAt": ["$join_usuarios.followers_count", 0]},
+            "friends_count": {"$arrayElemAt": ["$join_usuarios.friends_count", 0]},
+            "favourites_count": {"$arrayElemAt": ["$join_usuarios.favourites_count", 0]},
+            "statuses_count": {"$arrayElemAt": ["$join_usuarios.statuses_count", 0]},
+            "_id": 0}},
+    
+    {$out: "N_hashtag_usados_stats"}
+  ]
+)
+```
+En el pipeline de agregación se incorporan las instrucciones:
+
+- lookup: que permite hacer el join entre la agregación de _tweets_ y la colección de _users_.
+- arrayElemAt: para obtener el primer elemento de un array.
+
+
+
+
