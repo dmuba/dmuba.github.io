@@ -110,3 +110,14 @@ Para más detalles acceder a la documentación de ayuda:
 ?dummy_cols
 ```
 
+## Consignas
+
+Sobre la variable de cantidad de casos (columna cases):
+
+1. Aplicar distintos métodos de normalización y analizar las distribuciones resultantes. (Gráficos hist, qqplot, density, boxplot)
+2. Aplicar los ejemplos de discretización de esta guía. Documente ventajas y desventajas de cada método.
+3. Aplique alguna transformación para reducir el sesgo. Calcule la métrica de sesgo: ```3*(media - mediana) / desvío```, antes y después de la trasformación. Grafique las distribuciones.
+4. Volver aplicar binnings por frecuencia, ancho y kmeans sobre la transformación realizada en 3. Cuales métodos resultaron más y menos sensibles al sesgo.
+5. Qué transformaciones considera más adecuadas para comparar la dispersión entre las variables de cantidad de casos, y cantidad de casos cada 1 millón de habitantes (*cases_1Mpop*).
+
+
