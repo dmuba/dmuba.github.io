@@ -41,7 +41,7 @@ Para más información sobre los parámetros se sugiere, como siempre, acceder a
 
 ### Discretización por función matemática
 
-La siguiente discretización se gener a partir de la cantidad de dígitos numéricos de la variable. Este tipo de discretización puede ser muy útil en variables con mucho sesgo.
+En este ejemplo se discretiza la variable tomando la cantidad de dígitos numéricos. Este tipo de discretización puede ser muy útil en variables muy sesgadas.
 
 ```r
 covid19$disc_cases_log10 = floor(log10(covid19$cases))
