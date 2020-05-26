@@ -51,9 +51,9 @@ covid19$disc_cases_log10 = floor(log10(covid19$cases))
 
 La función **scale** resulta muy útil para implementar las técnicas de normalización vistas en clase. Esta función tiene dos parámetros opcionales que nos permite manejar la función de normalización a aplicar.
 
-* center: Indica la forma de centrar la variable, es decir primero va a restar por un valor definido. Si se indica TRUE (valor por defecto) utilizará la media como valor central. Sino se puede usar un valor central distinto especificando en este parámetro un valor numérico. Si se indica FALSE, no realizará ningún centrado.
+* center: Indica la forma de centrar la variable, es decir primero va a restar por un valor central. Si se indica TRUE (valor por defecto) utilizará la media como valor central. Sino se puede especificar el nuevo valor en este parámetro. Si se indica FALSE, no realizará ningún centrado.
 
-* scale: Luego del centrado realiza el escalado, es decir, dividir a la variable por un valor definido. Si se indica TRUE (valor por defecto) usa el desvío estándar. Sino se puede especificar un valor numérico específico. FALSE significa que no realizará ningún escalado. 
+* scale: Luego del centrado realiza el escalado, es decir, dividir la variable por un valor definido. Si se indica TRUE (valor por defecto) usa el desvío estándar. Sino se puede especificar un valor numérico distinto. FALSE significa que no realizará ningún escalado. 
 
 #### zscore:
 ```r
