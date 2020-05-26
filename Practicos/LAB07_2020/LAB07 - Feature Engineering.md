@@ -73,7 +73,7 @@ scale(covid19$cases, center=median(covid19$cases),  scale=TRUE)
 scale(covid19$cases, center=median(covid19$cases),  scale=IQR(covid19$cases))
 ```
 
-####  Otra transformación podría ser generar un índice relativo a la media.
+####  Índice relativo a la media.
 ```r
 scale(covid19$cases, center=mean(covid19$cases),  scale=mean(covid19$cases))
 ```
@@ -86,9 +86,9 @@ covid19$cases / 10**d
 
 ## Variables dummies
 
-Este tipo de codificación también se la conoce como *One Hot Encoding* o variables *Flags*. En este caso usaremos el paquete **fastDummies**.
+Este tipo de codificación también se la conoce como *"One Hot Encoding"* o variables *"Flags"*. En este caso usaremos el paquete **fastDummies**.
 
-La función **dummy_cols** genera nuevas columnas del tipo flags (valores 1 o 0 / tiene o no tiene), a partir de columnas categóricas, maneja columnas de tipo *factor* o *character*. Genera tantas columnas nuevas como categorías o niveles existan en la variable original. El nombre de estas nuevas columnas seguirá el patrón: *\<nombre columna original>_<nombre categoría>*.
+La función **dummy_cols** genera nuevas columnas del tipo flags (valores 1 o 0 / tiene o no tiene), a partir de columnas categóricas. Estas columnas pueden ser de tipo *factor* o *character*. Se generarán tantas columnas nuevas como categorías o niveles existan en la variable original. El nombre de estas nuevas columnas seguirá el patrón: *\<nombre columna original>_<nombre categoría>*.
 
 El valor devuelto por esta función es una copia del dataset original con las nuevas variables creadas.
 
@@ -102,7 +102,7 @@ Los parámetros más relevante de esta función son:
 * select_columns: Se especifica la/s columna/s categórica/s a transformar.
 * remove_first_dummy: Cuando se crean variables dummies, una es redundante. Si se especifica TRUE en este valor omitirá la columna de la primera categoría.
 * remove_most_frequent_dummy: Igual al caso anterior pero omitiendo a la categoría más frecuente.
-* ignore_na: Si este valor es FALSE, se agrega una nueva columna de tipo flag indicando si se trata de un valor NA o no.
+* ignore_na: Si este valor es FALSE, se agrega una nueva columna de tipo flag indicando si la variable original contiene un dato NA .
 
 Para más detalles acceder a la documentación de ayuda:
 
@@ -117,7 +117,7 @@ Sobre la variable de cantidad de casos (columna cases):
 1. Aplicar distintos métodos de normalización y analizar las distribuciones resultantes. (Gráficos hist, qqplot, density, boxplot)
 2. Aplicar los ejemplos de discretización de esta guía. Documente ventajas y desventajas de cada método.
 3. Aplique alguna transformación para reducir el sesgo. Calcule la métrica de sesgo: ```3*(media - mediana) / desvío```, antes y después de la transformación. Grafique las distribuciones.
-4. Volver aplicar binnings por frecuencia, ancho y kmeans sobre la transformación realizada en 3. Cuales métodos resultaron más y menos sensibles al sesgo.
+4. Volver aplicar binnings por frecuencia, ancho y kmeans sobre la transformación realizada en 3. ¿Cuáles métodos resultaron más y menos sensibles al sesgo?
 5. Qué transformaciones considera más adecuadas para comparar la dispersión entre las variables de cantidad de casos, y cantidad de casos cada 1 millón de habitantes (*cases_1Mpop*).
 
 
