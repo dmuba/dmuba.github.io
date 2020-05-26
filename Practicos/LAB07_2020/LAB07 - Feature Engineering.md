@@ -3,7 +3,7 @@
 En este laboratorio pondremos en práctica las técnicas de procesamiento de variables usando el lenguaje R. 
 
 ## Dataset
-En este caso trabajaremos con un set de datos con estadísticas resúmenes a nivel países de casos de COVID-19 ([Link de descarga](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB07_2020/covid19.csv)). Este dataset fue generado con los datos publicados del sitio https://www.worldometers.info/coronavirus/.
+En este caso trabajaremos con un set de datos con estadísticas resúmenes a nivel países de casos de COVID-19 ([Link de descarga](https://github.com/dmuba/dmuba.github.io/blob/master/Practicos/LAB07_2020/covid19.csv)). Este dataset fue generado con los datos publicados en el sitio https://www.worldometers.info/coronavirus/.
 
 
 ```r
