@@ -56,6 +56,11 @@
          "ref": "Clase 11: Sistemas de recomendación",
          "link": "https://docs.google.com/presentation/d/1MK1iZwe8Emne2ObmJmOAwEkHuWK14-x1tX8uJ7FXDkI/edit?usp=sharing",
          "caption": "Abrir"
+        },
+        {"id": 12,
+         "ref": "Clase 12: Local Sensitive Hashing - Similitud de Documentos",
+         "link": "https://docs.google.com/presentation/d/19QtymTBsVm-lewDtMibzK8y04qvINm6octdjzqK1nEw/edit?usp=sharing",
+         "caption": "Abrir"
         }
     ]
 }
