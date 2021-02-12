@@ -159,3 +159,4 @@ Sistemas Operativos Windows:
 > mongoimport --host localhost --port 27017 --collection tweets --db dolar --file C:\Users\unlu\dolar.json
 
 ```
+Nota: puede ser necesario agregar la opción --legacy luego de  si el archivo a importar es de una versión anterior de MongoDB  (por ejemplo genera un Failed: invalid JSON input. Position: nn). Para importar datos con formato array ("[...") agregar la opción --jsonArray
